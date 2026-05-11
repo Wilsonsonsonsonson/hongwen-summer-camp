@@ -1,0 +1,1739 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>弘文中學 ・ 暑期育樂營</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Special+Elite&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --paper: #f3ead5;
+    --paper-deep: #ead9b8;
+    --paper-dark: #d9c49a;
+    --ink: #2b1e10;
+    --ink-soft: #4a3520;
+    --sepia: #8b5a2b;
+    --sepia-deep: #5a3a1c;
+    --gold: #b8893a;
+    --gold-light: #d9b066;
+    --rust: #a0431e;
+    --red-stamp: #b03020;
+
+    --teal-2024: #1d5266;
+    --teal-2024-deep: #0d3140;
+    --burgundy-2025: #6b1e2c;
+    --burgundy-2025-deep: #3a0d18;
+    --amber-2026: #9c6a1a;
+    --amber-2026-deep: #5c3d0a;
+
+    --shadow: 0 8px 28px rgba(60, 40, 15, 0.18);
+    --shadow-deep: 0 14px 40px rgba(60, 40, 15, 0.28);
+
+    --serif: "Noto Serif TC", "Cormorant Garamond", serif;
+    --display: "Cormorant Garamond", "Noto Serif TC", serif;
+    --type: "Special Elite", "JetBrains Mono", monospace;
+    --sans: "Noto Sans TC", sans-serif;
+    --mono: "JetBrains Mono", monospace;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--paper);
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(184,137,58,0.10), transparent 50%),
+      radial-gradient(ellipse at 80% 80%, rgba(160,67,30,0.08), transparent 50%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.12 0 0 0 0 0.06 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    overflow-x: hidden;
+    line-height: 1.65;
+  }
+
+  body::before {
+    content: "";
+    position: fixed; inset: 0;
+    pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='f'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23f)'/%3E%3C/svg%3E");
+    z-index: 1000;
+    mix-blend-mode: multiply;
+  }
+
+  /* NAV */
+  nav.topbar {
+    position: fixed; top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 40px;
+    background: rgba(243,234,213,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid rgba(139,90,43,0.25);
+    font-family: var(--type);
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+  nav.topbar .brand {
+    display: flex; align-items: center; gap: 12px;
+    color: var(--sepia-deep);
+    font-weight: 700;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  nav.topbar .brand .seal {
+    width: 30px; height: 30px;
+    border: 1.5px solid var(--sepia);
+    border-radius: 50%;
+    display: grid; place-items: center;
+    font-size: 14px;
+    color: var(--sepia);
+    transform: rotate(-8deg);
+  }
+  nav.topbar ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  nav.topbar a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    transition: color .25s;
+    position: relative;
+    cursor: pointer;
+  }
+  nav.topbar a::after {
+    content: ""; position: absolute; left: 0; bottom: -4px;
+    height: 1px; width: 0; background: var(--rust);
+    transition: width .3s;
+  }
+  nav.topbar a:hover { color: var(--rust); }
+  nav.topbar a:hover::after { width: 100%; }
+
+  /* VIEW SYSTEM */
+  .view { display: none; animation: viewFade .5s ease both; }
+  .view.active { display: block; }
+  @keyframes viewFade {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* HOME HERO */
+  .home-hero {
+    min-height: 100vh;
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    padding: 100px 40px 60px;
+    overflow: hidden;
+  }
+  .hero-bg-deco {
+    position: absolute; inset: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 15% 30%, rgba(184,137,58,0.18), transparent 35%),
+      radial-gradient(circle at 85% 70%, rgba(160,67,30,0.10), transparent 40%);
+  }
+  .hero-watermark {
+    position: absolute;
+    font-family: var(--serif);
+    font-weight: 900;
+    color: rgba(139,90,43,0.08);
+    font-size: clamp(180px, 30vw, 440px);
+    line-height: 0.85;
+    user-select: none;
+    pointer-events: none;
+  }
+  .hero-watermark.left { top: 8%; left: -3%; }
+  .hero-watermark.right { bottom: 4%; right: -2%; transform: rotate(8deg); }
+
+  .corner-stamp {
+    position: absolute;
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--rust);
+    border: 1.5px solid var(--rust);
+    padding: 8px 14px;
+    opacity: 0.7;
+  }
+  .corner-stamp.tl { top: 90px; left: 30px; transform: rotate(-6deg); }
+  .corner-stamp.br { bottom: 30px; right: 30px; transform: rotate(4deg); }
+
+  .home-hero-inner {
+    position: relative;
+    max-width: 1100px;
+    width: 100%;
+    text-align: center;
+    z-index: 2;
+  }
+  .home-hero .eyebrow {
+    font-family: var(--type);
+    font-size: 13px;
+    letter-spacing: 0.4em;
+    color: var(--sepia);
+    margin-bottom: 32px;
+    display: flex; align-items: center; justify-content: center; gap: 16px;
+  }
+  .home-hero .eyebrow::before, .home-hero .eyebrow::after {
+    content: ""; height: 1px; width: 60px;
+    background: var(--sepia);
+  }
+  .home-hero h1 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(64px, 12vw, 168px);
+    line-height: 1;
+    margin: 0 0 14px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+  .home-hero h1 .ch {
+    display: inline-block;
+    transition: transform .4s, color .4s;
+  }
+  .home-hero h1 .ch:hover {
+    transform: translateY(-8px) rotate(-2deg);
+    color: var(--rust);
+  }
+  .home-hero .en-title {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: clamp(24px, 3.5vw, 42px);
+    color: var(--rust);
+    letter-spacing: 0.04em;
+    margin-bottom: 36px;
+  }
+  .home-hero .lead {
+    max-width: 660px;
+    margin: 0 auto 50px;
+    font-size: 16px;
+    color: var(--ink-soft);
+    line-height: 2;
+  }
+  .home-hero .lead strong {
+    color: var(--ink);
+    font-weight: 500;
+    border-bottom: 1px dashed var(--gold);
+    padding-bottom: 2px;
+  }
+
+  .home-cta {
+    display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 60px;
+  }
+  .btn-primary, .btn-secondary {
+    font-family: var(--type);
+    font-size: 12px;
+    letter-spacing: 0.25em;
+    padding: 17px 32px;
+    text-decoration: none;
+    transition: all .3s ease;
+    display: inline-flex; align-items: center; gap: 12px;
+    cursor: pointer;
+    border: none;
+  }
+  .btn-primary {
+    background: var(--ink);
+    color: var(--paper);
+    box-shadow: 4px 4px 0 var(--rust);
+  }
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--rust);
+  }
+  .btn-primary .arrow { transition: transform .3s; }
+  .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-secondary {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+  }
+  .btn-secondary:hover {
+    background: var(--ink);
+    color: var(--paper);
+  }
+
+  .hero-meta {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    flex-wrap: wrap;
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--sepia-deep);
+    padding-top: 28px;
+    border-top: 1px dashed rgba(139,90,43,0.3);
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .hero-meta div { text-align: center; }
+  .hero-meta div span {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 22px;
+    color: var(--rust);
+    letter-spacing: 0;
+    margin-top: 4px;
+  }
+
+  /* ABOUT */
+  .about-band { padding: 100px 40px 60px; }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1.4fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .about-side {
+    border-top: 2px solid var(--ink);
+    padding-top: 24px;
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: var(--sepia);
+  }
+  .about-side h3 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 56px;
+    color: var(--ink);
+    line-height: 0.9;
+    margin: 12px 0 8px;
+    letter-spacing: 0;
+  }
+  .about-side .zh-sub {
+    font-family: var(--serif);
+    font-size: 19px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.2em;
+  }
+  .about-text p {
+    font-size: 15.5px;
+    line-height: 2;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+  }
+  .about-text p:first-child::first-letter {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 700;
+    font-size: 60px;
+    float: left;
+    line-height: 0.9;
+    padding: 6px 12px 0 0;
+    color: var(--rust);
+  }
+
+  /* EDITIONS SECTION */
+  .editions-section {
+    padding: 100px 40px 140px;
+    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+  }
+  .section-header {
+    max-width: 1280px;
+    margin: 0 auto 60px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    gap: 24px;
+    align-items: end;
+  }
+  .section-num {
+    font-family: var(--type);
+    font-size: 13px;
+    letter-spacing: 0.2em;
+    color: var(--sepia);
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+  .section-titles h2 {
+    font-family: var(--display);
+    font-weight: 500;
+    font-style: italic;
+    font-size: clamp(48px, 6vw, 84px);
+    line-height: 1;
+    margin: 0 0 12px;
+    color: var(--ink);
+  }
+  .section-titles .zh {
+    font-family: var(--serif);
+    font-size: clamp(20px, 2.4vw, 28px);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+  }
+  .section-titles .zh::before {
+    content: "—— ";
+    color: var(--gold);
+  }
+  .section-tag {
+    font-family: var(--type);
+    font-size: 11px;
+    color: var(--rust);
+    border: 1px solid var(--rust);
+    padding: 6px 12px;
+    letter-spacing: 0.15em;
+    transform: rotate(2deg);
+    align-self: start;
+  }
+
+  .editions-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+  }
+
+  .edition-card {
+    cursor: pointer;
+    position: relative;
+    background: var(--paper);
+    border: 1px solid rgba(139,90,43,0.25);
+    overflow: hidden;
+    transition: transform .45s ease, box-shadow .45s ease;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+  }
+  .edition-card:hover {
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-deep);
+  }
+  .edition-card .visual {
+    aspect-ratio: 4/5;
+    position: relative;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    color: var(--paper);
+    padding: 40px 30px;
+    text-align: center;
+  }
+  .edition-card[data-edition="2024"] .visual {
+    background:
+      radial-gradient(circle at 30% 70%, rgba(74,138,158,0.45), transparent 60%),
+      linear-gradient(135deg, var(--teal-2024) 0%, var(--teal-2024-deep) 100%);
+  }
+  .edition-card[data-edition="2025"] .visual {
+    background:
+      radial-gradient(circle at 70% 30%, rgba(160,69,80,0.45), transparent 60%),
+      linear-gradient(135deg, var(--burgundy-2025) 0%, var(--burgundy-2025-deep) 100%);
+  }
+  .edition-card[data-edition="2026"] .visual {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(212,160,74,0.4), transparent 60%),
+      linear-gradient(135deg, var(--amber-2026) 0%, var(--amber-2026-deep) 100%);
+  }
+  .edition-card .visual::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.7' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  .edition-card .visual .icon {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 110px;
+    line-height: 1;
+    margin-bottom: 18px;
+    opacity: 0.95;
+    text-shadow: 0 4px 18px rgba(0,0,0,0.25);
+    transition: transform .5s ease;
+  }
+  .edition-card:hover .visual .icon { transform: scale(1.08) rotate(-3deg); }
+  .edition-card .visual .vol {
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    opacity: 0.8;
+    margin-bottom: 8px;
+  }
+  .edition-card .visual .year {
+    font-family: var(--display);
+    font-weight: 700;
+    font-style: italic;
+    font-size: 48px;
+    line-height: 1;
+  }
+  .edition-card .visual .corner-mark {
+    position: absolute;
+    top: 14px; left: 14px;
+    font-family: var(--type);
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    opacity: 0.7;
+  }
+  .edition-card .visual .corner-mark.br {
+    top: auto; left: auto;
+    bottom: 14px; right: 14px;
+  }
+  .edition-card .visual .placeholder-tag {
+    position: absolute;
+    bottom: 14px; left: 50%;
+    transform: translateX(-50%);
+    font-family: var(--type);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    opacity: 0.55;
+    white-space: nowrap;
+  }
+
+  .status-ribbon {
+    position: absolute;
+    top: 20px; right: -42px;
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    padding: 7px 50px;
+    transform: rotate(45deg);
+    z-index: 3;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .status-ribbon.open {
+    background: var(--red-stamp);
+    color: var(--paper);
+    animation: pulseRibbon 2.4s ease-in-out infinite;
+  }
+  .status-ribbon.closed {
+    background: rgba(43,30,16,0.85);
+    color: var(--paper);
+    font-size: 10px;
+  }
+  @keyframes pulseRibbon {
+    0%, 100% { box-shadow: 0 2px 8px rgba(176,48,32,0.4); }
+    50% { box-shadow: 0 2px 18px rgba(176,48,32,0.85); }
+  }
+
+  .edition-info {
+    padding: 28px 30px 32px;
+    flex: 1;
+    display: flex; flex-direction: column;
+  }
+  .edition-info .meta-row {
+    font-family: var(--type);
+    font-size: 11px;
+    color: var(--sepia);
+    letter-spacing: 0.2em;
+    margin-bottom: 14px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed rgba(139,90,43,0.3);
+    display: flex; justify-content: space-between;
+  }
+  .edition-info h3 {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: 0.08em;
+    color: var(--ink);
+  }
+  .edition-info .subtitle {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    letter-spacing: 0.15em;
+    margin-bottom: 6px;
+  }
+  .edition-info .en {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 17px;
+    color: var(--rust);
+    margin-bottom: 18px;
+  }
+  .edition-info .blurb {
+    font-size: 13.5px;
+    line-height: 1.85;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    flex: 1;
+  }
+  .edition-info .read-more {
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--ink);
+    display: inline-flex; align-items: center; gap: 10px;
+    border-top: 1px solid rgba(43,30,16,0.5);
+    padding-top: 14px;
+    transition: color .3s, gap .3s;
+  }
+  .edition-card:hover .read-more {
+    color: var(--rust);
+    gap: 16px;
+  }
+
+  /* EDITION DETAIL */
+  .edition-detail { padding: 100px 40px 80px; }
+  .back-bar {
+    max-width: 1280px;
+    margin: 0 auto 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    padding-bottom: 18px;
+    border-bottom: 1px dashed rgba(139,90,43,0.4);
+  }
+  .back-bar .back-btn {
+    cursor: pointer;
+    color: var(--ink);
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 10px;
+    transition: color .25s;
+    background: none; border: none;
+    padding: 0;
+    font: inherit;
+  }
+  .back-bar .back-btn:hover { color: var(--rust); }
+  .back-bar .file-no { color: var(--sepia); }
+
+  .detail-hero {
+    max-width: 1280px;
+    margin: 0 auto 70px;
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+  .detail-hero .text { padding-top: 20px; }
+  .detail-hero .edition-num {
+    font-family: var(--type);
+    font-size: 12px;
+    letter-spacing: 0.3em;
+    color: var(--rust);
+    margin-bottom: 16px;
+    display: inline-block;
+    padding: 5px 12px;
+    border: 1px solid var(--rust);
+  }
+  .detail-hero .edition-num.recruiting {
+    background: var(--red-stamp);
+    color: var(--paper);
+    border-color: var(--red-stamp);
+    animation: pulseStamp 2.4s ease-in-out infinite;
+  }
+  @keyframes pulseStamp {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(176,48,32,0); }
+    50% { box-shadow: 0 0 0 6px rgba(176,48,32,0.2); }
+  }
+  .detail-hero h2 {
+    font-family: var(--serif);
+    font-weight: 900;
+    font-size: clamp(48px, 6vw, 84px);
+    line-height: 1.05;
+    margin: 0 0 6px;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+  }
+  .detail-hero .subtitle-zh {
+    font-family: var(--serif);
+    font-size: clamp(22px, 3vw, 36px);
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    margin-bottom: 14px;
+  }
+  .detail-hero .subtitle-en {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--rust);
+    margin-bottom: 32px;
+  }
+  .detail-hero .lede {
+    font-family: var(--serif);
+    font-size: 19px;
+    line-height: 1.9;
+    border-left: 3px solid var(--gold);
+    padding-left: 22px;
+    color: var(--ink);
+    margin-bottom: 28px;
+  }
+  .detail-hero p {
+    font-size: 15px;
+    line-height: 1.95;
+    color: var(--ink-soft);
+    margin: 0 0 18px;
+  }
+
+  .detail-visual {
+    aspect-ratio: 4/5;
+    position: relative;
+    border: 1px solid rgba(139,90,43,0.3);
+    box-shadow: var(--shadow-deep);
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    color: var(--paper);
+    padding: 40px;
+    text-align: center;
+  }
+  .detail-visual.theme-2024 {
+    background:
+      radial-gradient(circle at 30% 70%, rgba(74,138,158,0.5), transparent 60%),
+      linear-gradient(135deg, var(--teal-2024) 0%, var(--teal-2024-deep) 100%);
+  }
+  .detail-visual.theme-2025 {
+    background:
+      radial-gradient(circle at 70% 30%, rgba(160,69,80,0.5), transparent 60%),
+      linear-gradient(135deg, var(--burgundy-2025) 0%, var(--burgundy-2025-deep) 100%);
+  }
+  .detail-visual.theme-2026 {
+    background:
+      radial-gradient(circle at 50% 50%, rgba(212,160,74,0.45), transparent 60%),
+      linear-gradient(135deg, var(--amber-2026) 0%, var(--amber-2026-deep) 100%);
+  }
+  .detail-visual::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.7' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    mix-blend-mode: overlay;
+    pointer-events: none;
+  }
+  .detail-visual .icon-big {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 180px;
+    line-height: 1;
+    opacity: 0.95;
+    text-shadow: 0 6px 24px rgba(0,0,0,0.3);
+    margin-bottom: 20px;
+  }
+  .detail-visual .placeholder-note {
+    font-family: var(--type);
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    opacity: 0.65;
+    line-height: 1.8;
+  }
+  .detail-visual .corner-mark {
+    position: absolute;
+    top: 18px; left: 18px;
+    font-family: var(--type);
+    font-size: 10px;
+    letter-spacing: 0.25em;
+    opacity: 0.7;
+  }
+  .detail-visual .corner-mark.br {
+    top: auto; left: auto;
+    bottom: 18px; right: 18px;
+  }
+
+  .detail-stats {
+    max-width: 1280px;
+    margin: 0 auto 80px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border-top: 1px solid var(--ink);
+    border-bottom: 1px solid var(--ink);
+  }
+  .detail-stats > div {
+    padding: 28px 24px;
+    border-right: 1px dashed rgba(139,90,43,0.4);
+    text-align: center;
+  }
+  .detail-stats > div:last-child { border-right: none; }
+  .detail-stats .n {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 52px;
+    color: var(--rust);
+    line-height: 1;
+    display: block;
+  }
+  .detail-stats .l {
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    color: var(--sepia);
+    margin-top: 10px;
+  }
+
+  .detail-blocks { max-width: 1280px; margin: 0 auto; }
+  .detail-block { margin-bottom: 80px; }
+  .detail-block h4 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 38px;
+    color: var(--ink);
+    margin: 0 0 6px;
+    letter-spacing: 0;
+  }
+  .detail-block h4 + .zh {
+    font-family: var(--serif);
+    font-size: 18px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    color: var(--ink-soft);
+    margin-bottom: 28px;
+    padding-bottom: 14px;
+    border-bottom: 1px dashed rgba(139,90,43,0.4);
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+  }
+  .feature-card {
+    background: var(--paper);
+    border: 1px solid rgba(139,90,43,0.3);
+    padding: 26px 22px;
+    position: relative;
+    transition: transform .3s, box-shadow .3s;
+  }
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow);
+  }
+  .feature-card::after {
+    content: "";
+    position: absolute;
+    top: 8px; right: 8px;
+    width: 8px; height: 8px;
+    border-top: 1px solid var(--sepia);
+    border-right: 1px solid var(--sepia);
+  }
+  .feature-card .num {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 32px;
+    color: var(--rust);
+    line-height: 1;
+  }
+  .feature-card h5 {
+    font-family: var(--serif);
+    font-size: 17px;
+    font-weight: 700;
+    margin: 14px 0 8px;
+    letter-spacing: 0.1em;
+  }
+  .feature-card p {
+    font-size: 12.5px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.75;
+  }
+
+  .tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
+  .tag-list span {
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    padding: 6px 14px;
+    border: 1px solid var(--sepia);
+    color: var(--sepia-deep);
+    background: var(--paper);
+  }
+
+  .schedule-block {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr;
+    gap: 50px;
+    align-items: start;
+  }
+  .schedule-block .meta {
+    font-size: 14.5px;
+    line-height: 1.95;
+    color: var(--ink-soft);
+  }
+  .schedule-block .meta strong {
+    display: block;
+    font-family: var(--serif);
+    color: var(--ink);
+    font-weight: 700;
+    margin-top: 18px;
+    letter-spacing: 0.1em;
+  }
+  .schedule-block .meta strong.inline {
+    display: inline; margin-top: 0;
+  }
+  .schedule-frame {
+    background: var(--paper);
+    padding: 16px;
+    border: 1px solid rgba(139,90,43,0.3);
+    box-shadow: var(--shadow-deep);
+    transform: rotate(0.5deg);
+    transition: transform .4s;
+    position: relative;
+  }
+  .schedule-frame:hover { transform: rotate(0); }
+  .schedule-frame img { width: 100%; display: block; }
+  .schedule-frame::after {
+    content: "";
+    position: absolute;
+    top: -10px; right: -10px;
+    width: 80px; height: 80px;
+    border: 2px solid var(--red-stamp);
+    border-radius: 50%;
+    background: radial-gradient(circle, transparent 60%, var(--red-stamp) 61%, transparent 63%);
+  }
+  .schedule-caption {
+    font-family: var(--type);
+    font-size: 11px;
+    color: var(--sepia);
+    letter-spacing: 0.2em;
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .placeholder-block {
+    background: rgba(184,137,58,0.08);
+    border: 2px dashed rgba(139,90,43,0.45);
+    padding: 40px;
+    text-align: center;
+    font-family: var(--type);
+    font-size: 12px;
+    letter-spacing: 0.2em;
+    color: var(--sepia-deep);
+    line-height: 2;
+  }
+  .placeholder-block strong {
+    display: block;
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 28px;
+    color: var(--rust);
+    letter-spacing: 0;
+    margin-bottom: 6px;
+  }
+
+  /* ENROLL BLOCK */
+  .enroll-block {
+    margin-top: 80px;
+    padding: 70px 50px;
+    background: var(--ink);
+    color: var(--paper);
+    position: relative;
+    overflow: hidden;
+  }
+  .enroll-block::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image:
+      repeating-linear-gradient(90deg, rgba(184,137,58,0.05) 0 1px, transparent 1px 80px),
+      repeating-linear-gradient(0deg, rgba(184,137,58,0.05) 0 1px, transparent 1px 80px);
+    pointer-events: none;
+  }
+  .enroll-block-inner {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: 50px;
+    align-items: center;
+  }
+  .enroll-block h4 {
+    font-family: var(--display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 48px;
+    margin: 0 0 8px;
+    color: var(--paper);
+  }
+  .enroll-block .zh-big {
+    font-family: var(--serif);
+    font-size: 28px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: var(--gold-light);
+    margin-bottom: 18px;
+  }
+  .enroll-block p {
+    font-size: 14.5px;
+    line-height: 1.9;
+    color: rgba(243,234,213,0.8);
+    margin: 0;
+  }
+  .enroll-block-actions { display: flex; flex-direction: column; gap: 14px; }
+  .enroll-block .btn-bright {
+    background: var(--gold);
+    color: var(--ink);
+    font-family: var(--type);
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    padding: 20px 30px;
+    text-decoration: none;
+    text-align: center;
+    transition: all .3s;
+    display: flex; align-items: center; justify-content: center; gap: 12px;
+    border: none;
+    cursor: pointer;
+  }
+  .enroll-block .btn-bright:hover {
+    background: var(--gold-light);
+    transform: translateX(4px);
+  }
+  .enroll-block .btn-outline {
+    background: transparent;
+    color: var(--paper);
+    border: 1px solid rgba(243,234,213,0.5);
+    font-family: var(--type);
+    font-size: 12px;
+    letter-spacing: 0.22em;
+    padding: 16px 30px;
+    text-decoration: none;
+    text-align: center;
+    transition: all .3s;
+    cursor: pointer;
+  }
+  .enroll-block .btn-outline:hover {
+    background: rgba(243,234,213,0.1);
+    border-color: var(--paper);
+  }
+  .enroll-block .info-note {
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.22em;
+    color: var(--gold-light);
+    padding: 16px 0;
+    text-align: center;
+    border: 1px dashed var(--gold-light);
+    line-height: 1.8;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(243,234,213,0.7);
+    padding: 60px 40px 30px;
+    font-family: var(--type);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+  }
+  footer .foot-inner {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr;
+    gap: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid rgba(184,137,58,0.3);
+  }
+  footer h5 {
+    font-family: var(--display);
+    font-style: italic;
+    font-size: 24px;
+    color: var(--gold-light);
+    margin: 0 0 18px;
+    letter-spacing: 0;
+  }
+  footer p, footer a {
+    color: rgba(243,234,213,0.7);
+    text-decoration: none;
+    line-height: 2;
+    transition: color .25s;
+    background: none; border: none; padding: 0;
+    font: inherit;
+    cursor: pointer;
+    display: block;
+  }
+  footer a:hover { color: var(--gold-light); }
+  footer .foot-bottom {
+    max-width: 1280px;
+    margin: 30px auto 0;
+    display: flex;
+    justify-content: space-between;
+    font-size: 10px;
+    letter-spacing: 0.2em;
+    color: rgba(243,234,213,0.4);
+  }
+
+  /* ASSETS NOTICE */
+  .needed-assets {
+    background: #fef9ec;
+    border: 2px dashed var(--rust);
+    color: var(--ink);
+    padding: 40px;
+    margin: 80px auto;
+    max-width: 1100px;
+    font-family: var(--sans);
+    position: relative;
+  }
+  .needed-assets::before {
+    content: "📎 ASSETS REQUIRED · 待補素材清單";
+    position: absolute;
+    top: -14px; left: 30px;
+    background: var(--rust);
+    color: var(--paper);
+    font-family: var(--type);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    padding: 6px 14px;
+  }
+  .needed-assets h4 {
+    font-family: var(--serif);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+    color: var(--rust);
+    letter-spacing: 0.05em;
+  }
+  .needed-assets .intro {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    margin: 0 0 24px;
+    line-height: 1.8;
+  }
+  .needed-assets ul { margin: 0; padding-left: 0; list-style: none; }
+  .needed-assets li {
+    padding: 14px 0;
+    border-bottom: 1px dashed rgba(139,90,43,0.25);
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 18px;
+    font-size: 14px;
+    line-height: 1.75;
+  }
+  .needed-assets li:last-child { border-bottom: none; }
+  .needed-assets li b {
+    font-family: var(--type);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    color: var(--sepia-deep);
+  }
+  .needed-assets li i { font-style: normal; color: var(--ink-soft); }
+  .needed-assets li code {
+    font-family: var(--mono);
+    font-size: 11px;
+    background: rgba(139,90,43,0.1);
+    padding: 1px 6px;
+    color: var(--rust);
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 980px) {
+    nav.topbar { padding: 12px 20px; }
+    nav.topbar ul { display: none; }
+    section, .home-hero, .edition-detail { padding: 80px 24px; }
+    .home-hero { padding-top: 110px; }
+    .section-header { grid-template-columns: 1fr; }
+    .section-num { writing-mode: horizontal-tb; transform: none; }
+    .editions-grid { grid-template-columns: 1fr; }
+    .about-inner { grid-template-columns: 1fr; gap: 30px; }
+    .detail-hero { grid-template-columns: 1fr; gap: 40px; }
+    .detail-stats { grid-template-columns: 1fr 1fr; }
+    .detail-stats > div { border-right: none; border-bottom: 1px dashed rgba(139,90,43,0.4); }
+    .feature-grid { grid-template-columns: 1fr 1fr; }
+    .schedule-block { grid-template-columns: 1fr; }
+    .enroll-block-inner { grid-template-columns: 1fr; }
+    footer .foot-inner { grid-template-columns: 1fr; }
+    .needed-assets li { grid-template-columns: 1fr; gap: 4px; }
+    .corner-stamp { display: none; }
+    .hero-meta { gap: 24px; }
+  }
+  @media (max-width: 560px) {
+    .feature-grid { grid-template-columns: 1fr; }
+    .detail-stats { grid-template-columns: 1fr; }
+    .home-hero h1 { font-size: 64px; letter-spacing: 0.04em; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="topbar">
+  <a class="brand" data-nav="home">
+    <div class="seal">弘</div>
+    <span>HUNG-WEN SUMMER CAMP · 弘文中學暑期育樂營</span>
+  </a>
+  <ul>
+    <li><a data-nav="home">首頁 HOME</a></li>
+    <li><a href="#editions">歷年介紹 EDITIONS</a></li>
+    <li><a data-nav="2026">2026 報名 ENROLL</a></li>
+  </ul>
+</nav>
+
+<!-- ====================== VIEW: HOME ====================== -->
+<main id="view-home" class="view active">
+
+  <header class="home-hero">
+    <div class="hero-bg-deco"></div>
+    <div class="hero-watermark left">弘</div>
+    <div class="hero-watermark right">文</div>
+
+    <div class="corner-stamp tl">EST. 2024 SUMMER · 弘文</div>
+    <div class="corner-stamp br">VOL. I — III &nbsp;三屆紀錄</div>
+
+    <div class="home-hero-inner">
+      <div class="eyebrow">HUNG-WEN HIGH SCHOOL &nbsp;|&nbsp; OFFICIAL CAMP SITE</div>
+      <h1>
+        <span class="ch">暑</span><span class="ch">期</span><span class="ch">育</span><span class="ch">樂</span><span class="ch">營</span>
+      </h1>
+      <div class="en-title">Hung-Wen Summer Camp</div>
+      <p class="lead">
+        我們相信:夏天不只是放假,而是一場可以記得一輩子的<strong>儀式</strong>。<br>
+        從 2024 的「希望之島」、2025 的「光耀的試煉」,到 2026 即將啟航的「時空管理局」——<br>
+        每一屆,我們都把整座校園重新打造成一個<strong>全新的世界</strong>。
+      </p>
+      <div class="home-cta">
+        <a class="btn-primary" data-nav="2026">
+          2026 立即報名
+          <span class="arrow">→</span>
+        </a>
+        <a href="#editions" class="btn-secondary">查看歷屆介紹</a>
+      </div>
+      <div class="hero-meta">
+        <div>第一屆<span>2024 · 希望之島</span></div>
+        <div>第二屆<span>2025 · 光耀的試煉</span></div>
+        <div>第三屆<span>2026 · 時空管理局</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="about-band">
+    <div class="about-inner">
+      <div class="about-side">
+        <div>SECTION · 00</div>
+        <h3>About Camp</h3>
+        <div class="zh-sub">關 於 我 們</div>
+      </div>
+      <div class="about-text">
+        <p>弘文中學暑期育樂營,從 2024 年第一屆開辦至今,已經連續舉辦三屆。我們不只是一個「讓孩子有地方去」的營隊——每一年,我們都設定一個完全不同的世界觀,讓學員在四天裡真正「成為」另一個身分。</p>
+        <p>2024 我們是搭船尋找新大陸的水手,2025 我們是接受試煉的見習騎士,2026 我們將成為穿越時空、守護歷史的探員。儀式感、沉浸式、團隊協作,是這個營隊三年來不變的核心。</p>
+        <p>我們希望孩子離開時帶走的,不是一張結業證書,而是一段「真實發生過」的夏日記憶。</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="editions" class="editions-section">
+    <div class="section-header">
+      <div class="section-num">SECTION&nbsp;·&nbsp;01</div>
+      <div class="section-titles">
+        <h2>The Editions</h2>
+        <div class="zh">歷 屆 主 題 介 紹</div>
+      </div>
+      <div class="section-tag">CLICK TO ENTER ↗</div>
+    </div>
+
+    <div class="editions-grid">
+
+      <!-- 2024 -->
+      <a class="edition-card" data-edition="2024" data-nav="2024">
+        <div class="status-ribbon closed">CLOSED · 已結束</div>
+        <div class="visual">
+          <div class="corner-mark">VOL. I / 2024</div>
+          <div>
+            <div class="icon">⚓</div>
+            <div class="vol">FIRST EDITION</div>
+            <div class="year">'24</div>
+          </div>
+          <div class="corner-mark br">航海篇</div>
+          <div class="placeholder-tag">PLACEHOLDER · 待補主視覺</div>
+        </div>
+        <div class="edition-info">
+          <div class="meta-row">
+            <span>FIRST EDITION</span>
+            <span>2024 SUMMER</span>
+          </div>
+          <h3>希望之島</h3>
+          <div class="subtitle">The Hopeful Isle</div>
+          <div class="en">Voyage · 航海篇</div>
+          <p class="blurb">揚起風帆,登上未知海域的木質帆船。學員以航海士身份組成船隊,靠羅盤、星圖與彼此的默契,尋找散落在關卡中的航海寶藏。</p>
+          <div class="read-more">進入第一屆檔案 &nbsp;→</div>
+        </div>
+      </a>
+
+      <!-- 2025 -->
+      <a class="edition-card" data-edition="2025" data-nav="2025">
+        <div class="status-ribbon closed">CLOSED · 已結束</div>
+        <div class="visual">
+          <div class="corner-mark">VOL. II / 2025</div>
+          <div>
+            <div class="icon">⚔</div>
+            <div class="vol">SECOND EDITION</div>
+            <div class="year">'25</div>
+          </div>
+          <div class="corner-mark br">騎士篇</div>
+          <div class="placeholder-tag">PLACEHOLDER · 待補主視覺</div>
+        </div>
+        <div class="edition-info">
+          <div class="meta-row">
+            <span>SECOND EDITION</span>
+            <span>2025 SUMMER</span>
+          </div>
+          <h3>光耀的試煉</h3>
+          <div class="subtitle">The Trials of Glory</div>
+          <div class="en">Chivalry · 騎士篇</div>
+          <p class="blurb">活動中心化為中世紀城堡,學員受封為見習騎士。在四日內通過勇氣、智慧、忠誠、榮譽四項試煉,於最終典禮上被授予騎士稱號。</p>
+          <div class="read-more">進入第二屆檔案 &nbsp;→</div>
+        </div>
+      </a>
+
+      <!-- 2026 -->
+      <a class="edition-card" data-edition="2026" data-nav="2026">
+        <div class="status-ribbon open">NOW OPEN · 報名中</div>
+        <div class="visual">
+          <div class="corner-mark">VOL. III / 2026</div>
+          <div>
+            <div class="icon">⧗</div>
+            <div class="vol">THIRD EDITION</div>
+            <div class="year">'26</div>
+          </div>
+          <div class="corner-mark br">時空篇</div>
+          <div class="placeholder-tag">PLACEHOLDER · 待補主視覺</div>
+        </div>
+        <div class="edition-info">
+          <div class="meta-row">
+            <span>THIRD EDITION</span>
+            <span style="color: var(--rust);">★ 報名開放中 ★</span>
+          </div>
+          <h3>時光的守護者</h3>
+          <div class="subtitle">時空管理局</div>
+          <div class="en">The Temporal Bureau</div>
+          <p class="blurb">不再前往某個「地方」,而是穿越「時間」。學員以見習時空警察身分加入時空管理局,執行跨時空巡邏、追捕罪犯、維護歷史脈絡的完整。</p>
+          <div class="read-more">進入第三屆檔案 &nbsp;→</div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ====================== VIEW: 2024 ====================== -->
+<main id="view-2024" class="view">
+  <section class="edition-detail">
+
+    <div class="back-bar">
+      <button class="back-btn" data-nav="home">← 返回首頁 / BACK TO HOME</button>
+      <div class="file-no">FILE NO. HW-2024-VOL-I</div>
+    </div>
+
+    <div class="detail-hero">
+      <div class="text">
+        <div class="edition-num">FIRST EDITION · 第 一 屆 · 2024</div>
+        <h2>希望之島</h2>
+        <div class="subtitle-zh">—— 航 海 篇 ——</div>
+        <div class="subtitle-en">The Hopeful Isle · Voyage</div>
+        <p class="lede">一張殘破的地圖、一個尚未被命名的島嶼、一群不認識彼此的水手——這就是 2024 年夏天的開場。</p>
+        <p>第一屆育樂營,我們把整座校園化為一艘穿梭七海的木質帆船。學員們以「航海士」身份登船,分組組成船隊,靠著羅盤、星圖與彼此的默契,去尋找那座傳說中存在的「希望之島」。</p>
+        <p>主視覺以海軍藍、做舊牛皮紙與黃銅色為調,營造翻開古老航海日誌的儀式感。我們希望孩子記得的,不只是闖關,而是那種「啟航」的勇氣——往未知的方向,鼓起勇氣走出第一步。</p>
+      </div>
+      <div class="detail-visual theme-2024">
+        <div class="corner-mark">VOL. I / 2024</div>
+        <div>
+          <div class="icon-big">⚓</div>
+          <div class="placeholder-note">
+            PLACEHOLDER · 待補主視覺照片<br>
+            建議:當年營隊海報 / 主視覺<br>
+            直式 4:5 比例
+          </div>
+        </div>
+        <div class="corner-mark br">VOYAGE 航海篇</div>
+      </div>
+    </div>
+
+    <div class="detail-stats">
+      <div><span class="n">128</span><div class="l">航海士 CADETS</div></div>
+      <div><span class="n">12</span><div class="l">關卡 STATIONS</div></div>
+      <div><span class="n">8</span><div class="l">船隊 FLEETS</div></div>
+      <div><span class="n">04</span><div class="l">天數 DAYS</div></div>
+    </div>
+
+    <div class="detail-blocks">
+      <div class="detail-block">
+        <h4>Key Highlights</h4>
+        <div class="zh">本 屆 亮 點</div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="num">I.</div>
+            <h5>啟航儀式</h5>
+            <p>開營以「鳴笛啟航」儀式揭開序幕,每位學員領取個人航海日誌。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">II.</div>
+            <h5>羅盤教學</h5>
+            <p>實體羅盤操作課程,孩子學會看方位、判讀星圖。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">III.</div>
+            <h5>船隊競賽</h5>
+            <p>分組組成船隊,跨關卡累積航海點數,爭奪寶藏地圖。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">IV.</div>
+            <h5>登島典禮</h5>
+            <p>最終日舉行登島儀式,每位航海士都被頒發「希望之島」探險勳章。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <h4>Tags &amp; Keywords</h4>
+        <div class="zh">關 鍵 字 標 籤</div>
+        <div class="tag-list">
+          <span>SEA NAVY 海軍藍</span>
+          <span>燈塔</span>
+          <span>羅盤教學</span>
+          <span>星圖判讀</span>
+          <span>船隊競賽</span>
+          <span>寶藏地圖</span>
+          <span>啟航儀式</span>
+          <span>登島典禮</span>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <h4>Photo Album</h4>
+        <div class="zh">活 動 花 絮</div>
+        <div class="placeholder-block">
+          <strong>📸 待補活動花絮照片</strong>
+          建議補上 6–9 張當年現場照片<br>
+          (學員闖關、團體合照、儀式典禮、輔導員指導等)
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- ====================== VIEW: 2025 ====================== -->
+<main id="view-2025" class="view">
+  <section class="edition-detail">
+
+    <div class="back-bar">
+      <button class="back-btn" data-nav="home">← 返回首頁 / BACK TO HOME</button>
+      <div class="file-no">FILE NO. HW-2025-VOL-II</div>
+    </div>
+
+    <div class="detail-hero">
+      <div class="text">
+        <div class="edition-num">SECOND EDITION · 第 二 屆 · 2025</div>
+        <h2>光耀的試煉</h2>
+        <div class="subtitle-zh">—— 騎 士 篇 ——</div>
+        <div class="subtitle-en">The Trials of Glory · Chivalry</div>
+        <p class="lede">一把佩劍、一面紋章、一份未被書寫的榮譽——這就是 2025 年夏天的承諾。</p>
+        <p>第二屆育樂營,我們把活動中心化為中世紀城堡,學員受封為見習騎士,必須在四日內通過「勇氣、智慧、忠誠、榮譽」四項試煉,才能在最終典禮上被授予騎士稱號。</p>
+        <p>整體設計以酒紅、金箔與深綠為基調,從紋章設計、書法捲軸到劇場式典禮,每一個細節都浸入濃厚的中世紀氛圍。我們相信,孩子需要的不只是知識,而是一場真正記得一輩子的「儀式」——當他們單膝跪下、被輕拍肩膀的那一刻,他們會記得自己曾經如此勇敢。</p>
+      </div>
+      <div class="detail-visual theme-2025">
+        <div class="corner-mark">VOL. II / 2025</div>
+        <div>
+          <div class="icon-big">⚔</div>
+          <div class="placeholder-note">
+            PLACEHOLDER · 待補主視覺照片<br>
+            建議:當年營隊海報 / 主視覺<br>
+            直式 4:5 比例
+          </div>
+        </div>
+        <div class="corner-mark br">CHIVALRY 騎士篇</div>
+      </div>
+    </div>
+
+    <div class="detail-stats">
+      <div><span class="n">142</span><div class="l">見習騎士 KNIGHTS</div></div>
+      <div><span class="n">04</span><div class="l">試煉 TRIALS</div></div>
+      <div><span class="n">01</span><div class="l">圓桌 ROUND TABLE</div></div>
+      <div><span class="n">04</span><div class="l">天數 DAYS</div></div>
+    </div>
+
+    <div class="detail-blocks">
+      <div class="detail-block">
+        <h4>Key Highlights</h4>
+        <div class="zh">本 屆 亮 點</div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="num">I.</div>
+            <h5>紋章設計</h5>
+            <p>每位騎士設計自己的家徽,作為四日營期的個人識別。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">II.</div>
+            <h5>四項試煉</h5>
+            <p>勇氣、智慧、忠誠、榮譽——每天一道試煉,沒有任何捷徑。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">III.</div>
+            <h5>城堡解謎</h5>
+            <p>沉浸式城堡場景,線索藏在書卷、壁畫、寶箱之中。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">IV.</div>
+            <h5>授封典禮</h5>
+            <p>正式典禮中以佩劍輕拍肩膀,授予騎士稱號與證書。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <h4>Tags &amp; Keywords</h4>
+        <div class="zh">關 鍵 字 標 籤</div>
+        <div class="tag-list">
+          <span>BURGUNDY GOLD 酒紅金</span>
+          <span>紋章學</span>
+          <span>四項試煉</span>
+          <span>授封典禮</span>
+          <span>城堡解謎</span>
+          <span>分團制度</span>
+          <span>書法捲軸</span>
+          <span>劇場式典禮</span>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <h4>Photo Album</h4>
+        <div class="zh">活 動 花 絮</div>
+        <div class="placeholder-block">
+          <strong>📸 待補活動花絮照片</strong>
+          建議補上 6–9 張當年現場照片<br>
+          (騎士授封、城堡場景、紋章作品、試煉現場等)
+        </div>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- ====================== VIEW: 2026 ====================== -->
+<main id="view-2026" class="view">
+  <section class="edition-detail">
+
+    <div class="back-bar">
+      <button class="back-btn" data-nav="home">← 返回首頁 / BACK TO HOME</button>
+      <div class="file-no">FILE NO. HW-2026-VOL-III · CLASSIFIED</div>
+    </div>
+
+    <div class="detail-hero">
+      <div class="text">
+        <div class="edition-num recruiting">★ NOW RECRUITING · 報 名 開 放 中 ★</div>
+        <h2>時光的守護者</h2>
+        <div class="subtitle-zh">—— 時 空 管 理 局 ——</div>
+        <div class="subtitle-en">The Temporal Bureau · Volume III</div>
+        <p class="lede">當鐘擺停下,我們上場——歷史的某個關鍵節點正在崩塌,時空管理局派出了一支新血探員:你們。</p>
+        <p>2026 年,我們不再帶孩子去某個「地方」,而是讓他們穿越「時間」。學員將以見習時空警察身分加入「時空管理局」,在四日任務中執行跨時空巡邏、追捕罪犯、維護歷史脈絡的完整。</p>
+        <p>本屆主視覺以做舊牛皮紙、機密檔案章與沙漏為符號,融合復古文件感與時間旅行科幻氛圍。每位學員都會領到專屬的探員編號與任務手冊——沒有「玩遊戲」,只有「執行任務」。</p>
+      </div>
+      <div class="detail-visual theme-2026">
+        <div class="corner-mark">VOL. III / 2026</div>
+        <div>
+          <div class="icon-big">⧗</div>
+          <div class="placeholder-note">
+            PLACEHOLDER · 待補主視覺照片<br>
+            建議:本屆海報 / KV 設計稿<br>
+            直式 4:5 比例
+          </div>
+        </div>
+        <div class="corner-mark br">TEMPORAL 時空篇</div>
+      </div>
+    </div>
+
+    <div class="detail-stats">
+      <div><span class="n">∞</span><div class="l">時代 ERAS</div></div>
+      <div><span class="n">04</span><div class="l">部門 DIVISIONS</div></div>
+      <div><span class="n">07.06</span><div class="l">啟動 LAUNCH</div></div>
+      <div><span class="n">04</span><div class="l">天數 DAYS</div></div>
+    </div>
+
+    <div class="detail-blocks">
+      <div class="detail-block">
+        <h4>Key Highlights</h4>
+        <div class="zh">本 屆 亮 點</div>
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="num">I.</div>
+            <h5>身分代入</h5>
+            <p>每位學員擁有專屬探員編號、任務手冊與徽章。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">II.</div>
+            <h5>歷史劇場</h5>
+            <p>角色扮演進入古文明、戰國、文藝復興等歷史現場。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">III.</div>
+            <h5>解謎協作</h5>
+            <p>跨部門合作破解時空謎題,每一條線索都至關重要。</p>
+          </div>
+          <div class="feature-card">
+            <div class="num">IV.</div>
+            <h5>授勳結訓</h5>
+            <p>正式典禮頒發勳章,把儀式感留在每個孩子的夏天裡。</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <h4>Four-Day Mission Schedule</h4>
+        <div class="zh">四 日 任 務 時 程 表</div>
+        <div class="schedule-block">
+          <div class="meta">
+            <p>本屆營期為 <strong class="inline">2026 年 7 月 6 日(一)至 7 月 9 日(四)</strong>,每日 08:30 — 16:00。四天分別對應四個主場任務:</p>
+            <strong>DAY 01 · 就職典禮</strong>
+            <p style="margin: 4px 0 0;">新血探員宣誓入局,領取編號與裝備。</p>
+            <strong>DAY 02 · 跨時空實務練習</strong>
+            <p style="margin: 4px 0 0;">熟悉時光隧道操作與歷史劇場場景。</p>
+            <strong>DAY 03 · 時光隧道維護演習</strong>
+            <p style="margin: 4px 0 0;">透過考核驗證學員對歷史的掌握程度。</p>
+            <strong>DAY 04 · 追捕跨時空罪犯</strong>
+            <p style="margin: 4px 0 0;">最終任務 + 授勳典禮,為四日營期畫下句點。</p>
+          </div>
+          <div>
+            <div class="schedule-frame">
+              <img src="assets/2026_schedule.png" alt="2026 時空管理局 四日任務時程表">
+            </div>
+            <div class="schedule-caption">— FILE NO. TB-2026-0708-SCHED —</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <h4>Tags &amp; Keywords</h4>
+        <div class="zh">關 鍵 字 標 籤</div>
+        <div class="tag-list">
+          <span>SEPIA AMBER 牛皮紙琥珀</span>
+          <span>歷史劇場</span>
+          <span>時光隧道</span>
+          <span>追捕罪犯</span>
+          <span>授勳典禮</span>
+          <span>探員編號</span>
+          <span>任務手冊</span>
+          <span>機密檔案</span>
+        </div>
+      </div>
+
+      <div class="enroll-block">
+        <div class="enroll-block-inner">
+          <div>
+            <h4>Join the Bureau</h4>
+            <div class="zh-big">加 入 時 空 管 理 局</div>
+            <p>名額有限——四日的時空任務,正在招募新進探員。點擊右方按鈕完成報到登記,我們會在收到表單後寄送專屬探員編號與行前手冊。</p>
+          </div>
+          <div class="enroll-block-actions">
+            <a href="#" class="btn-bright">立即報名 ENROLL NOW →</a>
+            <a href="#" class="btn-outline">下載家長說明 PDF</a>
+            <div class="info-note">
+              對象:國小 3 年級 — 國中 3 年級<br>
+              地點:弘文中學校本部
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+<!-- ASSETS NOTICE -->
+<section style="padding: 0 40px;">
+  <div class="needed-assets">
+    <h4>本網站尚需補上以下素材</h4>
+    <p class="intro">以下素材尚未提供,目前頁面以做舊風格的色塊 + 符號暫代,網站本身已是可發布的完整狀態。素材補齊後直接替換即可。</p>
+    <ul>
+      <li>
+        <b>2024 希望之島 主視覺</b>
+        <i>1 張當年營隊海報或主視覺照片(建議直式,4:5 比例)→ 將替換首頁卡片與第一屆內頁右側 <code>detail-visual.theme-2024</code> 區塊的 ⚓ 圖示</i>
+      </li>
+      <li>
+        <b>2025 光耀的試煉 主視覺</b>
+        <i>1 張當年營隊海報或主視覺照片(同上規格)→ 將替換首頁卡片與第二屆內頁右側 <code>detail-visual.theme-2025</code> 區塊的 ⚔ 圖示</i>
+      </li>
+      <li>
+        <b>2026 時空管理局 主視覺</b>
+        <i>1 張本屆海報或 KV 設計稿(直式,4:5 比例,可使用沙漏、檔案夾、徽章等時空主題設計)→ 將替換首頁卡片與第三屆內頁右側 <code>detail-visual.theme-2026</code> 區塊的 ⧗ 圖示</i>
+      </li>
+      <li>
+        <b>歷年活動花絮照</b>
+        <i>每屆 6–9 張現場照片(學員闖關、團體合照、儀式典禮、輔導員指導等)→ 將替換每屆內頁底部「Photo Album 活動花絮」的虛線方框</i>
+      </li>
+      <li>
+        <b>2026 正式報名連結</b>
+        <i>Google Form 或其他報名系統的 URL → 將替換「立即報名 ENROLL NOW」按鈕的 <code>href="#"</code></i>
+      </li>
+      <li>
+        <b>家長說明文件(選用)</b>
+        <i>PDF 檔案 → 將替換「下載家長說明 PDF」按鈕的連結</i>
+      </li>
+      <li>
+        <b>輔導員 / 工作團隊照片(選用)</b>
+        <i>團隊合照 1 張 + 各部門幹部 4–6 張頭像 → 可新增「探員介紹」團隊區段</i>
+      </li>
+      <li>
+        <b>學員與家長回饋(選用)</b>
+        <i>3–5 則歷年學員或家長的回饋文字 → 可新增「探員口述紀錄」見證區段</i>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-inner">
+    <div>
+      <h5>Hung-Wen Summer Camp</h5>
+      <p>弘文中學暑期育樂營<br>
+      自 2024 啟航以來,我們相信每個夏天都該成為一場讓孩子永遠記得的儀式。</p>
+    </div>
+    <div>
+      <h5>Editions</h5>
+      <p>
+        <a data-nav="2024">2024 · 希望之島</a>
+        <a data-nav="2025">2025 · 光耀的試煉</a>
+        <a data-nav="2026">2026 · 時空管理局</a>
+      </p>
+    </div>
+    <div>
+      <h5>Contact</h5>
+      <p>
+        弘文中學 學務處<br>
+        TEL · 04-xxxx-xxxx<br>
+        MAIL · camp@hungwen.edu.tw
+      </p>
+    </div>
+  </div>
+  <div class="foot-bottom">
+    <span>© 2026 HUNG-WEN HIGH SCHOOL · ALL RIGHTS RESERVED</span>
+    <span>FILE NO. HW-CAMP-WEB-2026</span>
+  </div>
+</footer>
+
+<script>
+  const views = {
+    home: document.getElementById('view-home'),
+    '2024': document.getElementById('view-2024'),
+    '2025': document.getElementById('view-2025'),
+    '2026': document.getElementById('view-2026'),
+  };
+
+  function showView(name) {
+    Object.values(views).forEach(v => v.classList.remove('active'));
+    if (views[name]) {
+      views[name].classList.add('active');
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    }
+  }
+
+  document.querySelectorAll('[data-nav]').forEach(el => {
+    el.addEventListener('click', (e) => {
+      const target = el.dataset.nav;
+      if (target === 'home' || target === '2024' || target === '2025' || target === '2026') {
+        e.preventDefault();
+        showView(target);
+      }
+    });
+  });
+
+  const wmL = document.querySelector('.hero-watermark.left');
+  const wmR = document.querySelector('.hero-watermark.right');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < 900 && wmL && wmR) {
+      wmL.style.transform = `translateY(${y * 0.15}px)`;
+      wmR.style.transform = `rotate(8deg) translateY(${y * -0.1}px)`;
+    }
+  });
+</script>
+
+</body>
+</html>
