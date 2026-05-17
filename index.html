@@ -6,1136 +6,1100 @@
 <title>弘文中學 ・ 暑期育樂營</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Special+Elite&family=JetBrains+Mono:wght@400;500;700&family=Noto+Serif+TC:wght@400;500;700;900&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@700;900&display=swap" rel="stylesheet">
 <style>
   :root {
-    --paper: #f3ead5;
-    --paper-deep: #ead9b8;
-    --paper-dark: #d9c49a;
-    --ink: #2b1e10;
-    --ink-soft: #4a3520;
-    --sepia: #8b5a2b;
-    --sepia-deep: #5a3a1c;
-    --gold: #b8893a;
-    --gold-light: #d9b066;
-    --rust: #a0431e;
-    --red-stamp: #b03020;
+    --orange:   #FF6B35;
+    --yellow:   #FFD166;
+    --teal:     #06C79C;
+    --sky:      #3DB8E8;
+    --purple:   #8B5CF6;
+    --pink:     #F472B6;
+    --white:    #FFFFFF;
+    --cream:    #FFF8F0;
+    --dark:     #1C1B3A;
+    --dark2:    #2D2B55;
+    --muted:    #6B7280;
 
-    --teal-2024: #1d5266;
-    --teal-2024-deep: #0d3140;
-    --burgundy-2025: #6b1e2c;
-    --burgundy-2025-deep: #3a0d18;
-    --amber-2026: #9c6a1a;
-    --amber-2026-deep: #5c3d0a;
+    /* per-edition accent */
+    --c24:      #3DB8E8;
+    --c24-dark: #1a7daa;
+    --c25:      #8B5CF6;
+    --c25-dark: #5b3bb8;
+    --c26:      #FF6B35;
+    --c26-dark: #c94416;
 
-    --shadow: 0 8px 28px rgba(60, 40, 15, 0.18);
-    --shadow-deep: 0 14px 40px rgba(60, 40, 15, 0.28);
+    --radius:  16px;
+    --radius-lg: 24px;
+    --shadow: 0 8px 32px rgba(28,27,58,0.12);
+    --shadow-lg: 0 16px 48px rgba(28,27,58,0.18);
 
-    --serif: "Noto Serif TC", "Cormorant Garamond", serif;
-    --display: "Cormorant Garamond", "Noto Serif TC", serif;
-    --type: "Special Elite", "JetBrains Mono", monospace;
-    --sans: "Noto Sans TC", sans-serif;
-    --mono: "JetBrains Mono", monospace;
+    --display: "Baloo 2", "Noto Sans TC", sans-serif;
+    --body:    "Nunito", "Noto Sans TC", sans-serif;
+    --zh:      "Noto Sans TC", sans-serif;
   }
 
-  *, *::before, *::after { box-sizing: border-box; }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
 
   body {
-    margin: 0;
-    font-family: var(--sans);
-    color: var(--ink);
-    background: var(--paper);
-    background-image:
-      radial-gradient(ellipse at 20% 10%, rgba(184,137,58,0.10), transparent 50%),
-      radial-gradient(ellipse at 80% 80%, rgba(160,67,30,0.08), transparent 50%),
-      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.9' numOctaves='2' seed='2'/%3E%3CfeColorMatrix values='0 0 0 0 0.18 0 0 0 0 0.12 0 0 0 0 0.06 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+    font-family: var(--body);
+    color: var(--dark);
+    background: var(--cream);
     overflow-x: hidden;
-    line-height: 1.65;
+    line-height: 1.7;
   }
 
+  /* ── DECO BLOBS ── */
   body::before {
     content: "";
     position: fixed; inset: 0;
+    background:
+      radial-gradient(circle at 10% 15%, rgba(255,107,53,0.08), transparent 35%),
+      radial-gradient(circle at 90% 80%, rgba(61,184,232,0.10), transparent 35%),
+      radial-gradient(circle at 50% 50%, rgba(255,209,102,0.06), transparent 50%);
     pointer-events: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='f'%3E%3CfeTurbulence baseFrequency='0.65' numOctaves='3' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.04 0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23f)'/%3E%3C/svg%3E");
-    z-index: 1000;
-    mix-blend-mode: multiply;
+    z-index: 0;
   }
 
-  /* NAV */
+  /* ── NAV ── */
   nav.topbar {
     position: fixed; top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 200;
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 40px;
-    background: rgba(243,234,213,0.92);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid rgba(139,90,43,0.25);
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.12em;
+    padding: 0 32px;
+    height: 64px;
+    background: rgba(255,255,255,0.88);
+    backdrop-filter: blur(16px);
+    border-bottom: 2px solid rgba(255,107,53,0.12);
+    box-shadow: 0 2px 20px rgba(28,27,58,0.08);
   }
   nav.topbar .brand {
     display: flex; align-items: center; gap: 12px;
-    color: var(--sepia-deep);
-    font-weight: 700;
-    cursor: pointer;
     text-decoration: none;
+    cursor: pointer;
   }
-  nav.topbar .brand .seal {
-    width: 30px; height: 30px;
-    border: 1.5px solid var(--sepia);
-    border-radius: 50%;
+  nav.topbar .brand .logo-badge {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
     display: grid; place-items: center;
-    font-size: 14px;
-    color: var(--sepia);
-    transform: rotate(-8deg);
+    font-family: var(--display);
+    font-size: 18px;
+    font-weight: 800;
+    color: #fff;
+    box-shadow: 0 4px 12px rgba(255,107,53,0.4);
+    transition: transform .3s, box-shadow .3s;
   }
-  nav.topbar ul { display: flex; gap: 28px; list-style: none; margin: 0; padding: 0; }
+  nav.topbar .brand:hover .logo-badge {
+    transform: rotate(-8deg) scale(1.1);
+    box-shadow: 0 6px 20px rgba(255,107,53,0.5);
+  }
+  nav.topbar .brand-text {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 15px;
+    color: var(--dark);
+    line-height: 1.2;
+  }
+  nav.topbar .brand-text small {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+  }
+  nav.topbar ul {
+    display: flex; gap: 8px;
+    list-style: none;
+  }
   nav.topbar a {
-    color: var(--ink-soft);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--dark2);
     text-decoration: none;
-    transition: color .25s;
-    position: relative;
+    padding: 8px 18px;
+    border-radius: 50px;
+    transition: all .25s;
     cursor: pointer;
   }
-  nav.topbar a::after {
-    content: ""; position: absolute; left: 0; bottom: -4px;
-    height: 1px; width: 0; background: var(--rust);
-    transition: width .3s;
+  nav.topbar a:hover { background: var(--orange); color: #fff; }
+  nav.topbar .nav-cta {
+    background: linear-gradient(135deg, var(--orange), #ff9500);
+    color: #fff !important;
+    box-shadow: 0 4px 14px rgba(255,107,53,0.4);
   }
-  nav.topbar a:hover { color: var(--rust); }
-  nav.topbar a:hover::after { width: 100%; }
+  nav.topbar .nav-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255,107,53,0.55);
+  }
 
-  /* VIEW SYSTEM */
-  .view { display: none; animation: viewFade .5s ease both; }
+  /* ── VIEW SYSTEM ── */
+  .view { display: none; animation: viewIn .45s cubic-bezier(.22,1,.36,1) both; }
   .view.active { display: block; }
-  @keyframes viewFade {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+  @keyframes viewIn {
+    from { opacity: 0; transform: translateY(16px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
   }
 
-  /* HOME HERO */
+  /* ══════════════════════════════
+     HOME HERO
+  ══════════════════════════════ */
   .home-hero {
     min-height: 100vh;
+    padding: 96px 40px 64px;
     position: relative;
     display: flex; align-items: center; justify-content: center;
-    padding: 100px 40px 60px;
     overflow: hidden;
   }
-  .hero-bg-deco {
-    position: absolute; inset: 0;
-    pointer-events: none;
-    background:
-      radial-gradient(circle at 15% 30%, rgba(184,137,58,0.18), transparent 35%),
-      radial-gradient(circle at 85% 70%, rgba(160,67,30,0.10), transparent 40%);
+  .hero-shapes {
+    position: absolute; inset: 0; pointer-events: none; z-index: 0;
   }
-  .hero-watermark {
+  .hero-shapes .blob {
     position: absolute;
-    font-family: var(--serif);
-    font-weight: 900;
-    color: rgba(139,90,43,0.08);
-    font-size: clamp(180px, 30vw, 440px);
-    line-height: 0.85;
-    user-select: none;
-    pointer-events: none;
+    border-radius: 50%;
+    filter: blur(60px);
+    opacity: 0.55;
+    animation: blobFloat 7s ease-in-out infinite;
   }
-  .hero-watermark.left { top: 8%; left: -3%; }
-  .hero-watermark.right { bottom: 4%; right: -2%; transform: rotate(8deg); }
+  .hero-shapes .blob1 {
+    width: 480px; height: 480px;
+    background: radial-gradient(circle, var(--yellow), transparent);
+    top: -10%; left: -8%;
+    animation-delay: 0s;
+  }
+  .hero-shapes .blob2 {
+    width: 360px; height: 360px;
+    background: radial-gradient(circle, var(--orange), transparent);
+    top: 20%; right: -5%;
+    animation-delay: 2s;
+  }
+  .hero-shapes .blob3 {
+    width: 300px; height: 300px;
+    background: radial-gradient(circle, var(--teal), transparent);
+    bottom: 5%; left: 30%;
+    animation-delay: 4s;
+  }
+  @keyframes blobFloat {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33%       { transform: translate(20px, -20px) scale(1.05); }
+    66%       { transform: translate(-15px, 15px) scale(0.95); }
+  }
 
-  .corner-stamp {
-    position: absolute;
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--rust);
-    border: 1.5px solid var(--rust);
-    padding: 8px 14px;
-    opacity: 0.7;
+  /* floating deco stars / shapes */
+  .hero-deco {
+    position: absolute; pointer-events: none; z-index: 1;
+    font-size: 28px;
+    animation: floatSpin 6s ease-in-out infinite;
+    user-select: none;
   }
-  .corner-stamp.tl { top: 90px; left: 30px; transform: rotate(-6deg); }
-  .corner-stamp.br { bottom: 30px; right: 30px; transform: rotate(4deg); }
+  .hero-deco.d1 { top: 14%; left: 8%;  animation-delay: 0s; }
+  .hero-deco.d2 { top: 22%; right: 12%; animation-delay: 1.5s; font-size: 36px; }
+  .hero-deco.d3 { bottom: 18%; left: 12%; animation-delay: 3s; }
+  .hero-deco.d4 { top: 55%; right: 6%;  animation-delay: 0.8s; font-size: 22px; }
+  .hero-deco.d5 { bottom: 10%; right: 20%; animation-delay: 2.2s; font-size: 32px; }
+  @keyframes floatSpin {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50%       { transform: translateY(-18px) rotate(15deg); }
+  }
 
   .home-hero-inner {
     position: relative;
-    max-width: 1100px;
+    z-index: 2;
+    max-width: 900px;
     width: 100%;
     text-align: center;
-    z-index: 2;
   }
-  .home-hero .eyebrow {
-    font-family: var(--type);
+  .home-hero .pill-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, rgba(255,107,53,0.12), rgba(255,209,102,0.15));
+    border: 1.5px solid rgba(255,107,53,0.25);
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-family: var(--body);
+    font-weight: 700;
     font-size: 13px;
-    letter-spacing: 0.4em;
-    color: var(--sepia);
-    margin-bottom: 32px;
-    display: flex; align-items: center; justify-content: center; gap: 16px;
-  }
-  .home-hero .eyebrow::before, .home-hero .eyebrow::after {
-    content: ""; height: 1px; width: 60px;
-    background: var(--sepia);
+    color: var(--orange);
+    letter-spacing: 0.04em;
+    margin-bottom: 28px;
   }
   .home-hero h1 {
-    font-family: var(--serif);
-    font-weight: 900;
-    font-size: clamp(64px, 12vw, 168px);
-    line-height: 1;
-    margin: 0 0 14px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(62px, 12vw, 150px);
+    line-height: 1.0;
+    letter-spacing: -0.01em;
+    margin-bottom: 12px;
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 50%, var(--orange) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .home-hero h1 .ch {
     display: inline-block;
-    transition: transform .4s, color .4s;
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1), filter .3s;
+    cursor: default;
   }
   .home-hero h1 .ch:hover {
-    transform: translateY(-8px) rotate(-2deg);
-    color: var(--rust);
+    transform: translateY(-12px) rotate(-5deg) scale(1.15);
+    filter: drop-shadow(0 8px 16px rgba(255,107,53,0.5));
   }
   .home-hero .en-title {
-    font-family: var(--display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: clamp(24px, 3.5vw, 42px);
-    color: var(--rust);
-    letter-spacing: 0.04em;
-    margin-bottom: 36px;
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: clamp(18px, 3vw, 28px);
+    color: var(--muted);
+    margin-bottom: 28px;
+    letter-spacing: 0.05em;
   }
   .home-hero .lead {
-    max-width: 660px;
-    margin: 0 auto 50px;
-    font-size: 16px;
-    color: var(--ink-soft);
-    line-height: 2;
+    max-width: 640px;
+    margin: 0 auto 44px;
+    font-size: 17px;
+    line-height: 1.85;
+    color: var(--dark2);
   }
   .home-hero .lead strong {
-    color: var(--ink);
-    font-weight: 500;
-    border-bottom: 1px dashed var(--gold);
-    padding-bottom: 2px;
+    color: var(--orange);
+    font-weight: 800;
   }
 
   .home-cta {
-    display: flex; gap: 18px; justify-content: center; flex-wrap: wrap;
+    display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
     margin-bottom: 60px;
   }
-  .btn-primary, .btn-secondary {
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.25em;
-    padding: 17px 32px;
-    text-decoration: none;
-    transition: all .3s ease;
-    display: inline-flex; align-items: center; gap: 12px;
-    cursor: pointer;
-    border: none;
-  }
   .btn-primary {
-    background: var(--ink);
-    color: var(--paper);
-    box-shadow: 4px 4px 0 var(--rust);
+    display: inline-flex; align-items: center; gap: 10px;
+    background: linear-gradient(135deg, var(--orange), #ff9500);
+    color: #fff;
+    font-family: var(--body);
+    font-weight: 800;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    box-shadow: 0 6px 24px rgba(255,107,53,0.45);
+    transition: all .3s cubic-bezier(.34,1.56,.64,1);
+    border: none; cursor: pointer;
   }
   .btn-primary:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 var(--rust);
+    transform: translateY(-4px) scale(1.04);
+    box-shadow: 0 10px 32px rgba(255,107,53,0.6);
   }
   .btn-primary .arrow { transition: transform .3s; }
-  .btn-primary:hover .arrow { transform: translateX(4px); }
+  .btn-primary:hover .arrow { transform: translateX(6px); }
   .btn-secondary {
-    background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--ink);
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #fff;
+    color: var(--dark);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 16px;
+    padding: 16px 32px;
+    border-radius: 50px;
+    text-decoration: none;
+    border: 2px solid rgba(28,27,58,0.12);
+    box-shadow: 0 4px 16px rgba(28,27,58,0.08);
+    transition: all .3s;
+    cursor: pointer;
   }
   .btn-secondary:hover {
-    background: var(--ink);
-    color: var(--paper);
+    border-color: var(--orange);
+    color: var(--orange);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(28,27,58,0.12);
   }
 
-  .hero-meta {
+  .hero-editions-row {
     display: flex;
-    justify-content: center;
-    gap: 50px;
-    flex-wrap: wrap;
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--sepia-deep);
-    padding-top: 28px;
-    border-top: 1px dashed rgba(139,90,43,0.3);
-    max-width: 760px;
-    margin: 0 auto;
+    gap: 16px; justify-content: center; flex-wrap: wrap;
   }
-  .hero-meta div { text-align: center; }
-  .hero-meta div span {
-    display: block;
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 22px;
-    color: var(--rust);
-    letter-spacing: 0;
-    margin-top: 4px;
+  .hero-edition-chip {
+    background: #fff;
+    border-radius: 50px;
+    padding: 12px 24px;
+    box-shadow: var(--shadow);
+    font-family: var(--body);
+    font-weight: 700;
+    font-size: 14px;
+    color: var(--dark2);
+    display: flex; align-items: center; gap: 8px;
+    border: 2px solid transparent;
+    transition: all .3s;
+    cursor: pointer;
   }
+  .hero-edition-chip:hover { border-color: var(--orange); transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+  .hero-edition-chip .year-tag {
+    font-size: 12px;
+    font-weight: 800;
+    padding: 3px 10px;
+    border-radius: 50px;
+    color: #fff;
+  }
+  .hero-edition-chip:nth-child(1) .year-tag { background: var(--c24); }
+  .hero-edition-chip:nth-child(2) .year-tag { background: var(--c25); }
+  .hero-edition-chip:nth-child(3) .year-tag { background: var(--c26); }
 
-  /* ABOUT */
-  .about-band { padding: 100px 40px 60px; }
+  /* ══════════════════════════════
+     ABOUT BAND
+  ══════════════════════════════ */
+  .about-band {
+    padding: 100px 40px;
+    position: relative; z-index: 1;
+  }
   .about-inner {
-    max-width: 1100px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1.4fr;
-    gap: 60px;
-    align-items: start;
+    max-width: 1100px; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 1.5fr; gap: 60px; align-items: center;
   }
-  .about-side {
-    border-top: 2px solid var(--ink);
-    padding-top: 24px;
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    color: var(--sepia);
+  .about-visual {
+    position: relative;
+    display: flex; flex-direction: column; gap: 16px;
+    align-items: flex-start;
   }
-  .about-side h3 {
+  .about-big-num {
     font-family: var(--display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 56px;
-    color: var(--ink);
+    font-weight: 800;
+    font-size: clamp(80px, 12vw, 160px);
     line-height: 0.9;
-    margin: 12px 0 8px;
-    letter-spacing: 0;
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .about-side .zh-sub {
-    font-family: var(--serif);
-    font-size: 19px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    letter-spacing: 0.2em;
+  .about-subhead {
+    font-family: var(--zh);
+    font-weight: 900;
+    font-size: clamp(24px, 4vw, 42px);
+    color: var(--dark);
+    line-height: 1.3;
+  }
+  .about-label {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--teal), var(--sky));
+    color: #fff;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 6px 16px;
+    border-radius: 50px;
+    margin-top: 8px;
   }
   .about-text p {
-    font-size: 15.5px;
-    line-height: 2;
-    color: var(--ink-soft);
-    margin: 0 0 22px;
+    font-size: 16px;
+    line-height: 1.9;
+    color: #4B5563;
+    margin-bottom: 20px;
   }
-  .about-text p:first-child::first-letter {
-    font-family: var(--display);
-    font-style: italic;
+  .about-text p:last-child { margin-bottom: 0; }
+  .about-highlight {
+    background: linear-gradient(135deg, rgba(255,107,53,0.08), rgba(255,209,102,0.12));
+    border-left: 4px solid var(--orange);
+    border-radius: 0 12px 12px 0;
+    padding: 18px 22px;
     font-weight: 700;
-    font-size: 60px;
-    float: left;
-    line-height: 0.9;
-    padding: 6px 12px 0 0;
-    color: var(--rust);
+    font-size: 16px;
+    color: var(--dark);
+    margin-top: 8px;
   }
 
-  /* EDITIONS SECTION */
+  /* ══════════════════════════════
+     EDITIONS SECTION
+  ══════════════════════════════ */
   .editions-section {
-    padding: 100px 40px 140px;
-    background: linear-gradient(180deg, var(--paper) 0%, var(--paper-deep) 100%);
+    padding: 80px 40px 120px;
+    position: relative; z-index: 1;
   }
-  .section-header {
-    max-width: 1280px;
-    margin: 0 auto 60px;
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-    gap: 24px;
-    align-items: end;
+  .section-header-fun {
+    max-width: 1200px; margin: 0 auto 52px;
+    display: flex; align-items: flex-end; justify-content: space-between; gap: 20px;
+    flex-wrap: wrap;
   }
-  .section-num {
-    font-family: var(--type);
+  .section-eyebrow {
+    font-weight: 800;
     font-size: 13px;
-    letter-spacing: 0.2em;
-    color: var(--sepia);
-    writing-mode: vertical-rl;
-    transform: rotate(180deg);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 10px;
+    display: flex; align-items: center; gap: 10px;
   }
-  .section-titles h2 {
+  .section-eyebrow::before {
+    content: "";
+    width: 28px; height: 3px;
+    border-radius: 99px;
+    background: var(--orange);
+  }
+  .section-title-big {
     font-family: var(--display);
-    font-weight: 500;
-    font-style: italic;
-    font-size: clamp(48px, 6vw, 84px);
-    line-height: 1;
-    margin: 0 0 12px;
-    color: var(--ink);
+    font-weight: 800;
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.1;
+    color: var(--dark);
   }
-  .section-titles .zh {
-    font-family: var(--serif);
-    font-size: clamp(20px, 2.4vw, 28px);
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    color: var(--ink-soft);
+  .section-title-big span {
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
-  .section-titles .zh::before {
-    content: "—— ";
-    color: var(--gold);
-  }
-  .section-tag {
-    font-family: var(--type);
-    font-size: 11px;
-    color: var(--rust);
-    border: 1px solid var(--rust);
-    padding: 6px 12px;
-    letter-spacing: 0.15em;
-    transform: rotate(2deg);
-    align-self: start;
+  .section-cta-tag {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    color: #fff;
+    font-weight: 800;
+    font-size: 14px;
+    padding: 12px 24px;
+    border-radius: 50px;
+    box-shadow: 0 4px 16px rgba(255,107,53,0.35);
+    white-space: nowrap;
   }
 
   .editions-grid {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
   }
 
   .edition-card {
-    cursor: pointer;
-    position: relative;
-    background: var(--paper);
-    border: 1px solid rgba(139,90,43,0.25);
+    background: #fff;
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    transition: transform .45s ease, box-shadow .45s ease;
-    text-decoration: none;
-    color: inherit;
-    display: flex;
-    flex-direction: column;
+    box-shadow: var(--shadow);
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1), box-shadow .4s;
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+    position: relative;
+    cursor: pointer;
+    border: 2px solid transparent;
   }
   .edition-card:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-deep);
+    transform: translateY(-10px) scale(1.01);
+    box-shadow: var(--shadow-lg);
   }
+  .edition-card[data-edition="2024"]:hover { border-color: var(--c24); }
+  .edition-card[data-edition="2025"]:hover { border-color: var(--c25); }
+  .edition-card[data-edition="2026"]:hover { border-color: var(--c26); }
+
   .edition-card .visual {
     aspect-ratio: 4/5;
     position: relative;
     overflow: hidden;
-    display: grid;
-    place-items: center;
-    color: var(--paper);
-    padding: 40px 30px;
-    text-align: center;
+    display: grid; place-items: center;
   }
   .edition-card[data-edition="2024"] .visual {
-    background:
-      radial-gradient(circle at 30% 70%, rgba(74,138,158,0.45), transparent 60%),
-      linear-gradient(135deg, var(--teal-2024) 0%, var(--teal-2024-deep) 100%);
+    background: linear-gradient(145deg, #a8edff 0%, var(--c24) 60%, var(--c24-dark) 100%);
   }
   .edition-card[data-edition="2025"] .visual {
-    background:
-      radial-gradient(circle at 70% 30%, rgba(160,69,80,0.45), transparent 60%),
-      linear-gradient(135deg, var(--burgundy-2025) 0%, var(--burgundy-2025-deep) 100%);
+    background: linear-gradient(145deg, #ddd6fe 0%, var(--c25) 60%, var(--c25-dark) 100%);
   }
   .edition-card[data-edition="2026"] .visual {
-    background:
-      radial-gradient(circle at 50% 50%, rgba(212,160,74,0.4), transparent 60%),
-      linear-gradient(135deg, var(--amber-2026) 0%, var(--amber-2026-deep) 100%);
+    background: linear-gradient(145deg, #fed7aa 0%, var(--c26) 60%, var(--c26-dark) 100%);
   }
-  .edition-card .visual::before {
-    content: "";
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.7' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
-    pointer-events: none;
+  .edition-card .visual img {
+    width: 100%; height: 100%;
+    object-fit: cover; display: block;
+    transition: transform .6s ease;
   }
-  .edition-card .visual .icon {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 110px;
-    line-height: 1;
-    margin-bottom: 18px;
-    opacity: 0.95;
-    text-shadow: 0 4px 18px rgba(0,0,0,0.25);
-    transition: transform .5s ease;
-  }
-  .edition-card:hover .visual .icon { transform: scale(1.08) rotate(-3deg); }
-  .edition-card .visual .vol {
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.3em;
-    opacity: 0.8;
-    margin-bottom: 8px;
-  }
-  .edition-card .visual .year {
-    font-family: var(--display);
-    font-weight: 700;
-    font-style: italic;
-    font-size: 48px;
-    line-height: 1;
-  }
-  .edition-card .visual .corner-mark {
-    position: absolute;
-    top: 14px; left: 14px;
-    font-family: var(--type);
-    font-size: 9px;
-    letter-spacing: 0.25em;
-    opacity: 0.7;
-  }
-  .edition-card .visual .corner-mark.br {
-    top: auto; left: auto;
-    bottom: 14px; right: 14px;
-  }
-  .edition-card .visual .placeholder-tag {
-    position: absolute;
-    bottom: 14px; left: 50%;
-    transform: translateX(-50%);
-    font-family: var(--type);
-    font-size: 9px;
-    letter-spacing: 0.2em;
-    opacity: 0.55;
-    white-space: nowrap;
-  }
+  .edition-card:hover .visual img { transform: scale(1.06); }
 
   .status-ribbon {
     position: absolute;
-    top: 20px; right: -42px;
-    font-family: var(--type);
+    top: 16px; right: -36px;
+    font-weight: 800;
     font-size: 11px;
-    letter-spacing: 0.25em;
-    padding: 7px 50px;
+    letter-spacing: 0.1em;
+    padding: 7px 48px;
     transform: rotate(45deg);
     z-index: 3;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
   }
   .status-ribbon.open {
-    background: var(--red-stamp);
-    color: var(--paper);
-    animation: pulseRibbon 2.4s ease-in-out infinite;
+    background: linear-gradient(135deg, var(--orange), #ff9500);
+    color: #fff;
+    box-shadow: 0 4px 16px rgba(255,107,53,0.5);
+    animation: ribbonPulse 2s ease-in-out infinite;
   }
   .status-ribbon.closed {
-    background: rgba(43,30,16,0.85);
-    color: var(--paper);
-    font-size: 10px;
+    background: rgba(28,27,58,0.75);
+    color: rgba(255,255,255,0.85);
   }
-  @keyframes pulseRibbon {
-    0%, 100% { box-shadow: 0 2px 8px rgba(176,48,32,0.4); }
-    50% { box-shadow: 0 2px 18px rgba(176,48,32,0.85); }
+  @keyframes ribbonPulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(255,107,53,0.5); }
+    50%       { box-shadow: 0 4px 28px rgba(255,107,53,0.85); }
   }
 
   .edition-info {
-    padding: 28px 30px 32px;
-    flex: 1;
-    display: flex; flex-direction: column;
+    padding: 24px 26px 28px;
+    flex: 1; display: flex; flex-direction: column;
   }
   .edition-info .meta-row {
-    font-family: var(--type);
-    font-size: 11px;
-    color: var(--sepia);
-    letter-spacing: 0.2em;
-    margin-bottom: 14px;
-    padding-bottom: 12px;
-    border-bottom: 1px dashed rgba(139,90,43,0.3);
-    display: flex; justify-content: space-between;
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 12px;
+    font-size: 12px; font-weight: 700;
+    color: var(--muted);
+    letter-spacing: 0.05em;
   }
+  .edition-info .edition-year-chip {
+    font-size: 11px; font-weight: 800;
+    padding: 3px 12px; border-radius: 50px; color: #fff;
+  }
+  .edition-card[data-edition="2024"] .edition-year-chip { background: var(--c24); }
+  .edition-card[data-edition="2025"] .edition-year-chip { background: var(--c25); }
+  .edition-card[data-edition="2026"] .edition-year-chip { background: var(--c26); }
+
   .edition-info h3 {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 700;
-    margin: 0 0 4px;
-    letter-spacing: 0.08em;
-    color: var(--ink);
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 26px;
+    color: var(--dark);
+    margin-bottom: 4px;
+    line-height: 1.2;
   }
   .edition-info .subtitle {
-    font-family: var(--serif);
-    font-size: 17px;
-    font-weight: 500;
-    color: var(--ink-soft);
-    letter-spacing: 0.15em;
-    margin-bottom: 6px;
+    font-size: 15px; font-weight: 600; color: var(--muted);
+    margin-bottom: 4px;
   }
   .edition-info .en {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 17px;
-    color: var(--rust);
-    margin-bottom: 18px;
-  }
-  .edition-info .blurb {
-    font-size: 13.5px;
-    line-height: 1.85;
-    color: var(--ink-soft);
-    margin: 0 0 24px;
-    flex: 1;
-  }
-  .edition-info .read-more {
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--ink);
-    display: inline-flex; align-items: center; gap: 10px;
-    border-top: 1px solid rgba(43,30,16,0.5);
-    padding-top: 14px;
-    transition: color .3s, gap .3s;
-  }
-  .edition-card:hover .read-more {
-    color: var(--rust);
-    gap: 16px;
-  }
-
-  /* EDITION DETAIL */
-  .edition-detail { padding: 100px 40px 80px; }
-  .back-bar {
-    max-width: 1280px;
-    margin: 0 auto 40px;
-    display: flex; justify-content: space-between; align-items: center;
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.2em;
-    padding-bottom: 18px;
-    border-bottom: 1px dashed rgba(139,90,43,0.4);
-  }
-  .back-bar .back-btn {
-    cursor: pointer;
-    color: var(--ink);
-    text-decoration: none;
-    display: inline-flex; align-items: center; gap: 10px;
-    transition: color .25s;
-    background: none; border: none;
-    padding: 0;
-    font: inherit;
-  }
-  .back-bar .back-btn:hover { color: var(--rust); }
-  .back-bar .file-no { color: var(--sepia); }
-
-  .detail-hero {
-    max-width: 1280px;
-    margin: 0 auto 70px;
-    display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    gap: 60px;
-    align-items: start;
-  }
-  .detail-hero .text { padding-top: 20px; }
-  .detail-hero .edition-num {
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.3em;
-    color: var(--rust);
-    margin-bottom: 16px;
-    display: inline-block;
-    padding: 5px 12px;
-    border: 1px solid var(--rust);
-  }
-  .detail-hero .edition-num.recruiting {
-    background: var(--red-stamp);
-    color: var(--paper);
-    border-color: var(--red-stamp);
-    animation: pulseStamp 2.4s ease-in-out infinite;
-  }
-  @keyframes pulseStamp {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(176,48,32,0); }
-    50% { box-shadow: 0 0 0 6px rgba(176,48,32,0.2); }
-  }
-  .detail-hero h2 {
-    font-family: var(--serif);
-    font-weight: 900;
-    font-size: clamp(48px, 6vw, 84px);
-    line-height: 1.05;
-    margin: 0 0 6px;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-  }
-  .detail-hero .subtitle-zh {
-    font-family: var(--serif);
-    font-size: clamp(22px, 3vw, 36px);
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    color: var(--ink-soft);
+    font-size: 13px; font-weight: 700;
     margin-bottom: 14px;
   }
-  .detail-hero .subtitle-en {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 24px;
-    color: var(--rust);
-    margin-bottom: 32px;
+  .edition-card[data-edition="2024"] .en { color: var(--c24-dark); }
+  .edition-card[data-edition="2025"] .en { color: var(--c25-dark); }
+  .edition-card[data-edition="2026"] .en { color: var(--c26-dark); }
+
+  .edition-info .blurb {
+    font-size: 14px; line-height: 1.75; color: #4B5563;
+    margin-bottom: 20px; flex: 1;
   }
-  .detail-hero .lede {
-    font-family: var(--serif);
-    font-size: 19px;
-    line-height: 1.9;
-    border-left: 3px solid var(--gold);
-    padding-left: 22px;
-    color: var(--ink);
+  .edition-info .read-more {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 800; font-size: 13px;
+    color: var(--orange);
+    transition: gap .3s;
+  }
+  .edition-card:hover .read-more { gap: 14px; }
+
+  /* ══════════════════════════════
+     EDITION DETAIL
+  ══════════════════════════════ */
+  .edition-detail { padding: 88px 40px 80px; position: relative; z-index: 1; }
+
+  .back-bar {
+    max-width: 1200px; margin: 0 auto 36px;
+    display: flex; justify-content: space-between; align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed rgba(28,27,58,0.10);
+  }
+  .back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-weight: 800; font-size: 14px;
+    color: var(--dark2);
+    text-decoration: none;
+    background: #fff;
+    border: 2px solid rgba(28,27,58,0.10);
+    border-radius: 50px;
+    padding: 10px 22px;
+    cursor: pointer;
+    transition: all .3s;
+  }
+  .back-btn:hover { border-color: var(--orange); color: var(--orange); transform: translateX(-4px); }
+  .back-bar .file-no {
+    font-size: 12px; font-weight: 700; color: var(--muted); letter-spacing: 0.07em;
+  }
+
+  .detail-hero {
+    max-width: 1200px; margin: 0 auto 64px;
+    display: grid; grid-template-columns: 1.2fr 1fr; gap: 56px; align-items: start;
+  }
+  .detail-hero .text { padding-top: 8px; }
+
+  .edition-num-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 800; font-size: 13px;
+    margin-bottom: 20px;
+    letter-spacing: 0.04em;
+  }
+  .edition-num-badge.ed-2024 { background: rgba(61,184,232,0.12); color: var(--c24-dark); border: 2px solid var(--c24); }
+  .edition-num-badge.ed-2025 { background: rgba(139,92,246,0.12); color: var(--c25-dark); border: 2px solid var(--c25); }
+  .edition-num-badge.ed-2026 {
+    background: linear-gradient(135deg, var(--orange), #ff9500);
+    color: #fff;
+    border: none;
+    box-shadow: 0 4px 16px rgba(255,107,53,0.4);
+    animation: badgePulse 2.2s ease-in-out infinite;
+  }
+  @keyframes badgePulse {
+    0%, 100% { box-shadow: 0 4px 16px rgba(255,107,53,0.4); }
+    50%       { box-shadow: 0 4px 28px rgba(255,107,53,0.7); }
+  }
+  .detail-hero h2 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: clamp(44px, 6vw, 80px);
+    line-height: 1.05;
+    color: var(--dark);
+    margin-bottom: 6px;
+  }
+  .detail-hero .subtitle-zh {
+    font-size: clamp(18px, 2.5vw, 28px);
+    font-weight: 700; color: var(--muted);
+    margin-bottom: 8px;
+    font-family: var(--zh);
+  }
+  .detail-hero .subtitle-en {
+    font-size: 16px; font-weight: 700;
     margin-bottom: 28px;
   }
+  #view-2024 .subtitle-en { color: var(--c24-dark); }
+  #view-2025 .subtitle-en { color: var(--c25-dark); }
+  #view-2026 .subtitle-en { color: var(--c26-dark); }
+
+  .detail-hero .lede {
+    font-size: 18px; font-weight: 700;
+    line-height: 1.75;
+    border-left: 4px solid var(--orange);
+    padding: 14px 20px;
+    background: rgba(255,107,53,0.06);
+    border-radius: 0 12px 12px 0;
+    color: var(--dark);
+    margin-bottom: 22px;
+  }
   .detail-hero p {
-    font-size: 15px;
-    line-height: 1.95;
-    color: var(--ink-soft);
-    margin: 0 0 18px;
+    font-size: 15px; line-height: 1.9; color: #4B5563; margin-bottom: 16px;
   }
 
   .detail-visual {
     aspect-ratio: 4/5;
-    position: relative;
-    border: 1px solid rgba(139,90,43,0.3);
-    box-shadow: var(--shadow-deep);
+    border-radius: var(--radius-lg);
     overflow: hidden;
-    display: grid;
-    place-items: center;
-    color: var(--paper);
-    padding: 40px;
-    text-align: center;
+    box-shadow: var(--shadow-lg);
+    position: relative;
   }
-  .detail-visual.theme-2024 {
-    background:
-      radial-gradient(circle at 30% 70%, rgba(74,138,158,0.5), transparent 60%),
-      linear-gradient(135deg, var(--teal-2024) 0%, var(--teal-2024-deep) 100%);
-  }
-  .detail-visual.theme-2025 {
-    background:
-      radial-gradient(circle at 70% 30%, rgba(160,69,80,0.5), transparent 60%),
-      linear-gradient(135deg, var(--burgundy-2025) 0%, var(--burgundy-2025-deep) 100%);
-  }
-  .detail-visual.theme-2026 {
-    background:
-      radial-gradient(circle at 50% 50%, rgba(212,160,74,0.45), transparent 60%),
-      linear-gradient(135deg, var(--amber-2026) 0%, var(--amber-2026-deep) 100%);
-  }
-  .detail-visual::before {
-    content: "";
-    position: absolute; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='0.7' numOctaves='2' seed='5'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.08 0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
-    mix-blend-mode: overlay;
-    pointer-events: none;
-  }
-  .detail-visual .icon-big {
-    font-family: var(--display);
-    font-style: italic;
-    font-size: 180px;
-    line-height: 1;
-    opacity: 0.95;
-    text-shadow: 0 6px 24px rgba(0,0,0,0.3);
-    margin-bottom: 20px;
-  }
-  .detail-visual .placeholder-note {
-    font-family: var(--type);
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    opacity: 0.65;
-    line-height: 1.8;
-  }
-  .detail-visual .corner-mark {
-    position: absolute;
-    top: 18px; left: 18px;
-    font-family: var(--type);
-    font-size: 10px;
-    letter-spacing: 0.25em;
-    opacity: 0.7;
-  }
-  .detail-visual .corner-mark.br {
-    top: auto; left: auto;
-    bottom: 18px; right: 18px;
-  }
+  .detail-visual img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .detail-visual.theme-2024 { background: linear-gradient(145deg, #a8edff, var(--c24)); }
+  .detail-visual.theme-2025 { background: linear-gradient(145deg, #ddd6fe, var(--c25)); }
+  .detail-visual.theme-2026 { background: linear-gradient(145deg, #fed7aa, var(--c26)); }
 
+  /* STATS */
   .detail-stats {
-    max-width: 1280px;
-    margin: 0 auto 80px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    border-top: 1px solid var(--ink);
-    border-bottom: 1px solid var(--ink);
+    max-width: 1200px; margin: 0 auto 64px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
   }
   .detail-stats > div {
-    padding: 28px 24px;
-    border-right: 1px dashed rgba(139,90,43,0.4);
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 28px 20px;
     text-align: center;
+    box-shadow: var(--shadow);
+    transition: transform .3s;
   }
-  .detail-stats > div:last-child { border-right: none; }
+  .detail-stats > div:hover { transform: translateY(-4px); }
   .detail-stats .n {
     font-family: var(--display);
-    font-style: italic;
+    font-weight: 800;
     font-size: 52px;
-    color: var(--rust);
     line-height: 1;
     display: block;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .detail-stats .l {
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    color: var(--sepia);
-    margin-top: 10px;
+    font-size: 12px; font-weight: 700;
+    color: var(--muted); letter-spacing: 0.07em;
   }
 
-  .detail-blocks { max-width: 1280px; margin: 0 auto; }
-  .detail-block { margin-bottom: 80px; }
-  .detail-block h4 {
-    font-family: var(--display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 38px;
-    color: var(--ink);
-    margin: 0 0 6px;
-    letter-spacing: 0;
-  }
-  .detail-block h4 + .zh {
-    font-family: var(--serif);
-    font-size: 18px;
-    font-weight: 500;
-    letter-spacing: 0.2em;
-    color: var(--ink-soft);
+  /* BLOCKS */
+  .detail-blocks { max-width: 1200px; margin: 0 auto; }
+  .detail-block { margin-bottom: 72px; }
+  .block-header {
+    display: flex; align-items: baseline; gap: 14px;
     margin-bottom: 28px;
-    padding-bottom: 14px;
-    border-bottom: 1px dashed rgba(139,90,43,0.4);
+    padding-bottom: 16px;
+    border-bottom: 2px solid rgba(28,27,58,0.07);
+  }
+  .block-header h4 {
+    font-family: var(--display);
+    font-weight: 800;
+    font-size: 28px;
+    color: var(--dark);
+    line-height: 1;
+  }
+  .block-header .zh {
+    font-family: var(--zh);
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--muted);
   }
 
   .feature-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 18px;
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
   }
   .feature-card {
-    background: var(--paper);
-    border: 1px solid rgba(139,90,43,0.3);
+    background: #fff;
+    border-radius: var(--radius);
     padding: 26px 22px;
-    position: relative;
-    transition: transform .3s, box-shadow .3s;
-  }
-  .feature-card:hover {
-    transform: translateY(-4px);
     box-shadow: var(--shadow);
+    transition: transform .3s cubic-bezier(.34,1.56,.64,1), box-shadow .3s;
+    position: relative; overflow: hidden;
   }
-  .feature-card::after {
+  .feature-card::before {
     content: "";
-    position: absolute;
-    top: 8px; right: 8px;
-    width: 8px; height: 8px;
-    border-top: 1px solid var(--sepia);
-    border-right: 1px solid var(--sepia);
+    position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    border-radius: 4px 4px 0 0;
+    background: linear-gradient(90deg, var(--orange), var(--yellow));
   }
+  .feature-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
   .feature-card .num {
     font-family: var(--display);
-    font-style: italic;
-    font-size: 32px;
-    color: var(--rust);
+    font-weight: 800;
+    font-size: 36px;
     line-height: 1;
+    color: var(--orange);
+    margin-bottom: 12px;
+    opacity: 0.6;
   }
   .feature-card h5 {
-    font-family: var(--serif);
+    font-family: var(--zh);
     font-size: 17px;
     font-weight: 700;
-    margin: 14px 0 8px;
-    letter-spacing: 0.1em;
+    margin-bottom: 8px;
+    color: var(--dark);
   }
-  .feature-card p {
-    font-size: 12.5px;
-    color: var(--ink-soft);
-    margin: 0;
-    line-height: 1.75;
-  }
+  .feature-card p { font-size: 13.5px; color: #6B7280; line-height: 1.7; }
 
   .tag-list { display: flex; flex-wrap: wrap; gap: 10px; }
   .tag-list span {
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.18em;
-    padding: 6px 14px;
-    border: 1px solid var(--sepia);
-    color: var(--sepia-deep);
-    background: var(--paper);
+    font-size: 13px; font-weight: 700;
+    padding: 8px 18px;
+    border-radius: 50px;
+    background: rgba(28,27,58,0.06);
+    color: var(--dark2);
+    border: 1.5px solid rgba(28,27,58,0.09);
+    transition: all .25s;
+  }
+  .tag-list span:hover {
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    color: #fff; border-color: transparent;
+    transform: scale(1.05);
   }
 
   .schedule-block {
-    display: grid;
-    grid-template-columns: 1fr 1.2fr;
-    gap: 50px;
-    align-items: start;
+    display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: start;
   }
-  .schedule-block .meta {
-    font-size: 14.5px;
-    line-height: 1.95;
-    color: var(--ink-soft);
-  }
+  .schedule-block .meta { font-size: 15px; line-height: 1.9; color: #4B5563; }
   .schedule-block .meta strong {
     display: block;
-    font-family: var(--serif);
-    color: var(--ink);
+    font-family: var(--zh);
     font-weight: 700;
-    margin-top: 18px;
-    letter-spacing: 0.1em;
+    color: var(--dark);
+    margin-top: 16px;
+    font-size: 15px;
   }
-  .schedule-block .meta strong.inline {
-    display: inline; margin-top: 0;
-  }
+  .schedule-block .meta strong.inline { display: inline; margin-top: 0; }
   .schedule-frame {
-    background: var(--paper);
-    padding: 16px;
-    border: 1px solid rgba(139,90,43,0.3);
-    box-shadow: var(--shadow-deep);
-    transform: rotate(0.5deg);
-    transition: transform .4s;
+    background: #fff;
+    padding: 14px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-lg);
+    transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+    transform: rotate(0.8deg);
     position: relative;
   }
   .schedule-frame:hover { transform: rotate(0); }
-  .schedule-frame img { width: 100%; display: block; }
+  .schedule-frame img { width: 100%; display: block; border-radius: 8px; }
   .schedule-frame::after {
-    content: "";
+    content: "📅";
     position: absolute;
-    top: -10px; right: -10px;
-    width: 80px; height: 80px;
-    border: 2px solid var(--red-stamp);
-    border-radius: 50%;
-    background: radial-gradient(circle, transparent 60%, var(--red-stamp) 61%, transparent 63%);
+    top: -14px; right: -10px;
+    font-size: 32px;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
   }
   .schedule-caption {
-    font-family: var(--type);
-    font-size: 11px;
-    color: var(--sepia);
-    letter-spacing: 0.2em;
-    margin-top: 14px;
-    text-align: center;
+    font-size: 12px; font-weight: 700; color: var(--muted);
+    letter-spacing: 0.05em; text-align: center;
+    margin-top: 12px;
   }
 
   .placeholder-block {
-    background: rgba(184,137,58,0.08);
-    border: 2px dashed rgba(139,90,43,0.45);
-    padding: 40px;
+    background: rgba(255,107,53,0.05);
+    border: 2px dashed rgba(255,107,53,0.3);
+    border-radius: var(--radius);
+    padding: 48px;
     text-align: center;
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.2em;
-    color: var(--sepia-deep);
-    line-height: 2;
+    font-size: 14px; font-weight: 600;
+    color: var(--muted); line-height: 2;
   }
   .placeholder-block strong {
     display: block;
     font-family: var(--display);
-    font-style: italic;
-    font-size: 28px;
-    color: var(--rust);
-    letter-spacing: 0;
-    margin-bottom: 6px;
+    font-size: 26px; font-weight: 800;
+    color: var(--orange);
+    margin-bottom: 8px;
   }
 
   /* ENROLL BLOCK */
   .enroll-block {
-    margin-top: 80px;
-    padding: 70px 50px;
-    background: var(--ink);
-    color: var(--paper);
-    position: relative;
-    overflow: hidden;
+    margin-top: 72px;
+    padding: 60px 52px;
+    border-radius: var(--radius-lg);
+    background: linear-gradient(135deg, var(--dark) 0%, var(--dark2) 100%);
+    color: #fff;
+    position: relative; overflow: hidden;
   }
   .enroll-block::before {
     content: "";
     position: absolute; inset: 0;
-    background-image:
-      repeating-linear-gradient(90deg, rgba(184,137,58,0.05) 0 1px, transparent 1px 80px),
-      repeating-linear-gradient(0deg, rgba(184,137,58,0.05) 0 1px, transparent 1px 80px);
+    background:
+      radial-gradient(circle at 20% 50%, rgba(255,107,53,0.2), transparent 40%),
+      radial-gradient(circle at 80% 20%, rgba(255,209,102,0.15), transparent 40%);
     pointer-events: none;
   }
   .enroll-block-inner {
-    position: relative;
-    z-index: 2;
-    display: grid;
-    grid-template-columns: 1.4fr 1fr;
-    gap: 50px;
-    align-items: center;
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: center;
   }
   .enroll-block h4 {
     font-family: var(--display);
-    font-style: italic;
-    font-weight: 500;
-    font-size: 48px;
-    margin: 0 0 8px;
-    color: var(--paper);
+    font-weight: 800; font-size: 42px;
+    margin-bottom: 8px; line-height: 1.1;
+    background: linear-gradient(135deg, #fff, var(--yellow));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
   .enroll-block .zh-big {
-    font-family: var(--serif);
-    font-size: 28px;
-    font-weight: 700;
-    letter-spacing: 0.2em;
-    color: var(--gold-light);
-    margin-bottom: 18px;
+    font-family: var(--zh);
+    font-size: 22px; font-weight: 900;
+    color: var(--yellow);
+    margin-bottom: 18px; letter-spacing: 0.08em;
   }
-  .enroll-block p {
-    font-size: 14.5px;
-    line-height: 1.9;
-    color: rgba(243,234,213,0.8);
-    margin: 0;
-  }
+  .enroll-block p { font-size: 15px; line-height: 1.85; color: rgba(255,255,255,0.75); }
   .enroll-block-actions { display: flex; flex-direction: column; gap: 14px; }
-  .enroll-block .btn-bright {
-    background: var(--gold);
-    color: var(--ink);
-    font-family: var(--type);
-    font-size: 13px;
-    letter-spacing: 0.25em;
-    padding: 20px 30px;
-    text-decoration: none;
-    text-align: center;
-    transition: all .3s;
-    display: flex; align-items: center; justify-content: center; gap: 12px;
-    border: none;
-    cursor: pointer;
+  .btn-bright {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    background: linear-gradient(135deg, var(--orange), #ff9500);
+    color: #fff;
+    font-family: var(--body);
+    font-weight: 800; font-size: 15px;
+    padding: 18px 28px;
+    border-radius: 50px;
+    text-decoration: none; border: none; cursor: pointer;
+    box-shadow: 0 6px 24px rgba(255,107,53,0.55);
+    transition: all .3s cubic-bezier(.34,1.56,.64,1);
   }
-  .enroll-block .btn-bright:hover {
-    background: var(--gold-light);
-    transform: translateX(4px);
-  }
-  .enroll-block .btn-outline {
+  .btn-bright:hover { transform: translateY(-3px) scale(1.03); box-shadow: 0 10px 32px rgba(255,107,53,0.7); }
+  .btn-outline-light {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
     background: transparent;
-    color: var(--paper);
-    border: 1px solid rgba(243,234,213,0.5);
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.22em;
-    padding: 16px 30px;
+    color: rgba(255,255,255,0.85);
+    font-family: var(--body);
+    font-weight: 700; font-size: 14px;
+    padding: 16px 28px;
+    border-radius: 50px;
     text-decoration: none;
-    text-align: center;
-    transition: all .3s;
-    cursor: pointer;
+    border: 2px solid rgba(255,255,255,0.3);
+    cursor: pointer; transition: all .3s;
   }
-  .enroll-block .btn-outline:hover {
-    background: rgba(243,234,213,0.1);
-    border-color: var(--paper);
+  .btn-outline-light:hover { border-color: #fff; color: #fff; background: rgba(255,255,255,0.08); }
+  .enroll-info-note {
+    background: rgba(255,209,102,0.15);
+    border: 1.5px solid rgba(255,209,102,0.4);
+    border-radius: 12px;
+    padding: 16px 20px;
+    font-size: 13px; font-weight: 700;
+    color: var(--yellow);
+    text-align: center; line-height: 1.8;
   }
-  .enroll-block .info-note {
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.22em;
-    color: var(--gold-light);
-    padding: 16px 0;
-    text-align: center;
-    border: 1px dashed var(--gold-light);
-    line-height: 1.8;
+
+  /* CREW */
+  .crew-command {
+    display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 24px;
   }
+  .crew-commander {
+    display: flex; flex-direction: column;
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 16px 22px;
+    box-shadow: var(--shadow);
+    min-width: 140px;
+    border-top: 4px solid var(--yellow);
+    transition: transform .3s;
+  }
+  .crew-commander:hover { transform: translateY(-4px); }
+  .crew-role {
+    font-size: 11px; font-weight: 700;
+    color: var(--muted); letter-spacing: 0.07em;
+    margin-bottom: 6px;
+  }
+  .crew-commander .crew-name {
+    font-family: var(--zh);
+    font-size: 15px; font-weight: 700;
+    color: var(--dark);
+  }
+  .crew-commander .crew-nick {
+    font-size: 15px; font-weight: 700;
+    color: var(--orange); margin-top: 2px;
+  }
+  .crew-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px;
+  }
+  .crew-card {
+    background: #fff;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    box-shadow: 0 2px 12px rgba(28,27,58,0.07);
+    border: 2px solid transparent;
+    transition: border-color .25s, transform .25s;
+  }
+  .crew-card:hover { border-color: var(--teal); transform: translateY(-3px); }
+  .crew-fleet {
+    font-size: 11px; font-weight: 800;
+    color: var(--teal);
+    letter-spacing: 0.05em;
+    padding-bottom: 10px; margin-bottom: 10px;
+    border-bottom: 1.5px dashed rgba(6,199,156,0.25);
+  }
+  .crew-member {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 6px; font-size: 13.5px;
+  }
+  .crew-member span { font-family: var(--zh); font-weight: 600; color: var(--dark); }
+  .crew-member .nick { font-size: 14px; font-weight: 700; color: var(--orange); }
+
+  /* PHOTO GRID */
+  .photo-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px;
+  }
+  .photo-grid img {
+    width: 100%; aspect-ratio: 1; object-fit: cover; display: block;
+    border-radius: 12px;
+    transition: transform .4s, box-shadow .4s;
+    box-shadow: 0 4px 16px rgba(28,27,58,0.1);
+  }
+  .photo-grid img:hover { transform: scale(1.04); box-shadow: 0 8px 28px rgba(28,27,58,0.18); }
 
   /* FOOTER */
   footer {
-    background: var(--ink);
-    color: rgba(243,234,213,0.7);
-    padding: 60px 40px 30px;
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.15em;
+    background: var(--dark);
+    color: rgba(255,255,255,0.6);
+    padding: 64px 40px 32px;
+    position: relative; z-index: 1;
   }
   footer .foot-inner {
-    max-width: 1280px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 40px;
+    max-width: 1200px; margin: 0 auto;
+    display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px;
     padding-bottom: 40px;
-    border-bottom: 1px solid rgba(184,137,58,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
   }
+  footer .foot-logo {
+    display: inline-flex; align-items: center; gap: 12px; margin-bottom: 18px;
+  }
+  footer .foot-logo .badge {
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--orange), var(--yellow));
+    display: grid; place-items: center;
+    font-family: var(--display); font-weight: 800; font-size: 20px; color: #fff;
+  }
+  footer .foot-logo span { font-weight: 800; font-size: 16px; color: #fff; }
   footer h5 {
     font-family: var(--display);
-    font-style: italic;
-    font-size: 24px;
-    color: var(--gold-light);
-    margin: 0 0 18px;
-    letter-spacing: 0;
+    font-weight: 800; font-size: 18px;
+    color: #fff; margin-bottom: 16px;
   }
-  footer p, footer a {
-    color: rgba(243,234,213,0.7);
-    text-decoration: none;
-    line-height: 2;
-    transition: color .25s;
-    background: none; border: none; padding: 0;
-    font: inherit;
-    cursor: pointer;
+  footer p { font-size: 14px; line-height: 1.9; color: rgba(255,255,255,0.55); }
+  footer a {
     display: block;
+    color: rgba(255,255,255,0.55); text-decoration: none;
+    font-size: 14px; font-weight: 600; line-height: 2.2;
+    transition: color .25s;
+    background: none; border: none; padding: 0; cursor: pointer;
   }
-  footer a:hover { color: var(--gold-light); }
+  footer a:hover { color: var(--yellow); }
   footer .foot-bottom {
-    max-width: 1280px;
-    margin: 30px auto 0;
-    display: flex;
-    justify-content: space-between;
-    font-size: 10px;
-    letter-spacing: 0.2em;
-    color: rgba(243,234,213,0.4);
+    max-width: 1200px; margin: 28px auto 0;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 12px; color: rgba(255,255,255,0.3);
+    flex-wrap: wrap; gap: 8px;
   }
 
   /* ASSETS NOTICE */
   .needed-assets {
-    background: #fef9ec;
-    border: 2px dashed var(--rust);
-    color: var(--ink);
-    padding: 40px;
-    margin: 80px auto;
+    background: #fff;
+    border: 2px dashed var(--orange);
+    border-radius: var(--radius-lg);
+    padding: 44px;
+    margin: 72px auto;
     max-width: 1100px;
-    font-family: var(--sans);
     position: relative;
   }
   .needed-assets::before {
     content: "📎 ASSETS REQUIRED · 待補素材清單";
     position: absolute;
-    top: -14px; left: 30px;
-    background: var(--rust);
-    color: var(--paper);
-    font-family: var(--type);
-    font-size: 11px;
-    letter-spacing: 0.25em;
-    padding: 6px 14px;
+    top: -16px; left: 28px;
+    background: linear-gradient(135deg, var(--orange), #ff9500);
+    color: #fff;
+    font-weight: 800; font-size: 12px;
+    letter-spacing: 0.08em;
+    padding: 7px 16px;
+    border-radius: 50px;
   }
   .needed-assets h4 {
-    font-family: var(--serif);
-    font-size: 22px;
-    font-weight: 700;
-    margin: 0 0 6px;
-    color: var(--rust);
-    letter-spacing: 0.05em;
+    font-family: var(--display);
+    font-weight: 800; font-size: 22px;
+    color: var(--dark); margin-bottom: 6px;
   }
   .needed-assets .intro {
-    font-size: 13.5px;
-    color: var(--ink-soft);
-    margin: 0 0 24px;
-    line-height: 1.8;
+    font-size: 14px; color: var(--muted); line-height: 1.8; margin-bottom: 24px;
   }
-  .needed-assets ul { margin: 0; padding-left: 0; list-style: none; }
+  .needed-assets ul { list-style: none; }
   .needed-assets li {
-    padding: 14px 0;
-    border-bottom: 1px dashed rgba(139,90,43,0.25);
-    display: grid;
-    grid-template-columns: 220px 1fr;
-    gap: 18px;
-    font-size: 14px;
-    line-height: 1.75;
+    padding: 16px 0;
+    border-bottom: 1.5px dashed rgba(28,27,58,0.10);
+    display: grid; grid-template-columns: 220px 1fr; gap: 18px;
+    font-size: 14px; line-height: 1.75; align-items: start;
   }
   .needed-assets li:last-child { border-bottom: none; }
   .needed-assets li b {
-    font-family: var(--type);
-    font-size: 12px;
-    letter-spacing: 0.15em;
-    color: var(--sepia-deep);
+    font-size: 13px; font-weight: 800;
+    color: var(--dark);
   }
-  .needed-assets li i { font-style: normal; color: var(--ink-soft); }
+  .needed-assets li i { font-style: normal; color: var(--muted); }
   .needed-assets li code {
-    font-family: var(--mono);
-    font-size: 11px;
-    background: rgba(139,90,43,0.1);
-    padding: 1px 6px;
-    color: var(--rust);
+    font-family: monospace; font-size: 11.5px;
+    background: rgba(255,107,53,0.1);
+    padding: 2px 7px; border-radius: 6px;
+    color: var(--orange);
   }
 
   /* RESPONSIVE */
   @media (max-width: 980px) {
-    nav.topbar { padding: 12px 20px; }
+    nav.topbar { padding: 0 20px; }
     nav.topbar ul { display: none; }
-    section, .home-hero, .edition-detail { padding: 80px 24px; }
-    .home-hero { padding-top: 110px; }
-    .section-header { grid-template-columns: 1fr; }
-    .section-num { writing-mode: horizontal-tb; transform: none; }
+    .home-hero, .about-band, .editions-section, .edition-detail { padding-left: 20px; padding-right: 20px; }
+    .home-hero { padding-top: 90px; }
+    .about-inner { grid-template-columns: 1fr; gap: 32px; }
     .editions-grid { grid-template-columns: 1fr; }
-    .about-inner { grid-template-columns: 1fr; gap: 30px; }
-    .detail-hero { grid-template-columns: 1fr; gap: 40px; }
+    .section-header-fun { flex-direction: column; align-items: flex-start; }
+    .detail-hero { grid-template-columns: 1fr; gap: 36px; }
     .detail-stats { grid-template-columns: 1fr 1fr; }
-    .detail-stats > div { border-right: none; border-bottom: 1px dashed rgba(139,90,43,0.4); }
     .feature-grid { grid-template-columns: 1fr 1fr; }
     .schedule-block { grid-template-columns: 1fr; }
     .enroll-block-inner { grid-template-columns: 1fr; }
-    footer .foot-inner { grid-template-columns: 1fr; }
+    .crew-grid { grid-template-columns: 1fr 1fr; }
+    footer .foot-inner { grid-template-columns: 1fr; gap: 32px; }
     .needed-assets li { grid-template-columns: 1fr; gap: 4px; }
-    .corner-stamp { display: none; }
-    .hero-meta { gap: 24px; }
+    .hero-deco { display: none; }
   }
   @media (max-width: 560px) {
     .feature-grid { grid-template-columns: 1fr; }
     .detail-stats { grid-template-columns: 1fr; }
-    .home-hero h1 { font-size: 64px; letter-spacing: 0.04em; }
+    .crew-grid { grid-template-columns: 1fr; }
+    .hero-editions-row { flex-direction: column; align-items: center; }
+    .photo-grid { grid-template-columns: repeat(2, 1fr); }
   }
 </style>
 </head>
@@ -1144,13 +1108,16 @@
 <!-- NAV -->
 <nav class="topbar">
   <a class="brand" data-nav="home">
-    <div class="seal">弘</div>
-    <span>HUNG-WEN SUMMER CAMP · 弘文中學暑期育樂營</span>
+    <div class="logo-badge">弘</div>
+    <div class="brand-text">
+      弘文暑期育樂營
+      <small>HONG-WEN SUMMER CAMP</small>
+    </div>
   </a>
   <ul>
-    <li><a data-nav="home">首頁 HOME</a></li>
-    <li><a href="#editions">歷年介紹 EDITIONS</a></li>
-    <li><a data-nav="2026">2026 報名 ENROLL</a></li>
+    <li><a data-nav="home">🏠 首頁</a></li>
+    <li><a href="#editions">📚 歷屆介紹</a></li>
+    <li><a data-nav="2026" class="nav-cta">✨ 2026 報名</a></li>
   </ul>
 </nav>
 
@@ -1158,62 +1125,75 @@
 <main id="view-home" class="view active">
 
   <header class="home-hero">
-    <div class="hero-bg-deco"></div>
-    <div class="hero-watermark left">弘</div>
-    <div class="hero-watermark right">文</div>
+    <div class="hero-shapes">
+      <div class="blob blob1"></div>
+      <div class="blob blob2"></div>
+      <div class="blob blob3"></div>
+    </div>
 
-    <div class="corner-stamp tl">EST. 2024 SUMMER · 弘文</div>
-    <div class="corner-stamp br">VOL. I — III &nbsp;三屆紀錄</div>
+    <div class="hero-deco d1">⚓</div>
+    <div class="hero-deco d2">✨</div>
+    <div class="hero-deco d3">🌊</div>
+    <div class="hero-deco d4">⚔️</div>
+    <div class="hero-deco d5">🕰️</div>
 
     <div class="home-hero-inner">
-      <div class="eyebrow">HUNG-WEN HIGH SCHOOL &nbsp;|&nbsp; OFFICIAL CAMP SITE</div>
+      <div class="pill-badge">🎉 弘文中學 官方暑期營隊網站</div>
       <h1>
         <span class="ch">暑</span><span class="ch">期</span><span class="ch">育</span><span class="ch">樂</span><span class="ch">營</span>
       </h1>
-      <div class="en-title">Hung-Wen Summer Camp</div>
+      <div class="en-title">Hong-Wen Summer Camp · Since 2024</div>
       <p class="lead">
         我們相信:夏天不只是放假,而是一場可以記得一輩子的<strong>儀式</strong>。<br>
-        從 2024 的「希望之島」、2025 的「光耀的試煉」,到 2026 即將啟航的「時空管理局」——<br>
-        每一屆,我們都把整座校園重新打造成一個<strong>全新的世界</strong>。
+        從 2024 的「希望之島」、2025 的「光耀的試煉」,<br>
+        到 2026 即將啟航的「時空管理局」——每一屆都是一個<strong>全新的世界</strong>。
       </p>
       <div class="home-cta">
-        <a class="btn-primary" data-nav="2026">
-          2026 立即報名
+        <a class="btn-primary" href="https://forms.gle/z6TDDyKxcZAFxeSs5" target="_blank">
+          ✨ 2026 立即報名
           <span class="arrow">→</span>
         </a>
-        <a href="#editions" class="btn-secondary">查看歷屆介紹</a>
+        <a href="#editions" class="btn-secondary">📖 查看歷屆介紹</a>
       </div>
-      <div class="hero-meta">
-        <div>第一屆<span>2024 · 希望之島</span></div>
-        <div>第二屆<span>2025 · 光耀的試煉</span></div>
-        <div>第三屆<span>2026 · 時空管理局</span></div>
+      <div class="hero-editions-row">
+        <div class="hero-edition-chip" data-nav="2024">
+          <span class="year-tag">2024</span>⚓ 希望之島
+        </div>
+        <div class="hero-edition-chip" data-nav="2025">
+          <span class="year-tag">2025</span>⚔️ 光耀的試煉
+        </div>
+        <div class="hero-edition-chip" data-nav="2026">
+          <span class="year-tag">2026</span>🕰️ 時空管理局
+        </div>
       </div>
     </div>
   </header>
 
   <section class="about-band">
     <div class="about-inner">
-      <div class="about-side">
-        <div>SECTION · 00</div>
-        <h3>About Camp</h3>
-        <div class="zh-sub">關 於 我 們</div>
+      <div class="about-visual">
+        <div class="about-big-num">03</div>
+        <div class="about-subhead">屆精彩<br>不停歇</div>
+        <div class="about-label">🌟 2024 — 2026</div>
       </div>
       <div class="about-text">
         <p>弘文中學暑期育樂營,從 2024 年第一屆開辦至今,已經連續舉辦三屆。我們不只是一個「讓孩子有地方去」的營隊——每一年,我們都設定一個完全不同的世界觀,讓學員在四天裡真正「成為」另一個身分。</p>
-        <p>2024 我們是搭船尋找新大陸的水手,2025 我們是接受試煉的見習騎士,2026 我們將成為穿越時空、守護歷史的探員。儀式感、沉浸式、團隊協作,是這個營隊三年來不變的核心。</p>
-        <p>我們希望孩子離開時帶走的,不是一張結業證書,而是一段「真實發生過」的夏日記憶。</p>
+        <p>2024 我們是搭船進入未來之島的水手;2025 我們是接受試煉的見習騎士;2026 我們將成為穿越時空、守護歷史的時光探員。</p>
+        <p>沉浸式體驗、團隊合作、創新思維,是這個營隊三年來不變的核心。</p>
+        <div class="about-highlight">
+          💬 我們希望孩子離開時帶走的,不是單純一張結業證書,而是一段「真實發生過」的夏日記憶。
+        </div>
       </div>
     </div>
   </section>
 
   <section id="editions" class="editions-section">
-    <div class="section-header">
-      <div class="section-num">SECTION&nbsp;·&nbsp;01</div>
-      <div class="section-titles">
-        <h2>The Editions</h2>
-        <div class="zh">歷 屆 主 題 介 紹</div>
+    <div class="section-header-fun">
+      <div>
+        <div class="section-eyebrow">歷屆主題介紹</div>
+        <div class="section-title-big">每一年<br>都是一個 <span>新世界</span></div>
       </div>
-      <div class="section-tag">CLICK TO ENTER ↗</div>
+      <div class="section-cta-tag">點擊進入各屆介紹 ↗</div>
     </div>
 
     <div class="editions-grid">
@@ -1222,25 +1202,18 @@
       <a class="edition-card" data-edition="2024" data-nav="2024">
         <div class="status-ribbon closed">CLOSED · 已結束</div>
         <div class="visual">
-          <div class="corner-mark">VOL. I / 2024</div>
-          <div>
-            <div class="icon">⚓</div>
-            <div class="vol">FIRST EDITION</div>
-            <div class="year">'24</div>
-          </div>
-          <div class="corner-mark br">航海篇</div>
-          <div class="placeholder-tag">PLACEHOLDER · 待補主視覺</div>
+          <img src="24年未來之島主視覺.jpg" alt="2024 希望之島主視覺">
         </div>
         <div class="edition-info">
           <div class="meta-row">
             <span>FIRST EDITION</span>
-            <span>2024 SUMMER</span>
+            <span class="edition-year-chip">2024</span>
           </div>
-          <h3>希望之島</h3>
+          <h3>希望之島 ⚓</h3>
           <div class="subtitle">The Hopeful Isle</div>
           <div class="en">Voyage · 航海篇</div>
-          <p class="blurb">揚起風帆,登上未知海域的木質帆船。學員以航海士身份組成船隊,靠羅盤、星圖與彼此的默契,尋找散落在關卡中的航海寶藏。</p>
-          <div class="read-more">進入第一屆檔案 &nbsp;→</div>
+          <p class="blurb">揚起風帆,經過八座島嶼島主的試煉，一同打敗闇的支配者。學員以水手的身份組成船隊,依靠彼此的默契,找尋屬於自己未來的珍貴寶藏。</p>
+          <div class="read-more">進入第一屆 →</div>
         </div>
       </a>
 
@@ -1248,25 +1221,18 @@
       <a class="edition-card" data-edition="2025" data-nav="2025">
         <div class="status-ribbon closed">CLOSED · 已結束</div>
         <div class="visual">
-          <div class="corner-mark">VOL. II / 2025</div>
-          <div>
-            <div class="icon">⚔</div>
-            <div class="vol">SECOND EDITION</div>
-            <div class="year">'25</div>
-          </div>
-          <div class="corner-mark br">騎士篇</div>
-          <div class="placeholder-tag">PLACEHOLDER · 待補主視覺</div>
+          <img src="25年光耀的試煉主視覺.png" alt="2025 光耀的試煉主視覺">
         </div>
         <div class="edition-info">
           <div class="meta-row">
             <span>SECOND EDITION</span>
-            <span>2025 SUMMER</span>
+            <span class="edition-year-chip">2025</span>
           </div>
-          <h3>光耀的試煉</h3>
+          <h3>光耀的試煉 ⚔️</h3>
           <div class="subtitle">The Trials of Glory</div>
           <div class="en">Chivalry · 騎士篇</div>
-          <p class="blurb">活動中心化為中世紀城堡,學員受封為見習騎士。在四日內通過勇氣、智慧、忠誠、榮譽四項試煉,於最終典禮上被授予騎士稱號。</p>
-          <div class="read-more">進入第二屆檔案 &nbsp;→</div>
+          <p class="blurb">學員受封為見習騎士，一起穿梭光耀國，在四日內通過勇氣、智慧、忠誠、榮譽四項試煉,於最終典禮上被授予騎士稱號。</p>
+          <div class="read-more">進入第二屆 →</div>
         </div>
       </a>
 
@@ -1274,25 +1240,18 @@
       <a class="edition-card" data-edition="2026" data-nav="2026">
         <div class="status-ribbon open">NOW OPEN · 報名中</div>
         <div class="visual">
-          <div class="corner-mark">VOL. III / 2026</div>
-          <div>
-            <div class="icon">⧗</div>
-            <div class="vol">THIRD EDITION</div>
-            <div class="year">'26</div>
-          </div>
-          <div class="corner-mark br">時空篇</div>
-          <div class="placeholder-tag">PLACEHOLDER · 待補主視覺</div>
+          <img src="26年時空管理局主視覺.png" alt="2026 時空管理局主視覺">
         </div>
         <div class="edition-info">
           <div class="meta-row">
             <span>THIRD EDITION</span>
-            <span style="color: var(--rust);">★ 報名開放中 ★</span>
+            <span class="edition-year-chip">2026</span>
           </div>
-          <h3>時光的守護者</h3>
+          <h3>時光的守護者 🕰️</h3>
           <div class="subtitle">時空管理局</div>
           <div class="en">The Temporal Bureau</div>
-          <p class="blurb">不再前往某個「地方」,而是穿越「時間」。學員以見習時空警察身分加入時空管理局,執行跨時空巡邏、追捕罪犯、維護歷史脈絡的完整。</p>
-          <div class="read-more">進入第三屆檔案 &nbsp;→</div>
+          <p class="blurb">今年，學員將加入時空管理局，成為守護使光的歷史探員！接下來會發生什麼有趣的事呢？讓我們一起等待「歷史」的發生吧～</p>
+          <div class="read-more">進入第三屆 →</div>
         </div>
       </a>
 
@@ -1306,72 +1265,67 @@
   <section class="edition-detail">
 
     <div class="back-bar">
-      <button class="back-btn" data-nav="home">← 返回首頁 / BACK TO HOME</button>
+      <button class="back-btn" data-nav="home">← 返回首頁</button>
       <div class="file-no">FILE NO. HW-2024-VOL-I</div>
     </div>
 
     <div class="detail-hero">
       <div class="text">
-        <div class="edition-num">FIRST EDITION · 第 一 屆 · 2024</div>
+        <div class="edition-num-badge ed-2024">⚓ FIRST EDITION · 第一屆 · 2024</div>
         <h2>希望之島</h2>
-        <div class="subtitle-zh">—— 航 海 篇 ——</div>
+        <div class="subtitle-zh">── 航海篇 ──</div>
         <div class="subtitle-en">The Hopeful Isle · Voyage</div>
-        <p class="lede">一張殘破的地圖、一個尚未被命名的島嶼、一群不認識彼此的水手——這就是 2024 年夏天的開場。</p>
-        <p>第一屆育樂營,我們把整座校園化為一艘穿梭七海的木質帆船。學員們以「航海士」身份登船,分組組成船隊,靠著羅盤、星圖與彼此的默契,去尋找那座傳說中存在的「希望之島」。</p>
-        <p>主視覺以海軍藍、做舊牛皮紙與黃銅色為調,營造翻開古老航海日誌的儀式感。我們希望孩子記得的,不只是闖關,而是那種「啟航」的勇氣——往未知的方向,鼓起勇氣走出第一步。</p>
+        <p class="lede">八座知識島嶼、一群不認識彼此的水手——這就是 2024 年夏天的開場。</p>
+        <p>第一屆育樂營,我們把整座校園化為海洋。學員們以「小水手」身份登船,分組組成船隊,去尋找那座傳說中存在的「希望之島」。</p>
+        <p>我們希望孩子記得的,不只是闖關,而是那種「啟航」前往未知的方向,鼓起勇氣走出第一步的回憶。</p>
       </div>
       <div class="detail-visual theme-2024">
-        <div class="corner-mark">VOL. I / 2024</div>
-        <div>
-          <div class="icon-big">⚓</div>
-          <div class="placeholder-note">
-            PLACEHOLDER · 待補主視覺照片<br>
-            建議:當年營隊海報 / 主視覺<br>
-            直式 4:5 比例
-          </div>
-        </div>
-        <div class="corner-mark br">VOYAGE 航海篇</div>
+        <img src="24年未來之島主視覺.jpg" alt="2024 希望之島主視覺">
       </div>
     </div>
 
     <div class="detail-stats">
-      <div><span class="n">128</span><div class="l">航海士 CADETS</div></div>
-      <div><span class="n">12</span><div class="l">關卡 STATIONS</div></div>
-      <div><span class="n">8</span><div class="l">船隊 FLEETS</div></div>
+      <div><span class="n">128</span><div class="l">水手 CADETS</div></div>
+      <div><span class="n">12</span><div class="l">希望之島 STATIONS</div></div>
+      <div><span class="n">8</span><div class="l">船長 FLEETS</div></div>
       <div><span class="n">04</span><div class="l">天數 DAYS</div></div>
     </div>
 
     <div class="detail-blocks">
       <div class="detail-block">
-        <h4>Key Highlights</h4>
-        <div class="zh">本 屆 亮 點</div>
+        <div class="block-header">
+          <h4>Key Highlights</h4>
+          <span class="zh">本屆亮點</span>
+        </div>
         <div class="feature-grid">
           <div class="feature-card">
             <div class="num">I.</div>
-            <h5>啟航儀式</h5>
+            <h5>啟航儀式 ⛵</h5>
             <p>開營以「鳴笛啟航」儀式揭開序幕,每位學員領取個人航海日誌。</p>
           </div>
           <div class="feature-card">
             <div class="num">II.</div>
-            <h5>羅盤教學</h5>
+            <h5>羅盤教學 🧭</h5>
             <p>實體羅盤操作課程,孩子學會看方位、判讀星圖。</p>
           </div>
           <div class="feature-card">
             <div class="num">III.</div>
-            <h5>船隊競賽</h5>
+            <h5>船隊競賽 🏆</h5>
             <p>分組組成船隊,跨關卡累積航海點數,爭奪寶藏地圖。</p>
           </div>
           <div class="feature-card">
             <div class="num">IV.</div>
-            <h5>登島典禮</h5>
+            <h5>登島典禮 🏅</h5>
             <p>最終日舉行登島儀式,每位航海士都被頒發「希望之島」探險勳章。</p>
           </div>
         </div>
       </div>
 
       <div class="detail-block">
-        <h4>Tags &amp; Keywords</h4>
-        <div class="zh">關 鍵 字 標 籤</div>
+        <div class="block-header">
+          <h4>Tags &amp; Keywords</h4>
+          <span class="zh">關鍵字標籤</span>
+        </div>
         <div class="tag-list">
           <span>SEA NAVY 海軍藍</span>
           <span>燈塔</span>
@@ -1385,12 +1339,37 @@
       </div>
 
       <div class="detail-block">
-        <h4>Photo Album</h4>
-        <div class="zh">活 動 花 絮</div>
-        <div class="placeholder-block">
-          <strong>📸 待補活動花絮照片</strong>
-          建議補上 6–9 張當年現場照片<br>
-          (學員闖關、團體合照、儀式典禮、輔導員指導等)
+        <div class="block-header">
+          <h4>Ship Roster</h4>
+          <span class="zh">船隊名冊</span>
+        </div>
+        <div class="crew-command">
+          <div class="crew-commander"><span class="crew-role">指揮官 COMMANDER</span><span class="crew-name">林益靖老師</span><span class="crew-nick">紅髮傑克</span></div>
+          <div class="crew-commander"><span class="crew-role">副官 OFFICER</span><span class="crew-name">陳彥廷</span><span class="crew-nick">威爾森哥哥</span></div>
+        </div>
+        <div class="crew-grid">
+          <div class="crew-card"><div class="crew-fleet">千陽號 · 第一小隊</div><div class="crew-member"><span>林靖恩</span><span class="nick">Andy哥哥</span></div><div class="crew-member"><span>何澤祥</span><span class="nick">校長哥哥</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">水母號 · 第二小隊</div><div class="crew-member"><span>紀珮羽</span><span class="nick">珮珮姐姐</span></div><div class="crew-member"><span>黃琮軒</span><span class="nick">蟲蟲哥哥</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">北極熊號 · 第三小隊</div><div class="crew-member"><span>莊証琹</span><span class="nick">Melody姊姊</span></div><div class="crew-member"><span>張家綺</span><span class="nick">綺綺姊姊</span></div><div class="crew-member"><span>劉昱呈</span><span class="nick">呈哥</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">鯊魚號 · 第四小隊</div><div class="crew-member"><span>林資翌</span><span class="nick">竹子哥哥</span></div><div class="crew-member"><span>陳立邦</span><span class="nick">油漆哥哥</span></div><div class="crew-member"><span>曾以潔</span><span class="nick">小潔姊姊</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">獨角鯨號 · 第五小隊</div><div class="crew-member"><span>陳毅鴻</span><span class="nick">毛毛哥哥</span></div><div class="crew-member"><span>劉瑄尹</span><span class="nick">瑄瑄姊姊</span></div><div class="crew-member"><span>簡昶富</span><span class="nick">土撥鼠哥哥</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">企鵝號 · 第六小隊</div></div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <div class="block-header">
+          <h4>Photo Album</h4>
+          <span class="zh">活動花絮</span>
+        </div>
+        <div class="photo-grid">
+          <img src="24照片/488908404_1138538024950100_4367198677106405417_n.jpg" alt="2024 活動花絮">
+          <img src="24照片/488911414_1138537918283444_6581006840435341049_n.jpg" alt="2024 活動花絮">
+          <img src="24照片/489373366_1138538081616761_5613249526968095053_n.jpg" alt="2024 活動花絮">
+          <img src="24照片/489504343_1138537871616782_352340133844488170_n.jpg" alt="2024 活動花絮">
+          <img src="24照片/圖片 1.jpg" alt="2024 活動花絮">
+          <img src="24照片/圖片 2.jpg" alt="2024 活動花絮">
+          <img src="24照片/圖片 3.jpg" alt="2024 活動花絮">
         </div>
       </div>
     </div>
@@ -1403,31 +1382,22 @@
   <section class="edition-detail">
 
     <div class="back-bar">
-      <button class="back-btn" data-nav="home">← 返回首頁 / BACK TO HOME</button>
+      <button class="back-btn" data-nav="home">← 返回首頁</button>
       <div class="file-no">FILE NO. HW-2025-VOL-II</div>
     </div>
 
     <div class="detail-hero">
       <div class="text">
-        <div class="edition-num">SECOND EDITION · 第 二 屆 · 2025</div>
+        <div class="edition-num-badge ed-2025">⚔️ SECOND EDITION · 第二屆 · 2025</div>
         <h2>光耀的試煉</h2>
-        <div class="subtitle-zh">—— 騎 士 篇 ——</div>
+        <div class="subtitle-zh">── 騎士篇 ──</div>
         <div class="subtitle-en">The Trials of Glory · Chivalry</div>
         <p class="lede">一把佩劍、一面紋章、一份未被書寫的榮譽——這就是 2025 年夏天的承諾。</p>
         <p>第二屆育樂營,我們把活動中心化為中世紀城堡,學員受封為見習騎士,必須在四日內通過「勇氣、智慧、忠誠、榮譽」四項試煉,才能在最終典禮上被授予騎士稱號。</p>
-        <p>整體設計以酒紅、金箔與深綠為基調,從紋章設計、書法捲軸到劇場式典禮,每一個細節都浸入濃厚的中世紀氛圍。我們相信,孩子需要的不只是知識,而是一場真正記得一輩子的「儀式」——當他們單膝跪下、被輕拍肩膀的那一刻,他們會記得自己曾經如此勇敢。</p>
+        <p>從紋章設計、書法捲軸到劇場式典禮,每一個細節都浸入濃厚的中世紀氛圍。當孩子單膝跪下、被輕拍肩膀的那一刻,他們會記得自己曾經如此勇敢。</p>
       </div>
       <div class="detail-visual theme-2025">
-        <div class="corner-mark">VOL. II / 2025</div>
-        <div>
-          <div class="icon-big">⚔</div>
-          <div class="placeholder-note">
-            PLACEHOLDER · 待補主視覺照片<br>
-            建議:當年營隊海報 / 主視覺<br>
-            直式 4:5 比例
-          </div>
-        </div>
-        <div class="corner-mark br">CHIVALRY 騎士篇</div>
+        <img src="25年光耀的試煉主視覺.png" alt="2025 光耀的試煉主視覺">
       </div>
     </div>
 
@@ -1440,35 +1410,39 @@
 
     <div class="detail-blocks">
       <div class="detail-block">
-        <h4>Key Highlights</h4>
-        <div class="zh">本 屆 亮 點</div>
+        <div class="block-header">
+          <h4>Key Highlights</h4>
+          <span class="zh">本屆亮點</span>
+        </div>
         <div class="feature-grid">
           <div class="feature-card">
             <div class="num">I.</div>
-            <h5>紋章設計</h5>
+            <h5>紋章設計 🛡️</h5>
             <p>每位騎士設計自己的家徽,作為四日營期的個人識別。</p>
           </div>
           <div class="feature-card">
             <div class="num">II.</div>
-            <h5>四項試煉</h5>
+            <h5>四項試煉 ⚡</h5>
             <p>勇氣、智慧、忠誠、榮譽——每天一道試煉,沒有任何捷徑。</p>
           </div>
           <div class="feature-card">
             <div class="num">III.</div>
-            <h5>城堡解謎</h5>
+            <h5>城堡解謎 🔍</h5>
             <p>沉浸式城堡場景,線索藏在書卷、壁畫、寶箱之中。</p>
           </div>
           <div class="feature-card">
             <div class="num">IV.</div>
-            <h5>授封典禮</h5>
+            <h5>授封典禮 👑</h5>
             <p>正式典禮中以佩劍輕拍肩膀,授予騎士稱號與證書。</p>
           </div>
         </div>
       </div>
 
       <div class="detail-block">
-        <h4>Tags &amp; Keywords</h4>
-        <div class="zh">關 鍵 字 標 籤</div>
+        <div class="block-header">
+          <h4>Tags &amp; Keywords</h4>
+          <span class="zh">關鍵字標籤</span>
+        </div>
         <div class="tag-list">
           <span>BURGUNDY GOLD 酒紅金</span>
           <span>紋章學</span>
@@ -1482,8 +1456,33 @@
       </div>
 
       <div class="detail-block">
-        <h4>Photo Album</h4>
-        <div class="zh">活 動 花 絮</div>
+        <div class="block-header">
+          <h4>Knight Roster</h4>
+          <span class="zh">騎士名冊</span>
+        </div>
+        <div class="crew-command">
+          <div class="crew-commander"><span class="crew-role">國王 KING</span><span class="crew-name">陳立邦</span><span class="crew-nick">亞瑟</span></div>
+          <div class="crew-commander"><span class="crew-role">魔法師 WIZARD</span><span class="crew-name">林資翌</span><span class="crew-nick">梅林</span></div>
+          <div class="crew-commander"><span class="crew-role">吟遊詩人 BARD</span><span class="crew-name">陳彥廷</span><span class="crew-nick">吟遊詩人</span></div>
+          <div class="crew-commander"><span class="crew-role">天神 DEITY</span><span class="crew-name">林益靖老師</span><span class="crew-nick">乞丐天神</span></div>
+        </div>
+        <div class="crew-grid">
+          <div class="crew-card"><div class="crew-fleet">鳳凰騎士團 · 第一小隊</div><div class="crew-member"><span>宋伊柔</span><span class="nick">蘿蔔姊姊</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">焰狐騎士團 · 第二小隊</div><div class="crew-member"><span>莊証琴</span><span class="nick">Melody姊姊</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">霜鯨騎士團 · 第三小隊</div><div class="crew-member"><span>紀珮羽</span><span class="nick">珮珮姐姐</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">雲豹騎士團 · 第四小隊</div><div class="crew-member"><span>黃琮軒</span><span class="nick">蟲蟲哥哥</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">天馬騎士團 · 第五小隊</div><div class="crew-member"><span>林靖恩</span><span class="nick">Andy哥哥</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">獅鷲騎士團 · 第六小隊</div><div class="crew-member"><span>陳正颺</span><span class="nick">三歲哥哥</span></div><div class="crew-member"><span>謝玉婷</span><span class="nick">婷婷姊姊</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">光狼騎士團 · 第七小隊</div><div class="crew-member"><span>林妤蓁</span><span class="nick">卡比姊姊</span></div></div>
+          <div class="crew-card"><div class="crew-fleet">影蛇騎士團 · 第八小隊</div><div class="crew-member"><span>張祐翰</span><span class="nick">蟑螂哥哥</span></div></div>
+        </div>
+      </div>
+
+      <div class="detail-block">
+        <div class="block-header">
+          <h4>Photo Album</h4>
+          <span class="zh">活動花絮</span>
+        </div>
         <div class="placeholder-block">
           <strong>📸 待補活動花絮照片</strong>
           建議補上 6–9 張當年現場照片<br>
@@ -1500,31 +1499,22 @@
   <section class="edition-detail">
 
     <div class="back-bar">
-      <button class="back-btn" data-nav="home">← 返回首頁 / BACK TO HOME</button>
+      <button class="back-btn" data-nav="home">← 返回首頁</button>
       <div class="file-no">FILE NO. HW-2026-VOL-III · CLASSIFIED</div>
     </div>
 
     <div class="detail-hero">
       <div class="text">
-        <div class="edition-num recruiting">★ NOW RECRUITING · 報 名 開 放 中 ★</div>
+        <div class="edition-num-badge ed-2026">★ NOW RECRUITING · 報名開放中 ★</div>
         <h2>時光的守護者</h2>
-        <div class="subtitle-zh">—— 時 空 管 理 局 ——</div>
+        <div class="subtitle-zh">── 時空管理局 ──</div>
         <div class="subtitle-en">The Temporal Bureau · Volume III</div>
         <p class="lede">當鐘擺停下,我們上場——歷史的某個關鍵節點正在崩塌,時空管理局派出了一支新血探員:你們。</p>
         <p>2026 年,我們不再帶孩子去某個「地方」,而是讓他們穿越「時間」。學員將以見習時空警察身分加入「時空管理局」,在四日任務中執行跨時空巡邏、追捕罪犯、維護歷史脈絡的完整。</p>
-        <p>本屆主視覺以做舊牛皮紙、機密檔案章與沙漏為符號,融合復古文件感與時間旅行科幻氛圍。每位學員都會領到專屬的探員編號與任務手冊——沒有「玩遊戲」,只有「執行任務」。</p>
+        <p>每位學員都會領到專屬的探員編號與任務手冊——沒有「玩遊戲」,只有「執行任務」。</p>
       </div>
       <div class="detail-visual theme-2026">
-        <div class="corner-mark">VOL. III / 2026</div>
-        <div>
-          <div class="icon-big">⧗</div>
-          <div class="placeholder-note">
-            PLACEHOLDER · 待補主視覺照片<br>
-            建議:本屆海報 / KV 設計稿<br>
-            直式 4:5 比例
-          </div>
-        </div>
-        <div class="corner-mark br">TEMPORAL 時空篇</div>
+        <img src="26年時空管理局主視覺.png" alt="2026 時空管理局主視覺">
       </div>
     </div>
 
@@ -1537,45 +1527,49 @@
 
     <div class="detail-blocks">
       <div class="detail-block">
-        <h4>Key Highlights</h4>
-        <div class="zh">本 屆 亮 點</div>
+        <div class="block-header">
+          <h4>Key Highlights</h4>
+          <span class="zh">本屆亮點</span>
+        </div>
         <div class="feature-grid">
           <div class="feature-card">
             <div class="num">I.</div>
-            <h5>身分代入</h5>
+            <h5>身分代入 🕵️</h5>
             <p>每位學員擁有專屬探員編號、任務手冊與徽章。</p>
           </div>
           <div class="feature-card">
             <div class="num">II.</div>
-            <h5>歷史劇場</h5>
+            <h5>歷史劇場 🎭</h5>
             <p>角色扮演進入古文明、戰國、文藝復興等歷史現場。</p>
           </div>
           <div class="feature-card">
             <div class="num">III.</div>
-            <h5>解謎協作</h5>
+            <h5>解謎協作 🧩</h5>
             <p>跨部門合作破解時空謎題,每一條線索都至關重要。</p>
           </div>
           <div class="feature-card">
             <div class="num">IV.</div>
-            <h5>授勳結訓</h5>
+            <h5>授勳結訓 🎖️</h5>
             <p>正式典禮頒發勳章,把儀式感留在每個孩子的夏天裡。</p>
           </div>
         </div>
       </div>
 
       <div class="detail-block">
-        <h4>Four-Day Mission Schedule</h4>
-        <div class="zh">四 日 任 務 時 程 表</div>
+        <div class="block-header">
+          <h4>Four-Day Mission Schedule</h4>
+          <span class="zh">四日任務時程表</span>
+        </div>
         <div class="schedule-block">
           <div class="meta">
             <p>本屆營期為 <strong class="inline">2026 年 7 月 6 日(一)至 7 月 9 日(四)</strong>,每日 08:30 — 16:00。四天分別對應四個主場任務:</p>
-            <strong>DAY 01 · 就職典禮</strong>
+            <strong>DAY 01 · 就職典禮 🎉</strong>
             <p style="margin: 4px 0 0;">新血探員宣誓入局,領取編號與裝備。</p>
-            <strong>DAY 02 · 跨時空實務練習</strong>
+            <strong>DAY 02 · 跨時空實務練習 🌀</strong>
             <p style="margin: 4px 0 0;">熟悉時光隧道操作與歷史劇場場景。</p>
-            <strong>DAY 03 · 時光隧道維護演習</strong>
+            <strong>DAY 03 · 時光隧道維護演習 🔧</strong>
             <p style="margin: 4px 0 0;">透過考核驗證學員對歷史的掌握程度。</p>
-            <strong>DAY 04 · 追捕跨時空罪犯</strong>
+            <strong>DAY 04 · 追捕跨時空罪犯 🏃</strong>
             <p style="margin: 4px 0 0;">最終任務 + 授勳典禮,為四日營期畫下句點。</p>
           </div>
           <div>
@@ -1588,8 +1582,10 @@
       </div>
 
       <div class="detail-block">
-        <h4>Tags &amp; Keywords</h4>
-        <div class="zh">關 鍵 字 標 籤</div>
+        <div class="block-header">
+          <h4>Tags &amp; Keywords</h4>
+          <span class="zh">關鍵字標籤</span>
+        </div>
         <div class="tag-list">
           <span>SEPIA AMBER 牛皮紙琥珀</span>
           <span>歷史劇場</span>
@@ -1605,16 +1601,16 @@
       <div class="enroll-block">
         <div class="enroll-block-inner">
           <div>
-            <h4>Join the Bureau</h4>
-            <div class="zh-big">加 入 時 空 管 理 局</div>
+            <h4>Join the Bureau 🕰️</h4>
+            <div class="zh-big">加入時空管理局</div>
             <p>名額有限——四日的時空任務,正在招募新進探員。點擊右方按鈕完成報到登記,我們會在收到表單後寄送專屬探員編號與行前手冊。</p>
           </div>
           <div class="enroll-block-actions">
-            <a href="#" class="btn-bright">立即報名 ENROLL NOW →</a>
-            <a href="#" class="btn-outline">下載家長說明 PDF</a>
-            <div class="info-note">
-              對象:國小 3 年級 — 國中 3 年級<br>
-              地點:弘文中學校本部
+            <a href="https://forms.gle/z6TDDyKxcZAFxeSs5" target="_blank" class="btn-bright">✨ 立即報名 ENROLL NOW →</a>
+            <a href="#" class="btn-outline-light">📄 下載家長說明 PDF</a>
+            <div class="enroll-info-note">
+              🎒 對象:國小 3 年級 — 國中 3 年級<br>
+              📍 地點:弘文中學校本部
             </div>
           </div>
         </div>
@@ -1629,23 +1625,23 @@
 <section style="padding: 0 40px;">
   <div class="needed-assets">
     <h4>本網站尚需補上以下素材</h4>
-    <p class="intro">以下素材尚未提供,目前頁面以做舊風格的色塊 + 符號暫代,網站本身已是可發布的完整狀態。素材補齊後直接替換即可。</p>
+    <p class="intro">以下素材尚未提供,目前頁面以色塊暫代,素材補齊後直接替換即可。</p>
     <ul>
       <li>
         <b>2024 希望之島 主視覺</b>
-        <i>1 張當年營隊海報或主視覺照片(建議直式,4:5 比例)→ 將替換首頁卡片與第一屆內頁右側 <code>detail-visual.theme-2024</code> 區塊的 ⚓ 圖示</i>
+        <i>1 張當年營隊海報或主視覺照片(建議直式,4:5 比例)→ 將替換首頁卡片與第一屆內頁右側 <code>detail-visual.theme-2024</code> 區塊</i>
       </li>
       <li>
         <b>2025 光耀的試煉 主視覺</b>
-        <i>1 張當年營隊海報或主視覺照片(同上規格)→ 將替換首頁卡片與第二屆內頁右側 <code>detail-visual.theme-2025</code> 區塊的 ⚔ 圖示</i>
+        <i>1 張當年營隊海報或主視覺照片(同上規格)→ 將替換首頁卡片與第二屆內頁右側 <code>detail-visual.theme-2025</code> 區塊</i>
       </li>
       <li>
         <b>2026 時空管理局 主視覺</b>
-        <i>1 張本屆海報或 KV 設計稿(直式,4:5 比例,可使用沙漏、檔案夾、徽章等時空主題設計)→ 將替換首頁卡片與第三屆內頁右側 <code>detail-visual.theme-2026</code> 區塊的 ⧗ 圖示</i>
+        <i>1 張本屆海報或 KV 設計稿(直式,4:5 比例)→ 將替換首頁卡片與第三屆內頁右側 <code>detail-visual.theme-2026</code> 區塊</i>
       </li>
       <li>
         <b>歷年活動花絮照</b>
-        <i>每屆 6–9 張現場照片(學員闖關、團體合照、儀式典禮、輔導員指導等)→ 將替換每屆內頁底部「Photo Album 活動花絮」的虛線方框</i>
+        <i>每屆 6–9 張現場照片(學員闖關、團體合照、儀式典禮等)→ 將替換每屆內頁底部「Photo Album 活動花絮」的佔位區塊</i>
       </li>
       <li>
         <b>2026 正式報名連結</b>
@@ -1661,7 +1657,7 @@
       </li>
       <li>
         <b>學員與家長回饋(選用)</b>
-        <i>3–5 則歷年學員或家長的回饋文字 → 可新增「探員口述紀錄」見證區段</i>
+        <i>3–5 則歷年學員或家長的回饋文字 → 可新增見證區段</i>
       </li>
     </ul>
   </div>
@@ -1671,17 +1667,17 @@
 <footer>
   <div class="foot-inner">
     <div>
-      <h5>Hung-Wen Summer Camp</h5>
-      <p>弘文中學暑期育樂營<br>
-      自 2024 啟航以來,我們相信每個夏天都該成為一場讓孩子永遠記得的儀式。</p>
+      <div class="foot-logo">
+        <div class="badge">弘</div>
+        <span>Hong-Wen Summer Camp</span>
+      </div>
+      <p>弘文中學暑期育樂營<br>自 2024 啟航以來,我們相信每個夏天都該成為一場讓孩子永遠記得的儀式。🌟</p>
     </div>
     <div>
       <h5>Editions</h5>
-      <p>
-        <a data-nav="2024">2024 · 希望之島</a>
-        <a data-nav="2025">2025 · 光耀的試煉</a>
-        <a data-nav="2026">2026 · 時空管理局</a>
-      </p>
+      <a data-nav="2024">⚓ 2024 · 希望之島</a>
+      <a data-nav="2025">⚔️ 2025 · 光耀的試煉</a>
+      <a data-nav="2026">🕰️ 2026 · 時空管理局</a>
     </div>
     <div>
       <h5>Contact</h5>
@@ -1693,8 +1689,8 @@
     </div>
   </div>
   <div class="foot-bottom">
-    <span>© 2026 HUNG-WEN HIGH SCHOOL · ALL RIGHTS RESERVED</span>
-    <span>FILE NO. HW-CAMP-WEB-2026</span>
+    <span>© 2026 HONG-WEN HIGH SCHOOL · ALL RIGHTS RESERVED</span>
+    <span>Made with ❤️ for every summer</span>
   </div>
 </footer>
 
@@ -1722,16 +1718,6 @@
         showView(target);
       }
     });
-  });
-
-  const wmL = document.querySelector('.hero-watermark.left');
-  const wmR = document.querySelector('.hero-watermark.right');
-  window.addEventListener('scroll', () => {
-    const y = window.scrollY;
-    if (y < 900 && wmL && wmR) {
-      wmL.style.transform = `translateY(${y * 0.15}px)`;
-      wmR.style.transform = `rotate(8deg) translateY(${y * -0.1}px)`;
-    }
   });
 </script>
 
