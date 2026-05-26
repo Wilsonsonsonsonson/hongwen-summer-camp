@@ -1240,6 +1240,460 @@
   @media (max-width: 480px) {
     .tarot-card { width: 340px; height: 620px; transform-origin: center; }
   }
+
+  /* ── HAMBURGER MENU ── */
+  .hamburger-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
+    transition: background .2s;
+    z-index: 300;
+  }
+  .hamburger-btn:hover { background: rgba(255,107,53,0.1); }
+  .hamburger-btn span {
+    display: block;
+    width: 22px; height: 2.5px;
+    background: var(--dark2);
+    border-radius: 2px;
+    transition: transform .3s, opacity .3s;
+  }
+  .hamburger-btn.open span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+  .hamburger-btn.open span:nth-child(2) { opacity: 0; }
+  .hamburger-btn.open span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+  .mobile-menu {
+    position: fixed;
+    top: 64px; left: 0; right: 0;
+    background: rgba(255,255,255,0.97);
+    backdrop-filter: blur(16px);
+    border-bottom: 2px solid rgba(255,107,53,0.15);
+    box-shadow: 0 8px 32px rgba(28,27,58,0.12);
+    z-index: 190;
+    padding: 16px 20px 20px;
+    flex-direction: column;
+    gap: 8px;
+    transform: translateY(-8px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, transform .25s;
+    display: none;
+  }
+  @media (max-width: 980px) {
+    .hamburger-btn { display: flex; }
+    .mobile-menu { display: flex; }
+  }
+  .mobile-menu.open { opacity: 1; transform: translateY(0); pointer-events: all; }
+  .mobile-menu a {
+    font-family: var(--body);
+    font-weight: 700; font-size: 15px;
+    color: var(--dark2);
+    text-decoration: none;
+    padding: 14px 18px;
+    border-radius: 12px;
+    transition: background .2s, color .2s;
+    cursor: pointer;
+    display: block; border: none; background: none;
+  }
+  .mobile-menu a:hover { background: rgba(255,107,53,0.08); color: var(--orange); }
+  .mobile-menu .nav-cta-mobile {
+    background: linear-gradient(135deg, var(--orange), #ff9500) !important;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 50px !important;
+    box-shadow: 0 4px 14px rgba(255,107,53,0.4);
+    margin-top: 4px;
+  }
+
+  /* ── MINI COUNTDOWN (home hero) ── */
+  .mini-countdown {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: rgba(239,68,68,0.08);
+    border: 1.5px solid rgba(239,68,68,0.3);
+    border-radius: 50px;
+    padding: 10px 22px;
+    font-size: 14px; font-weight: 700;
+    color: var(--dark);
+    margin-top: 24px; margin-bottom: 32px;
+  }
+  .mini-countdown .pulse-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: #ef4444;
+    animation: mcPulse 1s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes mcPulse {
+    0%,100% { transform: scale(1); opacity: 1; box-shadow: 0 0 0 0 rgba(239,68,68,0.4); }
+    50% { transform: scale(1.4); opacity: 0.7; box-shadow: 0 0 0 6px rgba(239,68,68,0); }
+  }
+  .mini-countdown .mc-label { color: #dc2626; font-weight: 800; }
+  .mini-countdown strong { color: #dc2626; font-size: 16px; }
+
+  /* ── DEADLINE COUNTDOWN (2026 view) ── */
+  .deadline-banner {
+    max-width: 1200px; margin: 0 auto 32px;
+    background: linear-gradient(135deg, #7f1d1d 0%, #991b1b 50%, #7f1d1d 100%);
+    border-radius: var(--radius-lg);
+    padding: 32px 44px;
+    position: relative; overflow: hidden;
+    border: 1px solid rgba(252,165,165,0.2);
+  }
+  .deadline-banner::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 15% 50%, rgba(239,68,68,0.3), transparent 40%),
+      radial-gradient(circle at 85% 30%, rgba(252,211,77,0.15), transparent 40%);
+    pointer-events: none;
+  }
+  .deadline-banner-inner {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 28px; flex-wrap: wrap;
+  }
+  .deadline-label { flex: 1; min-width: 180px; }
+  .deadline-label .eyebrow {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; color: #fca5a5;
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .deadline-label .eyebrow::before {
+    content: "";
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #ef4444;
+    box-shadow: 0 0 0 3px rgba(239,68,68,0.3);
+    animation: dlPulse 1s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+  @keyframes dlPulse {
+    0%,100% { box-shadow: 0 0 0 3px rgba(239,68,68,0.3); }
+    50% { box-shadow: 0 0 0 7px rgba(239,68,68,0); }
+  }
+  .deadline-label h3 {
+    font-family: var(--display);
+    font-size: clamp(20px, 2.8vw, 32px);
+    font-weight: 800; line-height: 1.1; margin-bottom: 6px;
+    color: #fff;
+  }
+  .deadline-label p { font-size: 13px; color: rgba(252,165,165,0.85); line-height: 1.6; }
+  .deadline-digits { display: flex; gap: 10px; flex-wrap: wrap; }
+  .deadline-unit {
+    background: rgba(0,0,0,0.25);
+    border: 1px solid rgba(252,165,165,0.2);
+    border-radius: 14px;
+    padding: 16px 18px; text-align: center; min-width: 72px;
+  }
+  .deadline-unit .n {
+    font-family: var(--display);
+    font-size: 44px; font-weight: 800; line-height: 1;
+    color: #fff; display: block;
+  }
+  .deadline-unit .l {
+    font-size: 11px; font-weight: 700;
+    color: rgba(252,165,165,0.7);
+    letter-spacing: 0.08em; text-transform: uppercase; margin-top: 5px;
+  }
+  .deadline-expired {
+    font-family: var(--display); font-size: 22px; font-weight: 800;
+    color: #fca5a5; text-align: center; width: 100%;
+  }
+  @media (max-width: 700px) {
+    .deadline-banner { padding: 24px 20px; }
+    .deadline-digits { justify-content: center; }
+    .deadline-label { text-align: center; }
+    .deadline-label .eyebrow { justify-content: center; }
+  }
+
+  /* ── FULL COUNTDOWN (2026 view) ── */
+  .countdown-section {
+    max-width: 1200px;
+    margin: 0 auto 48px;
+    background: linear-gradient(135deg, var(--dark), var(--dark2));
+    border-radius: var(--radius-lg);
+    padding: 40px 48px;
+    color: #fff;
+    position: relative; overflow: hidden;
+  }
+  .countdown-section::before {
+    content: "";
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(circle at 10% 50%, rgba(255,107,53,0.2), transparent 40%),
+      radial-gradient(circle at 90% 30%, rgba(255,209,102,0.15), transparent 40%);
+    pointer-events: none;
+  }
+  .countdown-inner {
+    position: relative; z-index: 1;
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 32px; flex-wrap: wrap;
+  }
+  .countdown-label { flex: 1; min-width: 200px; }
+  .countdown-label .eyebrow {
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.12em; color: var(--orange);
+    text-transform: uppercase; margin-bottom: 8px;
+  }
+  .countdown-label h3 {
+    font-family: var(--display);
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 800; line-height: 1.1; margin-bottom: 6px;
+    background: linear-gradient(135deg, #fff, var(--yellow));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .countdown-label p { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.6; }
+  .countdown-digits { display: flex; gap: 12px; flex-wrap: wrap; }
+  .countdown-unit {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 16px;
+    padding: 18px 22px; text-align: center; min-width: 80px;
+    transition: background .3s;
+  }
+  .countdown-unit:hover { background: rgba(255,107,53,0.15); }
+  .countdown-unit .n {
+    font-family: var(--display);
+    font-size: 48px; font-weight: 800; line-height: 1;
+    color: #fff; display: block;
+  }
+  .countdown-unit .l {
+    font-size: 11px; font-weight: 700;
+    color: rgba(255,255,255,0.5);
+    letter-spacing: 0.1em; text-transform: uppercase; margin-top: 6px;
+  }
+  .countdown-launched {
+    font-family: var(--display);
+    font-size: 28px; font-weight: 800;
+    color: var(--yellow);
+    text-align: center; width: 100%;
+  }
+  @media (max-width: 700px) {
+    .countdown-section { padding: 28px 24px; }
+    .countdown-digits { justify-content: center; }
+    .countdown-label { text-align: center; }
+  }
+
+  /* ── LIGHTBOX ── */
+  .lightbox-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.92);
+    z-index: 500;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+    backdrop-filter: blur(8px);
+  }
+  .lightbox-overlay.open { opacity: 1; pointer-events: all; }
+  .lightbox-img {
+    max-width: 90vw; max-height: 88vh;
+    border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.6);
+    transform: scale(0.9);
+    transition: transform .35s cubic-bezier(.34,1.56,.64,1);
+    object-fit: contain;
+    display: block;
+  }
+  .lightbox-overlay.open .lightbox-img { transform: scale(1); }
+  .lightbox-close {
+    position: absolute; top: 20px; right: 24px;
+    font-size: 36px; color: rgba(255,255,255,0.7);
+    cursor: pointer; line-height: 1;
+    transition: color .2s, transform .2s;
+    background: none; border: none;
+  }
+  .lightbox-close:hover { color: #fff; transform: scale(1.2) rotate(90deg); }
+  .lightbox-nav {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    font-size: 28px; color: rgba(255,255,255,0.7);
+    cursor: pointer; background: rgba(255,255,255,0.1);
+    border: none; border-radius: 50%;
+    width: 52px; height: 52px;
+    display: flex; align-items: center; justify-content: center;
+    transition: background .2s, color .2s;
+  }
+  .lightbox-nav:hover { background: rgba(255,107,53,0.5); color: #fff; }
+  .lightbox-prev { left: 20px; }
+  .lightbox-next { right: 20px; }
+  .lightbox-counter {
+    position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+    font-size: 13px; font-weight: 700;
+    color: rgba(255,255,255,0.5); letter-spacing: 0.06em;
+  }
+  .photo-grid img { cursor: pointer; }
+
+  /* ── SCROLL REVEAL ── */
+  .js-reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity .65s ease, transform .65s cubic-bezier(.22,1,.36,1);
+  }
+  .js-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+  /* ── FLOATING CLOCK ANIMATIONS ── */
+  @keyframes fc-float1 { 0%,100%{transform:translate(0,0) rotate(0deg);} 50%{transform:translate(12px,-18px) rotate(2deg);} }
+  @keyframes fc-float2 { 0%,100%{transform:translate(0,0);} 33%{transform:translate(-14px,10px);} 66%{transform:translate(8px,-8px);} }
+  @keyframes fc-float3 { 0%,100%{transform:translate(0,0) rotate(0deg);} 50%{transform:translate(-10px,14px) rotate(-2deg);} }
+  @keyframes fc-float4 { 0%,100%{transform:translate(0,0);} 50%{transform:translate(16px,-12px);} }
+  @keyframes fc-float5 { 0%,100%{transform:translate(0,0) rotate(0deg);} 50%{transform:translate(-8px,-16px) rotate(3deg);} }
+
+  /* ── DIGITAL CLOCK WIDGET ── */
+  .digital-clock-widget {
+    position: fixed; bottom: 28px; right: 28px;
+    z-index: 150; pointer-events: none;
+    background: rgba(28,27,58,0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,107,53,0.28);
+    border-radius: 14px; padding: 12px 18px;
+    font-family: monospace; text-align: center;
+    box-shadow: 0 4px 24px rgba(28,27,58,0.4), 0 0 0 1px rgba(255,107,53,0.08);
+    min-width: 148px;
+  }
+  .digital-clock-widget .dw-label {
+    display: block; font-size: 9px; color: rgba(255,107,53,0.55);
+    letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 5px;
+  }
+  .digital-clock-widget .dw-time {
+    display: block; font-size: 26px; font-weight: 700;
+    color: var(--orange); letter-spacing: 0.06em;
+    text-shadow: 0 0 14px rgba(255,107,53,0.55);
+  }
+  .digital-clock-widget .dw-date {
+    display: block; font-size: 10px; color: rgba(255,255,255,0.38);
+    letter-spacing: 0.04em; margin-top: 5px;
+  }
+  @media (max-width: 560px) {
+    .digital-clock-widget { bottom: 14px; right: 14px; padding: 9px 13px; min-width: 120px; }
+    .digital-clock-widget .dw-time { font-size: 20px; }
+  }
+
+
+  /* ── TIME WARP OVERLAY ── */
+  #timewarp-overlay {
+    position: fixed; inset: 0; z-index: 900;
+    pointer-events: none; display: none;
+  }
+  #timewarp-overlay.active { display: block; pointer-events: all; }
+  #timewarp-canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+  .tw-scanlines {
+    position: absolute; inset: 0; pointer-events: none; opacity: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      rgba(0,0,0,0.10) 0px, rgba(0,0,0,0.10) 1px,
+      transparent 1px, transparent 3px
+    );
+    animation: twScan .08s linear infinite;
+  }
+  #timewarp-overlay.active .tw-scanlines { opacity: 1; }
+  @keyframes twScan { from{transform:translateY(0)} to{transform:translateY(3px)} }
+
+  /* ── MUSIC TOGGLE ── */
+  .music-toggle {
+    position: fixed; bottom: 28px; left: 28px; z-index: 150;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(28,27,58,0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,107,53,0.28);
+    border-radius: 50px; padding: 10px 16px;
+    color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 700;
+    font-family: var(--body);
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(28,27,58,0.3);
+    transition: transform .25s cubic-bezier(.34,1.56,.64,1), box-shadow .25s, border-color .25s, color .25s;
+  }
+  .music-toggle:hover {
+    transform: translateY(-3px) scale(1.05);
+    border-color: rgba(255,107,53,0.6);
+    color: #fff;
+    box-shadow: 0 6px 24px rgba(28,27,58,0.4);
+  }
+  .music-toggle.playing { border-color: var(--orange); color: #fff; }
+  .music-toggle .mt-icon { font-size: 16px; transition: transform .3s; }
+  .music-toggle.playing .mt-icon { animation: mtSpin .8s ease-in-out infinite alternate; }
+  @keyframes mtSpin { from{transform:rotate(-8deg);} to{transform:rotate(8deg);} }
+  .music-toggle .mt-bar {
+    display: flex; align-items: flex-end; gap: 2px; height: 14px;
+  }
+  .music-toggle .mt-bar span {
+    width: 3px; background: var(--orange); border-radius: 2px;
+    animation: mtBarPulse 0.6s ease-in-out infinite alternate;
+  }
+  .music-toggle .mt-bar span:nth-child(1) { height: 6px; animation-delay: 0s; }
+  .music-toggle .mt-bar span:nth-child(2) { height: 12px; animation-delay: 0.15s; }
+  .music-toggle .mt-bar span:nth-child(3) { height: 8px; animation-delay: 0.3s; }
+  .music-toggle .mt-bar span:nth-child(4) { height: 14px; animation-delay: 0.1s; }
+  .music-toggle:not(.playing) .mt-bar { display: none; }
+  @keyframes mtBarPulse { from{transform:scaleY(0.4);} to{transform:scaleY(1);} }
+  @media (max-width: 560px) {
+    .music-toggle { bottom: 14px; left: 14px; padding: 8px 12px; font-size: 12px; }
+  }
+
+  /* ── CLOCK DIVIDER ── */
+  .clock-divider {
+    position: relative;
+    display: flex; align-items: center; justify-content: center;
+    height: 76px; padding: 0 40px;
+    pointer-events: none;
+  }
+  .clock-divider::before, .clock-divider::after {
+    content: ""; flex: 1; height: 1px;
+    background: linear-gradient(to right, transparent, rgba(255,107,53,0.22), transparent);
+  }
+  .clock-divider .cdiv-gear {
+    width: 30px; height: 30px; flex-shrink: 0; margin: 0 10px;
+    border-radius: 50%;
+    border: 3.5px solid rgba(255,107,53,0.18);
+    position: relative;
+    animation: cdivGearSpin 7s linear infinite;
+  }
+  .clock-divider .cdiv-gear::before {
+    content: ''; position: absolute; inset: -6px; border-radius: 50%;
+    background: repeating-conic-gradient(rgba(255,107,53,0.18) 0deg 9deg, transparent 9deg 24deg);
+    mask: radial-gradient(circle, transparent 60%, black 62%);
+    -webkit-mask: radial-gradient(circle, transparent 60%, black 62%);
+  }
+  .clock-divider .cdiv-gear.rev { animation-direction: reverse; animation-duration: 5s; }
+  .clock-divider .cdiv-clock-wrap {
+    width: 52px; height: 52px; flex-shrink: 0; margin: 0 14px;
+  }
+  .clock-divider .cdiv-clock-wrap svg { display: block; }
+  @keyframes cdivGearSpin { from{transform:rotate(0deg);} to{transform:rotate(360deg);} }
+
+  /* ── BLOCK HEADER GEAR ── */
+  .block-header { position: relative; }
+  .bh-gear {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    border: 4px solid rgba(255,107,53,0.14);
+    animation: cdivGearSpin 12s linear infinite;
+    pointer-events: none; flex-shrink: 0;
+  }
+  .bh-gear::before {
+    content: ''; position: absolute; inset: -7px; border-radius: 50%;
+    background: repeating-conic-gradient(rgba(255,107,53,0.14) 0deg 9deg, transparent 9deg 24deg);
+    mask: radial-gradient(circle, transparent 62%, black 64%);
+    -webkit-mask: radial-gradient(circle, transparent 62%, black 64%);
+  }
+  .bh-gear-sm {
+    position: absolute; right: 46px; top: 50%; transform: translateY(-50%);
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 3px solid rgba(255,107,53,0.10);
+    animation: cdivGearSpin 7s linear infinite reverse;
+    pointer-events: none; flex-shrink: 0;
+  }
+  .bh-gear-sm::before {
+    content: ''; position: absolute; inset: -5px; border-radius: 50%;
+    background: repeating-conic-gradient(rgba(255,107,53,0.10) 0deg 9deg, transparent 9deg 24deg);
+    mask: radial-gradient(circle, transparent 60%, black 62%);
+    -webkit-mask: radial-gradient(circle, transparent 60%, black 62%);
+  }
 </style>
 </head>
 <body>
@@ -1258,7 +1712,19 @@
     <li><a href="#editions">歷屆介紹</a></li>
     <li><a data-nav="2026" class="nav-cta">2026 報名</a></li>
   </ul>
+  <button class="hamburger-btn" id="hamburger-btn" aria-label="開啟選單">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 </nav>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobile-menu">
+  <a data-nav="home">🏠 頁首</a>
+  <a id="mobile-editions-link">📚 歷屆介紹</a>
+  <a data-nav="2026" class="nav-cta-mobile">🕰️ 2026 立即報名</a>
+</div>
 
 <!-- ====================== VIEW: HOME ====================== -->
 <main id="view-home" class="view active">
@@ -1294,6 +1760,15 @@
         </a>
         <a href="#editions" class="btn-secondary">查看歷屆介紹</a>
       </div>
+      <div class="mini-countdown" id="mini-countdown">
+        <div class="pulse-dot"></div>
+        <span class="mc-label">⚠ 報名截止</span>
+        <strong id="mc-days">--</strong> 天
+        <strong id="mc-hours">--</strong> 時
+        <strong id="mc-mins">--</strong> 分
+        <strong id="mc-secs">--</strong> 秒
+      </div>
+
       <div class="hero-editions-row">
         <div class="hero-edition-chip" data-nav="2024">
           <span class="year-tag">2024</span>⚓ 未來之島
@@ -1462,6 +1937,35 @@
     </div>
   </section>
 
+  <div class="clock-divider" aria-hidden="true">
+    <div class="cdiv-gear"></div>
+    <div class="cdiv-gear rev"></div>
+    <div class="cdiv-clock-wrap">
+      <svg viewBox="0 0 100 100" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" stroke="rgba(255,107,53,0.35)" stroke-width="1.5" fill="rgba(255,255,255,0.04)"/>
+        <circle cx="50" cy="50" r="37" stroke="rgba(255,107,53,0.12)" stroke-width="0.8"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(30,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(60,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round" transform="rotate(90,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(120,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(150,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round" transform="rotate(180,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(210,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(240,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round" transform="rotate(270,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(300,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(330,50,50)"/>
+        <line x1="50" y1="50" x2="50" y2="27" stroke="rgba(255,107,53,0.8)" stroke-width="3" stroke-linecap="round" data-cdiv-hand="hour"/>
+        <line x1="50" y1="50" x2="50" y2="18" stroke="rgba(255,107,53,0.6)" stroke-width="2" stroke-linecap="round" data-cdiv-hand="minute"/>
+        <line x1="50" y1="56" x2="50" y2="13" stroke="rgba(255,209,102,0.8)" stroke-width="1" stroke-linecap="round" data-cdiv-hand="second"/>
+        <circle cx="50" cy="50" r="2.5" fill="rgba(255,107,53,0.9)"/>
+      </svg>
+    </div>
+    <div class="cdiv-gear"></div>
+    <div class="cdiv-gear rev"></div>
+  </div>
+
   <section class="about-band">
     <div class="about-inner">
       <div class="about-visual">
@@ -1479,6 +1983,35 @@
       </div>
     </div>
   </section>
+
+  <div class="clock-divider" aria-hidden="true">
+    <div class="cdiv-gear rev"></div>
+    <div class="cdiv-clock-wrap">
+      <svg viewBox="0 0 100 100" width="52" height="52" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="46" stroke="rgba(255,107,53,0.35)" stroke-width="1.5" fill="rgba(255,255,255,0.04)"/>
+        <circle cx="50" cy="50" r="37" stroke="rgba(255,107,53,0.12)" stroke-width="0.8"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(30,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(60,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round" transform="rotate(90,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(120,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(150,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round" transform="rotate(180,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(210,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(240,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="14" stroke="rgba(255,107,53,0.5)" stroke-width="2" stroke-linecap="round" transform="rotate(270,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(300,50,50)"/>
+        <line x1="50" y1="6" x2="50" y2="10" stroke="rgba(255,107,53,0.22)" stroke-width="1" stroke-linecap="round" transform="rotate(330,50,50)"/>
+        <line x1="50" y1="50" x2="50" y2="27" stroke="rgba(255,107,53,0.8)" stroke-width="3" stroke-linecap="round" data-cdiv-hand="hour"/>
+        <line x1="50" y1="50" x2="50" y2="18" stroke="rgba(255,107,53,0.6)" stroke-width="2" stroke-linecap="round" data-cdiv-hand="minute"/>
+        <line x1="50" y1="56" x2="50" y2="13" stroke="rgba(255,209,102,0.8)" stroke-width="1" stroke-linecap="round" data-cdiv-hand="second"/>
+        <circle cx="50" cy="50" r="2.5" fill="rgba(255,107,53,0.9)"/>
+      </svg>
+    </div>
+    <div class="cdiv-gear"></div>
+    <div class="cdiv-gear rev"></div>
+    <div class="cdiv-gear"></div>
+  </div>
 
   <section id="editions" class="editions-section">
     <div class="section-header-fun">
@@ -2002,6 +2535,23 @@
       </div>
     </div>
 
+    <!-- ── 倒數計時 ── -->
+    <div class="countdown-section">
+      <div class="countdown-inner" id="countdown-inner">
+        <div class="countdown-label">
+          <div class="eyebrow">⏳ Mission Launch · 任務倒數</div>
+          <h3>時空管理局<br>即將啟動</h3>
+          <p>2026 年 7 月 6 日(一) · 08:30 · 弘文中學</p>
+        </div>
+        <div class="countdown-digits">
+          <div class="countdown-unit"><span class="n" id="cd-days">--</span><span class="l">Days · 天</span></div>
+          <div class="countdown-unit"><span class="n" id="cd-hours">--</span><span class="l">Hours · 時</span></div>
+          <div class="countdown-unit"><span class="n" id="cd-mins">--</span><span class="l">Mins · 分</span></div>
+          <div class="countdown-unit"><span class="n" id="cd-secs">--</span><span class="l">Secs · 秒</span></div>
+        </div>
+      </div>
+    </div>
+
     <div class="detail-stats">
       <div><span class="n">???</span><div class="l">時代 ERAS</div></div>
       <div><span class="n">08</span><div class="l">星球指揮部 DIVISIONS</div></div>
@@ -2082,6 +2632,23 @@
         </div>
       </div>
 
+      <!-- 報名截止倒數 -->
+      <div class="deadline-banner">
+        <div class="deadline-banner-inner" id="deadline-inner">
+          <div class="deadline-label">
+            <div class="eyebrow">Registration Deadline · 報名截止</div>
+            <h3>2026/6/12 前完成報名</h3>
+            <p>名額有限，截止後不再受理。立即點擊右方按鈕完成報到！</p>
+          </div>
+          <div class="deadline-digits">
+            <div class="deadline-unit"><span class="n" id="dl-days">--</span><span class="l">Days · 天</span></div>
+            <div class="deadline-unit"><span class="n" id="dl-hours">--</span><span class="l">Hrs · 時</span></div>
+            <div class="deadline-unit"><span class="n" id="dl-mins">--</span><span class="l">Min · 分</span></div>
+            <div class="deadline-unit"><span class="n" id="dl-secs">--</span><span class="l">Sec · 秒</span></div>
+          </div>
+        </div>
+      </div>
+
       <div class="enroll-block">
         <div class="enroll-block-inner">
           <div>
@@ -2137,6 +2704,35 @@
   </div>
 </footer>
 
+<!-- BGM -->
+<audio id="bg-music" loop preload="auto">
+  <source src="%E3%80%90%E9%A4%85%E4%B9%BE%E5%87%BA%E8%BC%AF%E3%80%91%E8%B6%85%E6%99%82%E7%A9%BA%E9%A4%85%E4%B9%BE%E9%81%8A%E6%88%B2%E9%9F%B3%E6%A8%82(M_V)%20-%20CookieRun%E8%96%91%E9%A4%85%E4%BA%BA%E5%AE%98%E6%96%B9%E4%B8%AD%E6%96%87%E9%A0%BB%E9%81%93%20(youtube).mp3" type="audio/mpeg">
+</audio>
+
+<!-- MUSIC TOGGLE -->
+<button class="music-toggle" id="music-toggle" aria-label="播放背景音樂">
+  <span class="mt-icon">🎵</span>
+  <span class="mt-label">BGM</span>
+  <div class="mt-bar">
+    <span></span><span></span><span></span><span></span>
+  </div>
+</button>
+
+<!-- TIME WARP OVERLAY -->
+<div id="timewarp-overlay" aria-hidden="true">
+  <canvas id="timewarp-canvas"></canvas>
+  <div class="tw-scanlines"></div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox-overlay" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close" aria-label="關閉">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightbox-prev" aria-label="上一張">‹</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="">
+  <button class="lightbox-nav lightbox-next" id="lightbox-next" aria-label="下一張">›</button>
+  <div class="lightbox-counter" id="lightbox-counter"></div>
+</div>
+
 <script>
   const views = {
     home: document.getElementById('view-home'),
@@ -2146,11 +2742,20 @@
   };
 
   function showView(name) {
-    Object.values(views).forEach(v => v.classList.remove('active'));
-    if (views[name]) {
+    if (!views[name]) return;
+    if (window._snd) window._snd.playNav();
+    function doSwap() {
+      Object.values(views).forEach(v => v.classList.remove('active'));
       views[name].classList.add('active');
       window.scrollTo({ top: 0, behavior: 'instant' });
+      if (window._revealObserver) {
+        views[name].querySelectorAll('.js-reveal:not(.revealed)').forEach(function(el) {
+          window._revealObserver.observe(el);
+        });
+      }
     }
+    if (window._playTimeWarp) window._playTimeWarp(doSwap);
+    else doSwap();
   }
 
   document.querySelectorAll('[data-nav]').forEach(el => {
@@ -2162,6 +2767,761 @@
       }
     });
   });
+
+  // ── 全頁時鐘裝飾系統 ──
+  (function() {
+    var NS = 'http://www.w3.org/2000/svg';
+
+    // 浮動時鐘設定 [top, left/right side, size, opacity, animName, duration, delay]
+    var configs = [
+      { top:'5%',  side:'left:2%',   size:108, op:0.09, anim:'fc-float1', dur:'9s',  dl:'0s'   },
+      { top:'13%', side:'right:3%',  size:74,  op:0.08, anim:'fc-float2', dur:'11s', dl:'2s'   },
+      { top:'44%', side:'left:1%',   size:64,  op:0.07, anim:'fc-float3', dur:'13s', dl:'4s'   },
+      { top:'58%', side:'right:2%',  size:90,  op:0.09, anim:'fc-float4', dur:'8s',  dl:'1.5s' },
+      { top:'76%', side:'left:4%',   size:78,  op:0.07, anim:'fc-float5', dur:'10s', dl:'3s'   },
+      { top:'72%', side:'right:7%',  size:66,  op:0.07, anim:'fc-float1', dur:'12s', dl:'5s'   },
+      { top:'30%', side:'left:43%',  size:134, op:0.04, anim:'fc-float2', dur:'16s', dl:'7s'   },
+    ];
+
+    var overlay = document.createElement('div');
+    overlay.setAttribute('aria-hidden','true');
+    overlay.style.cssText = 'position:fixed;inset:0;pointer-events:none;z-index:1;overflow:hidden;';
+
+    var allHour = [], allMinute = [], allSecond = [];
+
+    configs.forEach(function(cfg) {
+      var wrap = document.createElement('div');
+      wrap.style.cssText =
+        'position:absolute;top:' + cfg.top + ';' + cfg.side + ';' +
+        'width:' + cfg.size + 'px;height:' + cfg.size + 'px;' +
+        'opacity:' + cfg.op + ';' +
+        'animation:' + cfg.anim + ' ' + cfg.dur + ' ease-in-out ' + cfg.dl + ' infinite;';
+
+      var svg = document.createElementNS(NS, 'svg');
+      svg.setAttribute('viewBox','0 0 100 100');
+      svg.setAttribute('width', cfg.size);
+      svg.setAttribute('height', cfg.size);
+
+      function ce(tag, attrs) {
+        var el = document.createElementNS(NS, tag);
+        Object.keys(attrs).forEach(function(k){ el.setAttribute(k, attrs[k]); });
+        return el;
+      }
+
+      svg.appendChild(ce('circle',{cx:'50',cy:'50',r:'47',fill:'rgba(255,255,255,0.04)',stroke:'rgba(255,107,53,0.42)','stroke-width':'1.5'}));
+      svg.appendChild(ce('circle',{cx:'50',cy:'50',r:'38',fill:'none',stroke:'rgba(255,107,53,0.12)','stroke-width':'0.8'}));
+
+      for (var t = 0; t < 12; t++) {
+        var main = t % 3 === 0;
+        var tick = ce('line',{x1:'50',y1: main ? '5':'7', x2:'50',y2: main ? '12':'10',
+          stroke: main ? 'rgba(255,107,53,0.55)':'rgba(255,107,53,0.25)',
+          'stroke-width': main ? '2':'1', 'stroke-linecap':'round',
+          transform:'rotate(' + (t*30) + ',50,50)'});
+        svg.appendChild(tick);
+      }
+
+      var hLine = ce('line',{x1:'50',y1:'50',x2:'50',y2:'26',stroke:'rgba(255,107,53,0.78)','stroke-width':'3','stroke-linecap':'round'});
+      var mLine = ce('line',{x1:'50',y1:'50',x2:'50',y2:'17',stroke:'rgba(255,107,53,0.58)','stroke-width':'2','stroke-linecap':'round'});
+      var sLine = ce('line',{x1:'50',y1:'57',x2:'50',y2:'12',stroke:'rgba(255,209,102,0.78)','stroke-width':'1','stroke-linecap':'round'});
+      svg.appendChild(hLine); svg.appendChild(mLine); svg.appendChild(sLine);
+      svg.appendChild(ce('circle',{cx:'50',cy:'50',r:'2.5',fill:'rgba(255,107,53,0.88)'}));
+
+      allHour.push(hLine); allMinute.push(mLine); allSecond.push(sLine);
+      wrap.appendChild(svg);
+      overlay.appendChild(wrap);
+    });
+
+    document.body.insertBefore(overlay, document.body.firstChild);
+
+    // 數位時鐘 widget
+    var widget = document.createElement('div');
+    widget.className = 'digital-clock-widget';
+    widget.setAttribute('aria-hidden','true');
+    widget.innerHTML =
+      '<span class="dw-label">TEMPORAL HQ · 時空總部</span>' +
+      '<span class="dw-time" id="dw-time">--:--:--</span>' +
+      '<span class="dw-date" id="dw-date">----/--/-- ---</span>';
+    document.body.appendChild(widget);
+
+    // 區塊標題裝飾齒輪
+    document.querySelectorAll('.block-header').forEach(function(bh) {
+      var g1 = document.createElement('div'); g1.className = 'bh-gear';
+      var g2 = document.createElement('div'); g2.className = 'bh-gear-sm';
+      bh.appendChild(g1); bh.appendChild(g2);
+    });
+
+    var DAYS = ['SUN','MON','TUE','WED','THU','FRI','SAT'];
+
+    // 每秒更新所有時鐘
+    function tick() {
+      var now = new Date();
+      var h = now.getHours() % 12, m = now.getMinutes(), s = now.getSeconds();
+      var hA = h * 30 + m * 0.5;
+      var mA = m * 6 + s * 0.1;
+      var sA = s * 6;
+
+      allHour.forEach(function(el){ el.setAttribute('transform','rotate(' + hA + ',50,50)'); });
+      allMinute.forEach(function(el){ el.setAttribute('transform','rotate(' + mA + ',50,50)'); });
+      allSecond.forEach(function(el){ el.setAttribute('transform','rotate(' + sA + ',50,50)'); });
+
+      // 分隔線時鐘指針
+      document.querySelectorAll('[data-cdiv-hand="hour"]').forEach(function(el){ el.setAttribute('transform','rotate(' + hA + ',50,50)'); });
+      document.querySelectorAll('[data-cdiv-hand="minute"]').forEach(function(el){ el.setAttribute('transform','rotate(' + mA + ',50,50)'); });
+      document.querySelectorAll('[data-cdiv-hand="second"]').forEach(function(el){ el.setAttribute('transform','rotate(' + sA + ',50,50)'); });
+
+      // 數位時鐘
+      var dTime = document.getElementById('dw-time');
+      var dDate = document.getElementById('dw-date');
+      if (dTime) dTime.textContent = String(now.getHours()).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ':' + String(s).padStart(2,'0');
+      if (dDate) dDate.textContent = now.getFullYear() + '/' + String(now.getMonth()+1).padStart(2,'0') + '/' + String(now.getDate()).padStart(2,'0') + ' · ' + DAYS[now.getDay()];
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // ── 時鐘音效系統 ──
+  (function() {
+    var ctx = null;
+    var activated = false;
+
+    function getCtx() {
+      if (!ctx) ctx = new (window.AudioContext || window.webkitAudioContext)();
+      if (ctx.state === 'suspended') ctx.resume();
+      return ctx;
+    }
+
+    // 第一次互動：時空機器啟動音
+    function activate() {
+      if (activated) return;
+      activated = true;
+      var c = getCtx();
+      // 鋸齒波 60→240Hz 掃頻
+      var osc = c.createOscillator(); var g = c.createGain();
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(60, c.currentTime);
+      osc.frequency.exponentialRampToValueAtTime(240, c.currentTime + 0.55);
+      g.gain.setValueAtTime(0.10, c.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.65);
+      osc.connect(g); g.connect(c.destination);
+      osc.start(); osc.stop(c.currentTime + 0.65);
+      // 三下齒輪咬合
+      [0.08, 0.20, 0.34].forEach(function(t) {
+        var buf = c.createBuffer(1, Math.floor(c.sampleRate * 0.022), c.sampleRate);
+        var d = buf.getChannelData(0);
+        for (var i = 0; i < d.length; i++) d[i] = (Math.random()*2-1) * Math.pow(1-i/d.length, 3);
+        var src = c.createBufferSource(); src.buffer = buf;
+        var filt = c.createBiquadFilter();
+        filt.type = 'bandpass'; filt.frequency.value = 1400 + t*800; filt.Q.value = 5;
+        var gn = c.createGain(); gn.gain.value = 0.32;
+        src.connect(filt); filt.connect(gn); gn.connect(c.destination);
+        src.start(c.currentTime + t);
+      });
+    }
+
+    // 換頁：時光隧道穿越音
+    function playNav() {
+      if (!activated) return;
+      var c = getCtx();
+      // 低頻衝擊 110→44Hz
+      var b = c.createOscillator(); var bg = c.createGain();
+      b.type = 'sine';
+      b.frequency.setValueAtTime(110, c.currentTime);
+      b.frequency.exponentialRampToValueAtTime(44, c.currentTime + 0.32);
+      bg.gain.setValueAtTime(0.32, c.currentTime);
+      bg.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.46);
+      b.connect(bg); bg.connect(c.destination);
+      b.start(); b.stop(c.currentTime + 0.46);
+      // 鋸齒掃頻 3500→180Hz + waveshaper 失真
+      var sw = c.createOscillator(); var swg = c.createGain();
+      sw.type = 'sawtooth';
+      sw.frequency.setValueAtTime(3500, c.currentTime + 0.03);
+      sw.frequency.exponentialRampToValueAtTime(180, c.currentTime + 0.5);
+      var ws = c.createWaveShaper();
+      var curve = new Float32Array(512);
+      for (var ci = 0; ci < 512; ci++) { var x = ci*2/512-1; curve[ci] = x/(Math.abs(x)+0.25); }
+      ws.curve = curve;
+      swg.gain.setValueAtTime(0, c.currentTime);
+      swg.gain.linearRampToValueAtTime(0.065, c.currentTime + 0.05);
+      swg.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.52);
+      sw.connect(ws); ws.connect(swg); swg.connect(c.destination);
+      sw.start(c.currentTime + 0.02); sw.stop(c.currentTime + 0.54);
+      // 5 個隨機 glitch 雜訊爆
+      for (var gi = 0; gi < 5; gi++) {
+        (function(idx) {
+          var t = c.currentTime + idx * 0.055 + Math.random() * 0.015;
+          var len = Math.floor(c.sampleRate * (0.009 + Math.random() * 0.012));
+          var buf = c.createBuffer(1, len, c.sampleRate);
+          var dat = buf.getChannelData(0);
+          for (var j = 0; j < len; j++) dat[j] = (Math.random()*2-1) * (1-j/len);
+          var src = c.createBufferSource(); src.buffer = buf;
+          var flt = c.createBiquadFilter();
+          flt.type = 'bandpass'; flt.frequency.value = 600 + idx*240; flt.Q.value = 3;
+          var gn = c.createGain(); gn.gain.value = 0.16;
+          src.connect(flt); flt.connect(gn); gn.connect(c.destination);
+          src.start(t);
+        })(gi);
+      }
+      // 穿越後：C5-E5-G5 殘響鐘尾音
+      setTimeout(function() {
+        var c2 = getCtx();
+        [[523.25, 0.13], [659.25, 0.07], [783.99, 0.04]].forEach(function(p, i) {
+          var o = c2.createOscillator(); var gn = c2.createGain();
+          o.type = 'sine'; o.frequency.value = p[0];
+          var o2 = c2.createOscillator(); var gn2 = c2.createGain();
+          o2.type = 'sine'; o2.frequency.value = p[0] * 2.76;
+          var t = c2.currentTime + i * 0.07;
+          gn.gain.setValueAtTime(p[1], t); gn.gain.exponentialRampToValueAtTime(0.001, t + 1.6);
+          gn2.gain.setValueAtTime(p[1]*0.28, t); gn2.gain.exponentialRampToValueAtTime(0.001, t + 0.85);
+          o.connect(gn); gn.connect(c2.destination);
+          o2.connect(gn2); gn2.connect(c2.destination);
+          o.start(t); o.stop(t + 1.6);
+          o2.start(t); o2.stop(t + 0.85);
+        });
+      }, 200);
+    }
+
+    // 卡片 hover：科幻嗶嗶
+    function playHoverBlip() {
+      if (!activated) return;
+      var c = getCtx();
+      var o = c.createOscillator(); var g = c.createGain();
+      o.type = 'square';
+      o.frequency.setValueAtTime(900, c.currentTime);
+      o.frequency.exponentialRampToValueAtTime(1700, c.currentTime + 0.05);
+      g.gain.setValueAtTime(0.030, c.currentTime);
+      g.gain.exponentialRampToValueAtTime(0.001, c.currentTime + 0.055);
+      o.connect(g); g.connect(c.destination);
+      o.start(); o.stop(c.currentTime + 0.055);
+    }
+
+    // 相片點擊：機械快門
+    function playShutter() {
+      if (!activated) return;
+      var c = getCtx();
+      var buf = c.createBuffer(1, Math.floor(c.sampleRate * 0.065), c.sampleRate);
+      var d = buf.getChannelData(0);
+      for (var i = 0; i < d.length; i++) d[i] = (Math.random()*2-1) * Math.pow(1-i/d.length, 1.8);
+      var src = c.createBufferSource(); src.buffer = buf;
+      var filt = c.createBiquadFilter(); filt.type = 'highpass'; filt.frequency.value = 2800;
+      var g = c.createGain(); g.gain.value = 0.44;
+      src.connect(filt); filt.connect(g); g.connect(c.destination);
+      src.start();
+    }
+
+    window._snd = { playNav: playNav };
+
+    // ── 背景音樂（預設開啟，可手動關閉）──
+    var bgMusic = document.getElementById('bg-music');
+    var musicBtn = document.getElementById('music-toggle');
+    var musicLabel = musicBtn ? musicBtn.querySelector('.mt-label') : null;
+    var musicPlaying = false;
+
+    if (bgMusic) bgMusic.volume = 0.28;
+
+    // 按鈕預設顯示「播放中」外觀，示意音樂即將自動啟動
+    if (musicBtn) {
+      musicBtn.classList.add('playing');
+      musicBtn.setAttribute('aria-label', '暫停背景音樂');
+    }
+    if (musicLabel) musicLabel.textContent = '♪';
+
+    function setMusicUI(playing) {
+      musicPlaying = playing;
+      if (!musicBtn) return;
+      if (playing) {
+        musicBtn.classList.add('playing');
+        musicBtn.setAttribute('aria-label', '暫停背景音樂');
+        if (musicLabel) musicLabel.textContent = '♪';
+      } else {
+        musicBtn.classList.remove('playing');
+        musicBtn.setAttribute('aria-label', '播放背景音樂');
+        if (musicLabel) musicLabel.textContent = 'BGM';
+      }
+    }
+
+    function startMusic() {
+      if (!bgMusic || musicPlaying) return;
+      bgMusic.play()
+        .then(function() { setMusicUI(true); })
+        .catch(function() { setMusicUI(false); }); // 瀏覽器阻擋時靜默失敗
+    }
+
+    // BGM 按鈕：暫停／恢復（stopPropagation 防止同時觸發 onFirstInteraction）
+    if (musicBtn) {
+      musicBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (!activated) activate();
+        if (musicPlaying) {
+          bgMusic.pause();
+          setMusicUI(false);
+        } else {
+          startMusic();
+        }
+      });
+    }
+
+    // 第一次點擊頁面任何地方 → 啟動音效系統 + 自動開始音樂
+    function onFirstInteraction() {
+      activate();
+      startMusic();
+    }
+    document.addEventListener('click', onFirstInteraction, { once: true });
+    document.addEventListener('touchstart', onFirstInteraction, { once: true });
+
+    // 卡片 hover 音效
+    document.querySelectorAll('.edition-card, .hero-edition-chip').forEach(function(el) {
+      el.addEventListener('mouseenter', playHoverBlip);
+    });
+
+    // 相片快門音效
+    document.querySelectorAll('.photo-grid img').forEach(function(img) {
+      img.addEventListener('click', playShutter);
+    });
+
+  })();
+
+  // ── 手機漢堡選單 ──
+  (function() {
+    const btn = document.getElementById('hamburger-btn');
+    const menu = document.getElementById('mobile-menu');
+    if (!btn || !menu) return;
+    btn.addEventListener('click', function() {
+      btn.classList.toggle('open');
+      menu.classList.toggle('open');
+      btn.setAttribute('aria-label', menu.classList.contains('open') ? '關閉選單' : '開啟選單');
+    });
+    // 點歷屆介紹時捲到 #editions 並關選單
+    var editionsLink = document.getElementById('mobile-editions-link');
+    if (editionsLink) {
+      editionsLink.addEventListener('click', function() {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+        showView('home');
+        setTimeout(function() {
+          var el = document.getElementById('editions');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }, 80);
+      });
+    }
+    // 點任何 data-nav 連結後關閉選單
+    menu.querySelectorAll('[data-nav]').forEach(function(el) {
+      el.addEventListener('click', function() {
+        btn.classList.remove('open');
+        menu.classList.remove('open');
+      });
+    });
+  })();
+
+  // ── 倒數計時 ──
+  (function() {
+    var deadline  = new Date('2026-06-12T23:59:59+08:00');  // 報名截止
+    var campStart = new Date('2026-07-06T08:30:00+08:00');  // 開營
+
+    function pad(n) { return String(Math.max(0, n)).padStart(2, '0'); }
+    function decompose(diff) {
+      return {
+        d: Math.floor(diff / 86400000),
+        h: Math.floor(diff % 86400000 / 3600000),
+        m: Math.floor(diff % 3600000  / 60000),
+        s: Math.floor(diff % 60000    / 1000)
+      };
+    }
+    function set(id, val) { var el = document.getElementById(id); if (el) el.textContent = val; }
+
+    function tick() {
+      var now = new Date();
+
+      // ── 報名截止倒數（首頁 mini + 2026 頁 deadline banner）──
+      var ddiff = deadline - now;
+      if (ddiff > 0) {
+        var t = decompose(ddiff);
+        set('dl-days',  pad(t.d));
+        set('dl-hours', pad(t.h));
+        set('dl-mins',  pad(t.m));
+        set('dl-secs',  pad(t.s));
+        set('mc-days',  t.d);
+        set('mc-hours', pad(t.h));
+        set('mc-mins',  pad(t.m));
+        set('mc-secs',  pad(t.s));
+      } else {
+        // 報名已截止
+        var dlInner = document.getElementById('deadline-inner');
+        if (dlInner && !dlInner.dataset.expired) {
+          dlInner.dataset.expired = '1';
+          dlInner.innerHTML = '<div class="deadline-expired">⏹ 報名已截止 · Registration Closed</div>';
+        }
+        var mc = document.getElementById('mini-countdown');
+        if (mc && !mc.dataset.expired) {
+          mc.dataset.expired = '1';
+          mc.innerHTML = '<div class="pulse-dot"></div><span class="mc-label">報名已截止</span>';
+        }
+      }
+
+      // ── 開營倒數（2026 頁 countdown-section）──
+      var cdiff = campStart - now;
+      if (cdiff > 0) {
+        var c = decompose(cdiff);
+        set('cd-days',  pad(c.d));
+        set('cd-hours', pad(c.h));
+        set('cd-mins',  pad(c.m));
+        set('cd-secs',  pad(c.s));
+      } else {
+        var inner = document.getElementById('countdown-inner');
+        if (inner && !inner.dataset.launched) {
+          inner.dataset.launched = '1';
+          inner.innerHTML = '<div class="countdown-launched">🎉 時空任務已啟動！任務執行中...</div>';
+        }
+      }
+    }
+
+    tick();
+    setInterval(tick, 1000);
+  })();
+
+  // ── 相片 Lightbox ──
+  (function() {
+    var overlay = document.getElementById('lightbox');
+    var img = document.getElementById('lightbox-img');
+    var counter = document.getElementById('lightbox-counter');
+    if (!overlay) return;
+    var currentPhotos = [];
+    var currentIdx = 0;
+    function open(photos, idx) {
+      currentPhotos = photos;
+      currentIdx = idx;
+      img.src = photos[idx].src;
+      img.alt = photos[idx].alt || '';
+      counter.textContent = (idx + 1) + ' / ' + photos.length;
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function close() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+      setTimeout(function() { img.src = ''; }, 300);
+    }
+    function nav(dir) {
+      currentIdx = (currentIdx + dir + currentPhotos.length) % currentPhotos.length;
+      img.src = currentPhotos[currentIdx].src;
+      img.alt = currentPhotos[currentIdx].alt || '';
+      counter.textContent = (currentIdx + 1) + ' / ' + currentPhotos.length;
+    }
+    document.getElementById('lightbox-close').addEventListener('click', close);
+    document.getElementById('lightbox-prev').addEventListener('click', function() { nav(-1); });
+    document.getElementById('lightbox-next').addEventListener('click', function() { nav(1); });
+    overlay.addEventListener('click', function(e) { if (e.target === overlay) close(); });
+    document.addEventListener('keydown', function(e) {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') close();
+      if (e.key === 'ArrowLeft') nav(-1);
+      if (e.key === 'ArrowRight') nav(1);
+    });
+    document.querySelectorAll('.photo-grid').forEach(function(grid) {
+      var photos = Array.from(grid.querySelectorAll('img'));
+      photos.forEach(function(photo, i) {
+        photo.addEventListener('click', function() { open(photos, i); });
+      });
+    });
+  })();
+
+  // ── Scroll Reveal ──
+  (function() {
+    if (!window.IntersectionObserver) return;
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('revealed');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    function attachReveal(root) {
+      root.querySelectorAll('.edition-card, .feature-card, .detail-stats > div, .crew-card, .about-inner, .countdown-section').forEach(function(el, i) {
+        if (!el.classList.contains('js-reveal')) {
+          el.classList.add('js-reveal');
+          el.style.transitionDelay = (i % 4 * 0.08) + 's';
+          observer.observe(el);
+        }
+      });
+    }
+    attachReveal(document);
+    // 切換 view 後對新 view 內的元素重新 observe
+    window._revealObserver = observer;
+  })();
+
+  // ── 穿越時空動畫 ──
+  (function() {
+    var overlay = document.getElementById('timewarp-overlay');
+    var canvas  = document.getElementById('timewarp-canvas');
+    if (!overlay || !canvas) return;
+    var ctx2 = canvas.getContext('2d');
+
+    function resize() {
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resize);
+    resize();
+
+    // 游標星火粒子
+    var sparks = [];
+    function spawnSparks(x, y) {
+      for (var i = 0; i < 6; i++) {
+        var angle = Math.random() * Math.PI * 2;
+        var speed = 1 + Math.random() * 3;
+        sparks.push({
+          x: x, y: y,
+          vx: Math.cos(angle) * speed,
+          vy: Math.sin(angle) * speed,
+          r:  3 + Math.random() * 3,
+          life: 1,
+          decay: 0.04 + Math.random() * 0.04,
+          hue: 25 + Math.random() * 40   // orange-gold
+        });
+      }
+    }
+    document.addEventListener('mousemove', function(e) {
+      if (sparks.length > 0 || Math.random() < 0.35) spawnSparks(e.clientX, e.clientY);
+    });
+    // 游標粒子持續渲染（輕量，不依賴 warp）
+    var sparkCanvas = document.createElement('canvas');
+    sparkCanvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
+    document.body.appendChild(sparkCanvas);
+    var sCtx = sparkCanvas.getContext('2d');
+    function resizeSpark() { sparkCanvas.width = window.innerWidth; sparkCanvas.height = window.innerHeight; }
+    window.addEventListener('resize', resizeSpark); resizeSpark();
+    function animSparks() {
+      sCtx.clearRect(0, 0, sparkCanvas.width, sparkCanvas.height);
+      for (var i = sparks.length - 1; i >= 0; i--) {
+        var s = sparks[i];
+        s.x += s.vx; s.y += s.vy;
+        s.vy += 0.08;
+        s.life -= s.decay;
+        if (s.life <= 0) { sparks.splice(i, 1); continue; }
+        sCtx.save();
+        sCtx.globalAlpha = s.life;
+        sCtx.beginPath();
+        sCtx.arc(s.x, s.y, s.r * s.life, 0, Math.PI * 2);
+        sCtx.fillStyle = 'hsl(' + s.hue + ',100%,' + (50 + 30 * s.life) + '%)';
+        sCtx.shadowColor = 'hsl(' + s.hue + ',100%,70%)';
+        sCtx.shadowBlur = 8;
+        sCtx.fill();
+        sCtx.restore();
+      }
+      requestAnimationFrame(animSparks);
+    }
+    animSparks();
+
+    // 主時空穿越動畫
+    window._playTimeWarp = function(callback) {
+      overlay.classList.add('active');
+      overlay.setAttribute('aria-hidden', 'false');
+
+      var W = canvas.width  = window.innerWidth;
+      var H = canvas.height = window.innerHeight;
+      var cx = W / 2, cy = H / 2;
+      var startTime = null;
+      var TOTAL = 1400; // ms 總時長
+
+      // 時鐘指針
+      var clockAngle = 0;
+
+      function drawClock(x, y, r, angle, alpha) {
+        ctx2.save();
+        ctx2.globalAlpha = alpha;
+        // 錶盤
+        ctx2.beginPath();
+        ctx2.arc(x, y, r, 0, Math.PI * 2);
+        ctx2.strokeStyle = '#FFD166';
+        ctx2.lineWidth = r * 0.06;
+        ctx2.stroke();
+        // 刻度
+        for (var i = 0; i < 12; i++) {
+          var a = (i / 12) * Math.PI * 2 - Math.PI / 2;
+          ctx2.beginPath();
+          ctx2.moveTo(x + Math.cos(a) * r * 0.82, y + Math.sin(a) * r * 0.82);
+          ctx2.lineTo(x + Math.cos(a) * r * 0.95, y + Math.sin(a) * r * 0.95);
+          ctx2.strokeStyle = '#FFD166';
+          ctx2.lineWidth = r * 0.04;
+          ctx2.stroke();
+        }
+        // 時針
+        var ha = angle * 0.5 - Math.PI / 2;
+        ctx2.beginPath();
+        ctx2.moveTo(x, y);
+        ctx2.lineTo(x + Math.cos(ha) * r * 0.55, y + Math.sin(ha) * r * 0.55);
+        ctx2.strokeStyle = '#FF6B35';
+        ctx2.lineWidth = r * 0.08;
+        ctx2.lineCap = 'round';
+        ctx2.stroke();
+        // 分針
+        var ma = angle - Math.PI / 2;
+        ctx2.beginPath();
+        ctx2.moveTo(x, y);
+        ctx2.lineTo(x + Math.cos(ma) * r * 0.78, y + Math.sin(ma) * r * 0.78);
+        ctx2.strokeStyle = '#fff';
+        ctx2.lineWidth = r * 0.05;
+        ctx2.lineCap = 'round';
+        ctx2.stroke();
+        // 中心點
+        ctx2.beginPath();
+        ctx2.arc(x, y, r * 0.07, 0, Math.PI * 2);
+        ctx2.fillStyle = '#FFD166';
+        ctx2.fill();
+        ctx2.restore();
+      }
+
+      function drawVortex(progress) {
+        var phase1End = 0.55, phase2End = 0.70;
+        ctx2.clearRect(0, 0, W, H);
+
+        if (progress < phase1End) {
+          // Phase 1：螺旋漩渦 + 時鐘快速旋轉
+          var t = progress / phase1End;
+          clockAngle += 0.25 + t * 1.2;
+
+          // 暗色背景
+          ctx2.fillStyle = 'rgba(10,8,30,' + (0.3 + t * 0.65) + ')';
+          ctx2.fillRect(0, 0, W, H);
+
+          // 螺旋臂
+          var numArms = 5;
+          for (var arm = 0; arm < numArms; arm++) {
+            var armOffset = (arm / numArms) * Math.PI * 2;
+            ctx2.save();
+            ctx2.translate(cx, cy);
+            ctx2.rotate(armOffset + clockAngle * 0.3);
+            ctx2.beginPath();
+            var pts = 120;
+            for (var p = 0; p < pts; p++) {
+              var frac = p / pts;
+              var radius = frac * (Math.min(W, H) * 0.52) * (0.4 + t * 0.6);
+              var spiralAngle = frac * Math.PI * 6;
+              var px = Math.cos(spiralAngle) * radius;
+              var py = Math.sin(spiralAngle) * radius;
+              if (p === 0) ctx2.moveTo(px, py); else ctx2.lineTo(px, py);
+            }
+            var grad = ctx2.createLinearGradient(-cx, 0, cx, 0);
+            grad.addColorStop(0, 'rgba(255,107,53,0)');
+            grad.addColorStop(0.4, 'rgba(255,209,102,' + (0.3 + t * 0.5) + ')');
+            grad.addColorStop(1, 'rgba(255,107,53,0)');
+            ctx2.strokeStyle = grad;
+            ctx2.lineWidth = 2 + t * 3;
+            ctx2.stroke();
+            ctx2.restore();
+          }
+
+          // 中心發光
+          var glow = ctx2.createRadialGradient(cx, cy, 0, cx, cy, 80 + t * 120);
+          glow.addColorStop(0, 'rgba(255,209,102,' + (0.4 + t * 0.5) + ')');
+          glow.addColorStop(0.5, 'rgba(255,107,53,' + (0.1 + t * 0.3) + ')');
+          glow.addColorStop(1, 'rgba(0,0,0,0)');
+          ctx2.fillStyle = glow;
+          ctx2.beginPath();
+          ctx2.arc(cx, cy, 80 + t * 120, 0, Math.PI * 2);
+          ctx2.fill();
+
+          // 中心時鐘
+          var clockR = 40 + t * 55;
+          drawClock(cx, cy, clockR, clockAngle, 0.4 + t * 0.5);
+
+          // 毛刺線條
+          if (t > 0.4 && Math.random() < 0.4) {
+            var gy = cy + (Math.random() - 0.5) * H * 0.8;
+            ctx2.save();
+            ctx2.globalAlpha = 0.4;
+            ctx2.fillStyle = Math.random() < 0.5 ? '#FF6B35' : '#FFD166';
+            ctx2.fillRect(0, gy, W, 1 + Math.random() * 3);
+            ctx2.restore();
+          }
+
+          // 飄浮的小時鐘
+          for (var fi = 0; fi < 5; fi++) {
+            var fAngle = (fi / 5) * Math.PI * 2 + clockAngle * 0.5;
+            var fDist  = (60 + fi * 35) * t;
+            var fx = cx + Math.cos(fAngle) * fDist;
+            var fy = cy + Math.sin(fAngle) * fDist;
+            drawClock(fx, fy, 12 + fi * 4, clockAngle * (1 + fi * 0.3), 0.3 * t);
+          }
+
+        } else if (progress < phase2End) {
+          // Phase 2：白金閃光
+          var t2 = (progress - phase1End) / (phase2End - phase1End);
+          ctx2.fillStyle = 'rgba(10,8,30,0.9)';
+          ctx2.fillRect(0, 0, W, H);
+          var flashAlpha = Math.sin(t2 * Math.PI);
+          ctx2.fillStyle = 'rgba(255,240,180,' + flashAlpha + ')';
+          ctx2.fillRect(0, 0, W, H);
+          // 放射光線
+          ctx2.save();
+          ctx2.translate(cx, cy);
+          for (var ri = 0; ri < 16; ri++) {
+            var ra = (ri / 16) * Math.PI * 2;
+            ctx2.save();
+            ctx2.rotate(ra);
+            var rayGrad = ctx2.createLinearGradient(0, 0, Math.max(W, H), 0);
+            rayGrad.addColorStop(0, 'rgba(255,209,102,' + flashAlpha * 0.9 + ')');
+            rayGrad.addColorStop(1, 'rgba(255,209,102,0)');
+            ctx2.fillStyle = rayGrad;
+            ctx2.beginPath();
+            ctx2.moveTo(0, -6);
+            ctx2.lineTo(Math.max(W, H), -20);
+            ctx2.lineTo(Math.max(W, H), 20);
+            ctx2.lineTo(0, 6);
+            ctx2.fill();
+            ctx2.restore();
+          }
+          ctx2.restore();
+
+        } else {
+          // Phase 3：消散
+          var t3 = (progress - phase2End) / (1 - phase2End);
+          var fadeAlpha = 1 - t3;
+          ctx2.fillStyle = 'rgba(10,8,30,' + (fadeAlpha * 0.7) + ')';
+          ctx2.fillRect(0, 0, W, H);
+          // 消散光環
+          for (var ri2 = 0; ri2 < 4; ri2++) {
+            var ringR = (ri2 * 80 + t3 * 300);
+            var ringA = (1 - t3) * (0.6 - ri2 * 0.12);
+            if (ringA <= 0) continue;
+            ctx2.beginPath();
+            ctx2.arc(cx, cy, ringR, 0, Math.PI * 2);
+            ctx2.strokeStyle = 'rgba(255,209,102,' + ringA + ')';
+            ctx2.lineWidth = 3;
+            ctx2.stroke();
+          }
+          drawClock(cx, cy, 95 * fadeAlpha, clockAngle, fadeAlpha * 0.6);
+        }
+      }
+
+      var callbackCalled = false;
+      function callbackOnce() {
+        if (!callbackCalled) { callbackCalled = true; callback(); }
+      }
+
+      function animate(ts) {
+        if (!startTime) startTime = ts;
+        var elapsed  = ts - startTime;
+        var progress = Math.min(elapsed / TOTAL, 1);
+
+        drawVortex(progress);
+
+        // 在 Phase 2 一開始（約55%）執行換頁，讓白光蓋住換頁
+        if (progress >= 0.55) callbackOnce();
+
+        if (progress < 1) {
+          requestAnimationFrame(animate);
+        } else {
+          ctx2.clearRect(0, 0, W, H);
+          overlay.classList.remove('active');
+          overlay.setAttribute('aria-hidden', 'true');
+          callbackOnce();
+        }
+      }
+      requestAnimationFrame(animate);
+    };
+  })();
 
   // ── 時空卡片齒輪動畫 ──
   (function() {
