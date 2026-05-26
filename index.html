@@ -1694,9 +1694,163 @@
     mask: radial-gradient(circle, transparent 60%, black 62%);
     -webkit-mask: radial-gradient(circle, transparent 60%, black 62%);
   }
+
+  /* ── INTRO SPLASH ── */
+  #intro-splash {
+    position: fixed; inset: 0; z-index: 9500;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    background: #070613; overflow: hidden;
+    transition: opacity .8s ease, visibility .8s;
+  }
+  #intro-splash.done { opacity: 0; visibility: hidden; pointer-events: none; }
+  .is-bg {
+    position: absolute; inset: 0; pointer-events: none;
+    background:
+      radial-gradient(circle at 32% 50%, rgba(255,107,53,.22), transparent 46%),
+      radial-gradient(circle at 70% 50%, rgba(61,184,232,.14), transparent 42%),
+      radial-gradient(circle at 50% 80%, rgba(255,209,102,.08), transparent 50%);
+    animation: isGlowPulse 2.8s ease-in-out infinite;
+  }
+  @keyframes isGlowPulse { 0%,100%{opacity:.65} 50%{opacity:1} }
+  .is-scan {
+    position: absolute; inset: 0; pointer-events: none;
+    background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255,255,255,.018) 2px, rgba(255,255,255,.018) 4px);
+  }
+  .is-particles { position: absolute; inset: 0; pointer-events: none; }
+  .is-star {
+    position: absolute; border-radius: 50%; background: #fff;
+    opacity: 0; animation: isStarBlink var(--sd, 2.5s) var(--ss, 0s) ease-in-out infinite;
+  }
+  @keyframes isStarBlink { 0%,100%{opacity:0;transform:scale(0)} 50%{opacity:.85;transform:scale(1)} }
+  .is-content { position: relative; z-index: 1; text-align: center; padding: 0 20px; }
+  .is-school {
+    font-size: 11px; letter-spacing: 8px; color: rgba(255,209,102,.72);
+    font-family: var(--zh); font-weight: 700;
+    opacity: 0; animation: isUp .6s .1s ease both;
+  }
+  .is-divider {
+    width: 48px; height: 1px; background: rgba(255,209,102,.25); margin: 13px auto;
+    opacity: 0; animation: isUp .4s .45s ease both;
+  }
+  .is-main {
+    font-size: clamp(52px, 9.5vw, 100px);
+    font-family: var(--display); font-weight: 900; color: #fff; letter-spacing: 5px;
+    text-shadow: 0 0 50px rgba(255,107,53,.85), 0 0 100px rgba(255,107,53,.38);
+    line-height: 1; opacity: 0;
+    animation: isExplode .78s .5s cubic-bezier(.34,1.56,.64,1) both;
+  }
+  .is-en {
+    font-size: 12px; letter-spacing: 7px; color: rgba(255,255,255,.38);
+    font-weight: 600; margin-top: 18px;
+    opacity: 0; animation: isUp .6s .95s ease both;
+  }
+  .is-tagline {
+    font-size: 14px; color: rgba(255,255,255,.28);
+    font-family: var(--zh); margin-top: 10px;
+    opacity: 0; animation: isUp .5s 1.1s ease both;
+  }
+  .is-chips {
+    display: flex; gap: 14px; justify-content: center; margin-top: 30px; flex-wrap: wrap;
+    opacity: 0; animation: isUp .5s 1.25s ease both;
+  }
+  .is-chip {
+    padding: 4px 14px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.13);
+    font-size: 10px; letter-spacing: 2px; color: rgba(255,255,255,.38); font-weight: 700;
+  }
+  .is-skip {
+    position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+    font-size: 10px; color: rgba(255,255,255,.2); letter-spacing: 3px; cursor: pointer;
+    opacity: 0; animation: isUp .4s 1.55s ease both;
+  }
+  @keyframes isUp { from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+  @keyframes isExplode { from{opacity:0;transform:scale(.5)} to{opacity:1;transform:scale(1)} }
+
+  /* ── HERO TYPEWRITER ── */
+  .home-hero h1 .ch {
+    display: inline-block;
+    opacity: 0; transform: translateY(32px) scale(.7);
+    transition: opacity .55s, transform .55s cubic-bezier(.34,1.56,.64,1);
+  }
+  .home-hero h1 .ch.ch-in { opacity: 1; transform: none; }
+  .home-hero .pill-badge,
+  .home-hero .en-title,
+  .home-hero .lead,
+  .home-hero .home-cta,
+  .home-hero .mini-countdown,
+  .home-hero .hero-editions-row {
+    opacity: 0; transform: translateY(14px);
+    transition: opacity .5s, transform .5s ease;
+  }
+  .home-hero .pill-badge.hero-in,
+  .home-hero .en-title.hero-in,
+  .home-hero .lead.hero-in,
+  .home-hero .home-cta.hero-in,
+  .home-hero .mini-countdown.hero-in,
+  .home-hero .hero-editions-row.hero-in { opacity: 1; transform: none; }
+
+  /* ── SITE FOOTER ── */
+  .site-footer {
+    background: var(--dark); color: rgba(255,255,255,.45);
+    padding: 52px 32px 36px; text-align: center;
+    font-size: 13px; line-height: 1.9;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+  .site-footer .ft-logo {
+    font-family: var(--display); font-size: 26px; font-weight: 900;
+    color: #fff; letter-spacing: 2px; margin-bottom: 4px;
+  }
+  .site-footer .ft-en-sub {
+    font-size: 10px; letter-spacing: 6px; color: rgba(255,255,255,.28);
+    margin-bottom: 28px; text-transform: uppercase;
+  }
+  .site-footer .ft-links {
+    display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;
+    margin-bottom: 24px;
+  }
+  .site-footer .ft-links a {
+    color: rgba(255,255,255,.4); text-decoration: none; font-size: 13px;
+    cursor: pointer; transition: color .2s;
+  }
+  .site-footer .ft-links a:hover { color: var(--orange); }
+  .site-footer .ft-sep {
+    width: 32px; height: 1px; background: rgba(255,255,255,.1); margin: 22px auto;
+  }
+  .site-footer .ft-editions {
+    display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 18px;
+  }
+  .site-footer .ft-editions span {
+    padding: 3px 12px; border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.09);
+    font-size: 10px; color: rgba(255,255,255,.25); letter-spacing: 1px;
+  }
+  .site-footer .ft-copy {
+    font-size: 11px; color: rgba(255,255,255,.18); letter-spacing: .5px;
+  }
 </style>
 </head>
 <body>
+
+<!-- INTRO SPLASH -->
+<div id="intro-splash">
+  <div class="is-bg"></div>
+  <div class="is-scan"></div>
+  <div class="is-particles"></div>
+  <div class="is-content">
+    <div class="is-school">弘文中學 · HONG-WEN JUNIOR HIGH</div>
+    <div class="is-divider"></div>
+    <div class="is-main">暑期育樂營</div>
+    <div class="is-en">HONG-WEN SUMMER CAMP</div>
+    <div class="is-tagline">每一屆，都是全新的舞台</div>
+    <div class="is-chips">
+      <span class="is-chip">2024 ⚓</span>
+      <span class="is-chip">2025 ⚔️</span>
+      <span class="is-chip">2026 🕰️</span>
+    </div>
+  </div>
+  <div class="is-skip">點擊任意處跳過</div>
+</div>
 
 <!-- NAV -->
 <nav class="topbar">
@@ -1969,7 +2123,7 @@
   <section class="about-band">
     <div class="about-inner">
       <div class="about-visual">
-        <div class="about-big-num">03</div>
+        <div class="about-big-num" data-count="3" data-pad="2">03</div>
         <div class="about-subhead">屆精彩<br>不停歇</div>
         <div class="about-label">2024 — 2026</div>
       </div>
@@ -2111,10 +2265,10 @@
     </div>
 
     <div class="detail-stats">
-      <div><span class="n">83</span><div class="l">水手 CADETS</div></div>
-      <div><span class="n">8</span><div class="l">希望之島 ISLANDS</div></div>
-      <div><span class="n">26</span><div class="l">船長 CAPTAINS</div></div>
-      <div><span class="n">04</span><div class="l">天數 DAYS</div></div>
+      <div><span class="n" data-count="83">83</span><div class="l">水手 CADETS</div></div>
+      <div><span class="n" data-count="8">8</span><div class="l">希望之島 ISLANDS</div></div>
+      <div><span class="n" data-count="26">26</span><div class="l">船長 CAPTAINS</div></div>
+      <div><span class="n" data-count="4" data-pad="2">04</span><div class="l">天數 DAYS</div></div>
     </div>
 
     <div class="detail-blocks">
@@ -2272,10 +2426,10 @@
     </div>
 
     <div class="detail-stats">
-      <div><span class="n">115</span><div class="l">見習騎士 KNIGHTS</div></div>
-      <div><span class="n">08</span><div class="l">榮譽騎士團 TRIALS</div></div>
-      <div><span class="n">35</span><div class="l">騎士長 ROUND TABLE</div></div>
-      <div><span class="n">04</span><div class="l">天數 DAYS</div></div>
+      <div><span class="n" data-count="115">115</span><div class="l">見習騎士 KNIGHTS</div></div>
+      <div><span class="n" data-count="8" data-pad="2">08</span><div class="l">榮譽騎士團 TRIALS</div></div>
+      <div><span class="n" data-count="35">35</span><div class="l">騎士長 ROUND TABLE</div></div>
+      <div><span class="n" data-count="4" data-pad="2">04</span><div class="l">天數 DAYS</div></div>
     </div>
 
     <div class="detail-blocks">
@@ -2554,9 +2708,9 @@
 
     <div class="detail-stats">
       <div><span class="n">???</span><div class="l">時代 ERAS</div></div>
-      <div><span class="n">08</span><div class="l">星球指揮部 DIVISIONS</div></div>
+      <div><span class="n" data-count="8" data-pad="2">08</span><div class="l">星球指揮部 DIVISIONS</div></div>
       <div><span class="n">07.06</span><div class="l">啟動 LAUNCH</div></div>
-      <div><span class="n">04</span><div class="l">天數 DAYS</div></div>
+      <div><span class="n" data-count="4" data-pad="2">04</span><div class="l">天數 DAYS</div></div>
     </div>
 
     <div class="detail-blocks">
@@ -2754,7 +2908,9 @@
         });
       }
     }
-    if (window._playTimeWarp) window._playTimeWarp(doSwap);
+    var fxMap = { '2024': '_playWave', '2025': '_playSword', '2026': '_playTimeWarp' };
+    var fxFn = window[fxMap[name]];
+    if (fxFn) fxFn(doSwap);
     else doSwap();
   }
 
@@ -3250,276 +3406,537 @@
     window._revealObserver = observer;
   })();
 
-  // ── 穿越時空動畫 ──
+  // ── 穿越時空動畫（2026 時光管理局）──
   (function() {
     var overlay = document.getElementById('timewarp-overlay');
     var canvas  = document.getElementById('timewarp-canvas');
     if (!overlay || !canvas) return;
     var ctx2 = canvas.getContext('2d');
 
-    function resize() {
-      canvas.width  = window.innerWidth;
-      canvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resize);
-    resize();
+    function resize() { canvas.width=window.innerWidth; canvas.height=window.innerHeight; }
+    window.addEventListener('resize', resize); resize();
 
-    // 游標星火粒子
+    // Cursor spark particles
     var sparks = [];
     function spawnSparks(x, y) {
-      for (var i = 0; i < 6; i++) {
-        var angle = Math.random() * Math.PI * 2;
-        var speed = 1 + Math.random() * 3;
-        sparks.push({
-          x: x, y: y,
-          vx: Math.cos(angle) * speed,
-          vy: Math.sin(angle) * speed,
-          r:  3 + Math.random() * 3,
-          life: 1,
-          decay: 0.04 + Math.random() * 0.04,
-          hue: 25 + Math.random() * 40   // orange-gold
-        });
+      for (var i=0;i<6;i++) {
+        var a=Math.random()*Math.PI*2, sp=1+Math.random()*3;
+        sparks.push({x:x,y:y,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp,r:3+Math.random()*3,
+          life:1,decay:.04+Math.random()*.04,hue:25+Math.random()*40});
       }
     }
     document.addEventListener('mousemove', function(e) {
-      if (sparks.length > 0 || Math.random() < 0.35) spawnSparks(e.clientX, e.clientY);
+      if (Math.random() < 0.35) spawnSparks(e.clientX, e.clientY);
     });
-    // 游標粒子持續渲染（輕量，不依賴 warp）
     var sparkCanvas = document.createElement('canvas');
-    sparkCanvas.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
+    sparkCanvas.style.cssText='position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:9999;';
     document.body.appendChild(sparkCanvas);
     var sCtx = sparkCanvas.getContext('2d');
-    function resizeSpark() { sparkCanvas.width = window.innerWidth; sparkCanvas.height = window.innerHeight; }
+    function resizeSpark(){ sparkCanvas.width=window.innerWidth; sparkCanvas.height=window.innerHeight; }
     window.addEventListener('resize', resizeSpark); resizeSpark();
-    function animSparks() {
-      sCtx.clearRect(0, 0, sparkCanvas.width, sparkCanvas.height);
-      for (var i = sparks.length - 1; i >= 0; i--) {
-        var s = sparks[i];
-        s.x += s.vx; s.y += s.vy;
-        s.vy += 0.08;
-        s.life -= s.decay;
-        if (s.life <= 0) { sparks.splice(i, 1); continue; }
-        sCtx.save();
-        sCtx.globalAlpha = s.life;
-        sCtx.beginPath();
-        sCtx.arc(s.x, s.y, s.r * s.life, 0, Math.PI * 2);
-        sCtx.fillStyle = 'hsl(' + s.hue + ',100%,' + (50 + 30 * s.life) + '%)';
-        sCtx.shadowColor = 'hsl(' + s.hue + ',100%,70%)';
-        sCtx.shadowBlur = 8;
-        sCtx.fill();
-        sCtx.restore();
+    (function animSparks() {
+      sCtx.clearRect(0,0,sparkCanvas.width,sparkCanvas.height);
+      for(var i=sparks.length-1;i>=0;i--){
+        var s=sparks[i]; s.x+=s.vx; s.y+=s.vy; s.vy+=.08; s.life-=s.decay;
+        if(s.life<=0){sparks.splice(i,1);continue;}
+        sCtx.save();sCtx.globalAlpha=s.life;
+        sCtx.beginPath();sCtx.arc(s.x,s.y,s.r*s.life,0,Math.PI*2);
+        sCtx.fillStyle='hsl('+s.hue+',100%,'+(50+30*s.life)+'%)';
+        sCtx.shadowColor='hsl('+s.hue+',100%,70%)';sCtx.shadowBlur=8;sCtx.fill();sCtx.restore();
       }
       requestAnimationFrame(animSparks);
+    })();
+
+    var ROMAN = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+    var romanFrags = [];
+    function spawnRoman() {
+      ROMAN.forEach(function(num, i) {
+        var a=Math.random()*Math.PI*2, d=80+Math.random()*180;
+        var W=canvas.width, H=canvas.height;
+        romanFrags.push({text:num, x:W/2+Math.cos(a)*d, y:H/2+Math.sin(a)*d,
+          vx:(Math.random()-.5)*2.5, vy:(Math.random()-.5)*2.5,
+          size:14+Math.random()*20, life:1, decay:.006+Math.random()*.008});
+      });
     }
-    animSparks();
+    var romanSpawned = false;
 
-    // 主時空穿越動畫
-    window._playTimeWarp = function(callback) {
-      overlay.classList.add('active');
-      overlay.setAttribute('aria-hidden', 'false');
-
-      var W = canvas.width  = window.innerWidth;
-      var H = canvas.height = window.innerHeight;
-      var cx = W / 2, cy = H / 2;
-      var startTime = null;
-      var TOTAL = 1400; // ms 總時長
-
-      // 時鐘指針
-      var clockAngle = 0;
-
-      function drawClock(x, y, r, angle, alpha) {
-        ctx2.save();
-        ctx2.globalAlpha = alpha;
-        // 錶盤
+    function drawClock(x, y, r, angle, alpha) {
+      ctx2.save(); ctx2.globalAlpha=alpha;
+      ctx2.beginPath(); ctx2.arc(x,y,r,0,Math.PI*2);
+      ctx2.strokeStyle='#FFD166'; ctx2.lineWidth=r*.06; ctx2.stroke();
+      for(var i=0;i<12;i++){
+        var a=(i/12)*Math.PI*2-Math.PI/2;
         ctx2.beginPath();
-        ctx2.arc(x, y, r, 0, Math.PI * 2);
-        ctx2.strokeStyle = '#FFD166';
-        ctx2.lineWidth = r * 0.06;
-        ctx2.stroke();
-        // 刻度
-        for (var i = 0; i < 12; i++) {
-          var a = (i / 12) * Math.PI * 2 - Math.PI / 2;
-          ctx2.beginPath();
-          ctx2.moveTo(x + Math.cos(a) * r * 0.82, y + Math.sin(a) * r * 0.82);
-          ctx2.lineTo(x + Math.cos(a) * r * 0.95, y + Math.sin(a) * r * 0.95);
-          ctx2.strokeStyle = '#FFD166';
-          ctx2.lineWidth = r * 0.04;
-          ctx2.stroke();
-        }
-        // 時針
-        var ha = angle * 0.5 - Math.PI / 2;
-        ctx2.beginPath();
-        ctx2.moveTo(x, y);
-        ctx2.lineTo(x + Math.cos(ha) * r * 0.55, y + Math.sin(ha) * r * 0.55);
-        ctx2.strokeStyle = '#FF6B35';
-        ctx2.lineWidth = r * 0.08;
-        ctx2.lineCap = 'round';
-        ctx2.stroke();
-        // 分針
-        var ma = angle - Math.PI / 2;
-        ctx2.beginPath();
-        ctx2.moveTo(x, y);
-        ctx2.lineTo(x + Math.cos(ma) * r * 0.78, y + Math.sin(ma) * r * 0.78);
-        ctx2.strokeStyle = '#fff';
-        ctx2.lineWidth = r * 0.05;
-        ctx2.lineCap = 'round';
-        ctx2.stroke();
-        // 中心點
-        ctx2.beginPath();
-        ctx2.arc(x, y, r * 0.07, 0, Math.PI * 2);
-        ctx2.fillStyle = '#FFD166';
-        ctx2.fill();
+        ctx2.moveTo(x+Math.cos(a)*r*.82,y+Math.sin(a)*r*.82);
+        ctx2.lineTo(x+Math.cos(a)*r*.95,y+Math.sin(a)*r*.95);
+        ctx2.strokeStyle='#FFD166'; ctx2.lineWidth=r*.04; ctx2.stroke();
+        // Roman numeral on face
+        var nIdx = i; var nText = ROMAN[nIdx];
+        ctx2.save(); ctx2.globalAlpha=alpha*.5;
+        ctx2.font='bold '+(r*.2)+'px serif';
+        ctx2.fillStyle='rgba(255,209,102,.8)'; ctx2.textAlign='center'; ctx2.textBaseline='middle';
+        ctx2.fillText(nText, x+Math.cos(a)*r*.65, y+Math.sin(a)*r*.65);
         ctx2.restore();
       }
+      var ha=angle*.5-Math.PI/2;
+      ctx2.beginPath(); ctx2.moveTo(x,y);
+      ctx2.lineTo(x+Math.cos(ha)*r*.55,y+Math.sin(ha)*r*.55);
+      ctx2.strokeStyle='#FF6B35'; ctx2.lineWidth=r*.08; ctx2.lineCap='round'; ctx2.stroke();
+      var ma=angle-Math.PI/2;
+      ctx2.beginPath(); ctx2.moveTo(x,y);
+      ctx2.lineTo(x+Math.cos(ma)*r*.78,y+Math.sin(ma)*r*.78);
+      ctx2.strokeStyle='#fff'; ctx2.lineWidth=r*.05; ctx2.lineCap='round'; ctx2.stroke();
+      ctx2.beginPath(); ctx2.arc(x,y,r*.07,0,Math.PI*2);
+      ctx2.fillStyle='#FFD166'; ctx2.fill();
+      ctx2.restore();
+    }
 
-      function drawVortex(progress) {
-        var phase1End = 0.55, phase2End = 0.70;
-        ctx2.clearRect(0, 0, W, H);
-
-        if (progress < phase1End) {
-          // Phase 1：螺旋漩渦 + 時鐘快速旋轉
-          var t = progress / phase1End;
-          clockAngle += 0.25 + t * 1.2;
-
-          // 暗色背景
-          ctx2.fillStyle = 'rgba(10,8,30,' + (0.3 + t * 0.65) + ')';
-          ctx2.fillRect(0, 0, W, H);
-
-          // 螺旋臂
-          var numArms = 5;
-          for (var arm = 0; arm < numArms; arm++) {
-            var armOffset = (arm / numArms) * Math.PI * 2;
-            ctx2.save();
-            ctx2.translate(cx, cy);
-            ctx2.rotate(armOffset + clockAngle * 0.3);
+    function drawTunnel(progress, clockAngle) {
+      var W=canvas.width, H=canvas.height, cx=W/2, cy=H/2;
+      var RINGS = 14;
+      for (var i=0;i<RINGS;i++) {
+        var base = i/RINGS;
+        var phase = (base + progress * 1.8) % 1;
+        var r = phase * Math.max(W,H) * .72;
+        var alpha = (1-phase) * .4 * progress;
+        if (alpha<=0||r<=0) continue;
+        ctx2.beginPath(); ctx2.arc(cx,cy,r,0,Math.PI*2);
+        ctx2.strokeStyle='rgba(255,209,102,'+alpha+')'; ctx2.lineWidth=1.5; ctx2.stroke();
+        // Tick marks on tunnel ring
+        if (r > 30) {
+          for (var j=0;j<12;j++) {
+            var ta=(j/12)*Math.PI*2+clockAngle*.1;
             ctx2.beginPath();
-            var pts = 120;
-            for (var p = 0; p < pts; p++) {
-              var frac = p / pts;
-              var radius = frac * (Math.min(W, H) * 0.52) * (0.4 + t * 0.6);
-              var spiralAngle = frac * Math.PI * 6;
-              var px = Math.cos(spiralAngle) * radius;
-              var py = Math.sin(spiralAngle) * radius;
-              if (p === 0) ctx2.moveTo(px, py); else ctx2.lineTo(px, py);
-            }
-            var grad = ctx2.createLinearGradient(-cx, 0, cx, 0);
-            grad.addColorStop(0, 'rgba(255,107,53,0)');
-            grad.addColorStop(0.4, 'rgba(255,209,102,' + (0.3 + t * 0.5) + ')');
-            grad.addColorStop(1, 'rgba(255,107,53,0)');
-            ctx2.strokeStyle = grad;
-            ctx2.lineWidth = 2 + t * 3;
-            ctx2.stroke();
-            ctx2.restore();
+            ctx2.moveTo(cx+Math.cos(ta)*r*.94,cy+Math.sin(ta)*r*.94);
+            ctx2.lineTo(cx+Math.cos(ta)*r,cy+Math.sin(ta)*r);
+            ctx2.strokeStyle='rgba(255,209,102,'+(alpha*.6)+')'; ctx2.lineWidth=1; ctx2.stroke();
           }
-
-          // 中心發光
-          var glow = ctx2.createRadialGradient(cx, cy, 0, cx, cy, 80 + t * 120);
-          glow.addColorStop(0, 'rgba(255,209,102,' + (0.4 + t * 0.5) + ')');
-          glow.addColorStop(0.5, 'rgba(255,107,53,' + (0.1 + t * 0.3) + ')');
-          glow.addColorStop(1, 'rgba(0,0,0,0)');
-          ctx2.fillStyle = glow;
-          ctx2.beginPath();
-          ctx2.arc(cx, cy, 80 + t * 120, 0, Math.PI * 2);
-          ctx2.fill();
-
-          // 中心時鐘
-          var clockR = 40 + t * 55;
-          drawClock(cx, cy, clockR, clockAngle, 0.4 + t * 0.5);
-
-          // 毛刺線條
-          if (t > 0.4 && Math.random() < 0.4) {
-            var gy = cy + (Math.random() - 0.5) * H * 0.8;
-            ctx2.save();
-            ctx2.globalAlpha = 0.4;
-            ctx2.fillStyle = Math.random() < 0.5 ? '#FF6B35' : '#FFD166';
-            ctx2.fillRect(0, gy, W, 1 + Math.random() * 3);
-            ctx2.restore();
-          }
-
-          // 飄浮的小時鐘
-          for (var fi = 0; fi < 5; fi++) {
-            var fAngle = (fi / 5) * Math.PI * 2 + clockAngle * 0.5;
-            var fDist  = (60 + fi * 35) * t;
-            var fx = cx + Math.cos(fAngle) * fDist;
-            var fy = cy + Math.sin(fAngle) * fDist;
-            drawClock(fx, fy, 12 + fi * 4, clockAngle * (1 + fi * 0.3), 0.3 * t);
-          }
-
-        } else if (progress < phase2End) {
-          // Phase 2：白金閃光
-          var t2 = (progress - phase1End) / (phase2End - phase1End);
-          ctx2.fillStyle = 'rgba(10,8,30,0.9)';
-          ctx2.fillRect(0, 0, W, H);
-          var flashAlpha = Math.sin(t2 * Math.PI);
-          ctx2.fillStyle = 'rgba(255,240,180,' + flashAlpha + ')';
-          ctx2.fillRect(0, 0, W, H);
-          // 放射光線
-          ctx2.save();
-          ctx2.translate(cx, cy);
-          for (var ri = 0; ri < 16; ri++) {
-            var ra = (ri / 16) * Math.PI * 2;
-            ctx2.save();
-            ctx2.rotate(ra);
-            var rayGrad = ctx2.createLinearGradient(0, 0, Math.max(W, H), 0);
-            rayGrad.addColorStop(0, 'rgba(255,209,102,' + flashAlpha * 0.9 + ')');
-            rayGrad.addColorStop(1, 'rgba(255,209,102,0)');
-            ctx2.fillStyle = rayGrad;
-            ctx2.beginPath();
-            ctx2.moveTo(0, -6);
-            ctx2.lineTo(Math.max(W, H), -20);
-            ctx2.lineTo(Math.max(W, H), 20);
-            ctx2.lineTo(0, 6);
-            ctx2.fill();
-            ctx2.restore();
-          }
-          ctx2.restore();
-
-        } else {
-          // Phase 3：消散
-          var t3 = (progress - phase2End) / (1 - phase2End);
-          var fadeAlpha = 1 - t3;
-          ctx2.fillStyle = 'rgba(10,8,30,' + (fadeAlpha * 0.7) + ')';
-          ctx2.fillRect(0, 0, W, H);
-          // 消散光環
-          for (var ri2 = 0; ri2 < 4; ri2++) {
-            var ringR = (ri2 * 80 + t3 * 300);
-            var ringA = (1 - t3) * (0.6 - ri2 * 0.12);
-            if (ringA <= 0) continue;
-            ctx2.beginPath();
-            ctx2.arc(cx, cy, ringR, 0, Math.PI * 2);
-            ctx2.strokeStyle = 'rgba(255,209,102,' + ringA + ')';
-            ctx2.lineWidth = 3;
-            ctx2.stroke();
-          }
-          drawClock(cx, cy, 95 * fadeAlpha, clockAngle, fadeAlpha * 0.6);
         }
       }
+    }
 
-      var callbackCalled = false;
-      function callbackOnce() {
-        if (!callbackCalled) { callbackCalled = true; callback(); }
+    window._playTimeWarp = function(callback) {
+      overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false');
+      var W=canvas.width=window.innerWidth, H=canvas.height=window.innerHeight;
+      var cx=W/2, cy=H/2;
+      var startTime=null, TOTAL=1500, clockAngle=0;
+      romanFrags = []; romanSpawned = false;
+      var callbackCalled=false;
+      function callbackOnce() { if(!callbackCalled){callbackCalled=true;callback();} }
+
+      function drawVortex(progress) {
+        var p1=0.55, p2=0.70;
+        ctx2.clearRect(0,0,W,H);
+
+        if (progress < p1) {
+          var t=progress/p1;
+          clockAngle += .25 + t*1.3;
+          ctx2.fillStyle='rgba(10,8,30,'+(0.28+t*.65)+')';
+          ctx2.fillRect(0,0,W,H);
+
+          // Perspective tunnel
+          drawTunnel(t, clockAngle);
+
+          // Spiral arms
+          for(var arm=0;arm<5;arm++){
+            var armOff=(arm/5)*Math.PI*2;
+            ctx2.save(); ctx2.translate(cx,cy); ctx2.rotate(armOff+clockAngle*.3);
+            ctx2.beginPath();
+            for(var pv=0;pv<120;pv++){
+              var frac=pv/120;
+              var rad=frac*Math.min(W,H)*.52*(.4+t*.6);
+              var sa=frac*Math.PI*6;
+              var px=Math.cos(sa)*rad, py=Math.sin(sa)*rad;
+              pv===0?ctx2.moveTo(px,py):ctx2.lineTo(px,py);
+            }
+            var grad=ctx2.createLinearGradient(-cx,0,cx,0);
+            grad.addColorStop(0,'rgba(255,107,53,0)');
+            grad.addColorStop(.4,'rgba(255,209,102,'+(0.28+t*.52)+')');
+            grad.addColorStop(1,'rgba(255,107,53,0)');
+            ctx2.strokeStyle=grad; ctx2.lineWidth=2+t*3; ctx2.stroke(); ctx2.restore();
+          }
+          // Centre glow
+          var glow=ctx2.createRadialGradient(cx,cy,0,cx,cy,80+t*120);
+          glow.addColorStop(0,'rgba(255,209,102,'+(0.38+t*.52)+')');
+          glow.addColorStop(.5,'rgba(255,107,53,'+(0.08+t*.28)+')');
+          glow.addColorStop(1,'rgba(0,0,0,0)');
+          ctx2.fillStyle=glow; ctx2.beginPath(); ctx2.arc(cx,cy,80+t*120,0,Math.PI*2); ctx2.fill();
+
+          drawClock(cx,cy,40+t*58,clockAngle,0.38+t*.52);
+
+          // Glitch lines
+          if(t>.4&&Math.random()<.42){
+            var gy=cy+(Math.random()-.5)*H*.82;
+            ctx2.save();ctx2.globalAlpha=.42;
+            ctx2.fillStyle=Math.random()<.5?'#FF6B35':'#FFD166';
+            ctx2.fillRect(0,gy,W,1+Math.random()*3);ctx2.restore();
+          }
+
+          // Orbiting clocks
+          for(var fi=0;fi<5;fi++){
+            var fAngle=(fi/5)*Math.PI*2+clockAngle*.5;
+            var fDist=(62+fi*36)*t;
+            drawClock(cx+Math.cos(fAngle)*fDist,cy+Math.sin(fAngle)*fDist,12+fi*4,clockAngle*(1+fi*.3),0.28*t);
+          }
+
+          // Roman numerals flying
+          if (t > 0.3 && !romanSpawned) { romanSpawned=true; spawnRoman(); }
+          romanFrags.forEach(function(f){
+            f.x+=f.vx; f.y+=f.vy; f.life-=f.decay;
+            if(f.life<=0) return;
+            ctx2.save(); ctx2.globalAlpha=f.life*.7;
+            ctx2.font='bold '+f.size+'px serif';
+            ctx2.fillStyle='rgba(255,209,102,.9)';
+            ctx2.shadowColor='#FFD166'; ctx2.shadowBlur=8;
+            ctx2.textAlign='center'; ctx2.textBaseline='middle';
+            ctx2.fillText(f.text,f.x,f.y); ctx2.restore();
+          });
+          romanFrags=romanFrags.filter(function(f){return f.life>0;});
+
+        } else if (progress < p2) {
+          var t2=(progress-p1)/(p2-p1);
+          var fl=Math.sin(t2*Math.PI);
+          ctx2.fillStyle='rgba(10,8,30,.9)'; ctx2.fillRect(0,0,W,H);
+          ctx2.fillStyle='rgba(255,240,180,'+fl+')'; ctx2.fillRect(0,0,W,H);
+          ctx2.save(); ctx2.translate(cx,cy);
+          for(var ri=0;ri<16;ri++){
+            var ra=(ri/16)*Math.PI*2;
+            var rayGrad=ctx2.createLinearGradient(0,0,Math.cos(ra)*Math.max(W,H),Math.sin(ra)*Math.max(W,H));
+            rayGrad.addColorStop(0,'rgba(255,209,102,'+fl*.92+')');
+            rayGrad.addColorStop(1,'rgba(255,209,102,0)');
+            ctx2.fillStyle=rayGrad; ctx2.beginPath(); ctx2.moveTo(0,-6);
+            ctx2.lineTo(Math.max(W,H),-20); ctx2.lineTo(Math.max(W,H),20); ctx2.lineTo(0,6); ctx2.fill();
+          }
+          ctx2.restore();
+          drawClock(cx,cy,98,clockAngle,fl*.75);
+
+        } else {
+          var t3=(progress-p2)/(1-p2), fade=1-t3;
+          ctx2.fillStyle='rgba(10,8,30,'+fade*.72+')'; ctx2.fillRect(0,0,W,H);
+          drawTunnel(fade, clockAngle);
+          for(var ri2=0;ri2<4;ri2++){
+            var rr=ri2*80+t3*300, ra2=fade*(.6-ri2*.12);
+            if(ra2<=0) continue;
+            ctx2.beginPath(); ctx2.arc(cx,cy,rr,0,Math.PI*2);
+            ctx2.strokeStyle='rgba(255,209,102,'+ra2+')'; ctx2.lineWidth=3; ctx2.stroke();
+          }
+          drawClock(cx,cy,95*fade,clockAngle,fade*.62);
+        }
       }
 
       function animate(ts) {
-        if (!startTime) startTime = ts;
-        var elapsed  = ts - startTime;
-        var progress = Math.min(elapsed / TOTAL, 1);
-
+        if(!startTime) startTime=ts;
+        var elapsed=ts-startTime, progress=Math.min(elapsed/TOTAL,1);
         drawVortex(progress);
-
-        // 在 Phase 2 一開始（約55%）執行換頁，讓白光蓋住換頁
-        if (progress >= 0.55) callbackOnce();
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          ctx2.clearRect(0, 0, W, H);
-          overlay.classList.remove('active');
-          overlay.setAttribute('aria-hidden', 'true');
+        if(progress>=0.55) callbackOnce();
+        if(progress<1) requestAnimationFrame(animate);
+        else {
+          ctx2.clearRect(0,0,W,H);
+          overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true');
           callbackOnce();
         }
       }
       requestAnimationFrame(animate);
+    };
+  })();
+
+  // ── 海浪穿越動畫（2024 未來之島）──
+  (function() {
+    window._playWave = function(cb) {
+      var overlay = document.getElementById('timewarp-overlay');
+      var canvas  = document.getElementById('timewarp-canvas');
+      if (!overlay || !canvas) { cb(); return; }
+      overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false');
+      var W = canvas.width = window.innerWidth, H = canvas.height = window.innerHeight;
+      var c = canvas.getContext('2d');
+      var t0 = null, TOTAL = 1500, foams = [], done = false;
+      function fin() { if (!done) { done = true; cb(); } }
+
+      // Caustic light shaft configs
+      var shafts = [
+        {x:.18,ang:-.28,w:55,ph:0},   {x:.38,ang:.18,w:38,ph:.6},
+        {x:.57,ang:-.14,w:72,ph:1.1}, {x:.74,ang:.32,w:33,ph:.35},
+        {x:.09,ang:.1,w:46,ph:1.4},   {x:.87,ang:-.38,w:42,ph:.8}
+      ];
+
+      function drawCaustics(t, wt) {
+        shafts.forEach(function(sh) {
+          var a = Math.sin((wt * 1.2 + sh.ph) * Math.PI) * 0.11 * t;
+          if (a <= 0) return;
+          c.save(); c.translate(W * sh.x, 0); c.rotate(sh.ang);
+          var g = c.createLinearGradient(0,0,0,H*.75);
+          g.addColorStop(0,'rgba(130,240,255,'+a+')');
+          g.addColorStop(.55,'rgba(80,200,230,'+(a*.45)+')');
+          g.addColorStop(1,'rgba(0,160,210,0)');
+          c.fillStyle=g; c.fillRect(-sh.w/2, 0, sh.w, H*.75);
+          c.restore();
+        });
+      }
+
+      function drawAnchor(x, y, sz, alpha) {
+        c.save(); c.globalAlpha = alpha; c.translate(x, y);
+        c.strokeStyle = 'rgba(0,15,45,.82)'; c.lineWidth = sz*.09; c.lineCap = 'round';
+        // Ring
+        c.beginPath(); c.arc(0,-sz*.52,sz*.16,0,Math.PI*2); c.stroke();
+        // Shaft
+        c.beginPath(); c.moveTo(0,-sz*.36); c.lineTo(0,sz*.46); c.stroke();
+        // Crossbar
+        c.beginPath(); c.moveTo(-sz*.35,-sz*.14); c.lineTo(sz*.35,-sz*.14); c.stroke();
+        // Left fluke
+        c.beginPath(); c.moveTo(0,sz*.46);
+        c.bezierCurveTo(-sz*.1,sz*.46,-sz*.46,sz*.3,-sz*.52,sz*.08); c.stroke();
+        // Right fluke
+        c.beginPath(); c.moveTo(0,sz*.46);
+        c.bezierCurveTo(sz*.1,sz*.46,sz*.46,sz*.3,sz*.52,sz*.08); c.stroke();
+        // Fluke tips
+        c.lineWidth = sz*.06;
+        c.beginPath(); c.moveTo(-sz*.52,sz*.08); c.lineTo(-sz*.44,sz*.22); c.stroke();
+        c.beginPath(); c.moveTo(sz*.52,sz*.08); c.lineTo(sz*.44,sz*.22); c.stroke();
+        c.restore();
+      }
+
+      function frame(ts) {
+        if (!t0) t0 = ts;
+        var p = Math.min((ts - t0) / TOTAL, 1);
+        c.clearRect(0, 0, W, H);
+
+        if (p < 0.55) {
+          var t = p / 0.55;
+          var bg = c.createLinearGradient(0,0,0,H);
+          bg.addColorStop(0,'rgba(0,12,32,'+(0.22+t*.68)+')');
+          bg.addColorStop(1,'rgba(0,50,75,'+(0.22+t*.68)+')');
+          c.fillStyle = bg; c.fillRect(0,0,W,H);
+          var wt = p * 12;
+          drawCaustics(t, wt);
+          [
+            {amp:.06,freq:2.5,spd:1.0,by:.9-.44*t,col:'rgba(6,199,156,',  a:.32+t*.42},
+            {amp:.07,freq:1.8,spd:0.7,by:.82-.4*t, col:'rgba(61,184,232,',a:.28+t*.37},
+            {amp:.09,freq:1.2,spd:0.5,by:.74-.36*t,col:'rgba(0,138,190,', a:.38+t*.37},
+            {amp:.11,freq:0.8,spd:0.3,by:.67-.32*t,col:'rgba(0,88,148,',  a:.48+t*.32}
+          ].forEach(function(w) {
+            c.beginPath(); c.moveTo(0,H);
+            for (var x=0;x<=W;x+=5) c.lineTo(x, H*w.by+Math.sin(x/W*Math.PI*w.freq*4+wt*w.spd)*H*w.amp);
+            c.lineTo(W,H); c.closePath(); c.fillStyle=w.col+w.a+')'; c.fill();
+          });
+          // Foam particles
+          if (Math.random()<.45) {
+            var fx=Math.random()*W;
+            foams.push({x:fx,y:H*(.82-t*.4)+Math.sin(fx/W*Math.PI*7+wt*.7)*H*.07,
+              vx:(Math.random()-.5)*1.5,vy:-1.5-Math.random()*2,life:1,decay:.025+Math.random()*.025});
+          }
+          foams.forEach(function(f){f.x+=f.vx;f.y+=f.vy;f.life-=f.decay;});
+          foams=foams.filter(function(f){return f.life>0;});
+          foams.forEach(function(f){
+            c.beginPath();c.arc(f.x,f.y,3.5*f.life,0,Math.PI*2);
+            c.fillStyle='rgba(255,255,255,'+f.life*.88+')';c.fill();
+          });
+          // Centre glow
+          if (t>.28) {
+            var gl=c.createRadialGradient(W/2,H/2,0,W/2,H/2,W*.46);
+            gl.addColorStop(0,'rgba(61,184,232,'+((t-.28)/.72*.32)+')');
+            gl.addColorStop(1,'rgba(0,0,0,0)');
+            c.fillStyle=gl;c.fillRect(0,0,W,H);
+          }
+          // Anchor silhouette rising with top wave
+          var anchorY = H * (.82 - t*.4) - 30;
+          var anchorAlpha = t > 0.2 ? (t - 0.2) / 0.8 * 0.55 : 0;
+          drawAnchor(W/2, anchorY, 70, anchorAlpha);
+
+        } else if (p < 0.70) {
+          var fl=Math.sin((p-.55)/.15*Math.PI);
+          c.fillStyle='rgba(0,28,52,.9)';c.fillRect(0,0,W,H);
+          c.fillStyle='rgba(80,225,255,'+fl+')';c.fillRect(0,0,W,H);
+          c.save();c.translate(W/2,H/2);
+          for(var ri=0;ri<14;ri++){
+            var ra=(ri/14)*Math.PI*2;
+            var rg=c.createLinearGradient(0,0,Math.cos(ra)*Math.max(W,H),Math.sin(ra)*Math.max(W,H));
+            rg.addColorStop(0,'rgba(255,255,255,'+fl*.72+')');rg.addColorStop(1,'rgba(255,255,255,0)');
+            c.beginPath();c.moveTo(0,0);c.arc(0,0,Math.max(W,H),ra-.07,ra+.07);c.fillStyle=rg;c.fill();
+          }
+          c.restore();
+          drawAnchor(W/2, H/2, 85, fl * 0.65);
+
+        } else {
+          var t3=(p-.70)/.30,fd=1-t3;
+          c.fillStyle='rgba(0,28,52,'+fd*.62+')';c.fillRect(0,0,W,H);
+          for(var ri2=0;ri2<3;ri2++){
+            var rr=ri2*90+t3*380,ra3=fd*(.55-ri2*.15);
+            if(ra3<=0) continue;
+            c.beginPath();c.arc(W/2,H/2,rr,0,Math.PI*2);
+            c.strokeStyle='rgba(61,184,232,'+ra3+')';c.lineWidth=3;c.stroke();
+          }
+          drawAnchor(W/2, H/2, 85 * (0.9 + t3 * 0.3), fd * 0.45);
+        }
+
+        if (p>=0.55) fin();
+        if (p<1) requestAnimationFrame(frame);
+        else { c.clearRect(0,0,W,H); overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true'); fin(); }
+      }
+      requestAnimationFrame(frame);
+    };
+  })();
+
+  // ── 雙劍插盾穿越動畫（2025 光耀國的試煉）──
+  (function() {
+    window._playSword = function(cb) {
+      var overlay = document.getElementById('timewarp-overlay');
+      var canvas  = document.getElementById('timewarp-canvas');
+      if (!overlay || !canvas) { cb(); return; }
+      overlay.classList.add('active'); overlay.setAttribute('aria-hidden','false');
+      var W = canvas.width = window.innerWidth, H = canvas.height = window.innerHeight;
+      var c = canvas.getContext('2d');
+      var t0=null, TOTAL=1500, sparks=[], impacted=false, done=false;
+      var cx=W/2, cy=H/2, sLen=Math.min(W,H)*.36;
+      var leftTrail=[], rightTrail=[];
+      var RUNES = ['ᚠ','ᚢ','ᚦ','ᚨ','ᚱ','ᚲ','ᛇ','ᛏ'];
+      function fin() { if (!done) { done=true; cb(); } }
+
+      function spawnSparks(n) {
+        for (var i=0;i<n;i++) {
+          var a=Math.random()*Math.PI*2, sp=3+Math.random()*9;
+          sparks.push({x:cx,y:cy,vx:Math.cos(a)*sp,vy:Math.sin(a)*sp-2,
+            life:1,decay:.022+Math.random()*.04,r:2+Math.random()*4,hue:Math.random()<.5?45:270});
+        }
+      }
+
+      function drawShield(r, alpha) {
+        c.save(); c.globalAlpha=alpha; c.translate(cx,cy);
+        c.beginPath();
+        c.moveTo(0,-r);
+        c.bezierCurveTo(r*.82,-r*.65,r*.82,r*.25,0,r);
+        c.bezierCurveTo(-r*.82,r*.25,-r*.82,-r*.65,0,-r);
+        c.closePath();
+        var sg=c.createRadialGradient(0,-r*.15,r*.05,0,0,r);
+        sg.addColorStop(0,'#7c4dcc');sg.addColorStop(.5,'#5b3bb8');sg.addColorStop(1,'#2a1a6e');
+        c.fillStyle=sg;c.fill();c.strokeStyle='#FFD166';c.lineWidth=4;c.stroke();
+        c.strokeStyle='#FFD166';c.lineWidth=3;
+        c.beginPath();c.moveTo(0,-r*.55);c.lineTo(0,r*.5);c.moveTo(-r*.43,-r*.1);c.lineTo(r*.43,-r*.1);c.stroke();
+        c.restore();
+      }
+
+      function drawRunes(r, revealT, alpha) {
+        if (revealT <= 0 || alpha <= 0) return;
+        RUNES.forEach(function(rune, i) {
+          var a = (i / RUNES.length) * Math.PI * 2;
+          var rx = cx + Math.cos(a) * r * 0.7;
+          var ry = cy + Math.sin(a) * r * 0.7;
+          var pulse = 0.7 + Math.sin(revealT * 8 + i) * 0.3;
+          c.save(); c.globalAlpha = revealT * alpha * pulse;
+          c.font = 'bold ' + (11 + revealT * 5) + 'px serif';
+          c.fillStyle = 'hsl(' + (42 + i * 18) + ',100%,78%)';
+          c.shadowColor = '#FFD166'; c.shadowBlur = 12 * revealT;
+          c.textAlign = 'center'; c.textBaseline = 'middle';
+          c.fillText(rune, rx, ry);
+          c.restore();
+        });
+      }
+
+      function drawSword(tipX, tipY, isLeft, alpha) {
+        var dir=isLeft?1:-1, hx=tipX-dir*sLen, hy=tipY;
+        c.save(); c.globalAlpha=alpha; c.translate(hx,hy); c.scale(dir,1);
+        c.beginPath();
+        c.moveTo(28,-7);c.lineTo(sLen-12,-2.5);c.lineTo(sLen,0);c.lineTo(sLen-12,2.5);c.lineTo(28,7);c.closePath();
+        var bg=c.createLinearGradient(28,0,sLen,0);
+        bg.addColorStop(0,isLeft?'rgba(180,130,255,.9)':'rgba(255,195,60,.9)');
+        bg.addColorStop(.65,'rgba(225,225,255,.95)');bg.addColorStop(1,'rgba(255,255,255,.5)');
+        c.fillStyle=bg;c.fill();
+        c.beginPath();c.moveTo(28,-7);c.lineTo(sLen,0);c.strokeStyle='rgba(255,255,255,.8)';c.lineWidth=1.5;c.stroke();
+        c.shadowColor=isLeft?'#8B5CF6':'#FFD166';c.shadowBlur=20;
+        c.beginPath();c.moveTo(28,0);c.lineTo(sLen,0);
+        c.strokeStyle=isLeft?'rgba(160,100,255,.38)':'rgba(255,195,60,.38)';c.lineWidth=10;c.stroke();c.shadowBlur=0;
+        c.fillStyle='#FFD166';c.fillRect(18,-17,10,34);
+        c.fillStyle='#3d1e70';c.fillRect(-5,-6,23,12);
+        for(var wi=0;wi<3;wi++){c.fillStyle='rgba(255,209,102,.65)';c.fillRect(-3+wi*7,-6,4,12);}
+        c.beginPath();c.arc(-5,0,9,0,Math.PI*2);c.fillStyle='#FFD166';c.fill();
+        c.restore();
+      }
+
+      function tickSparks() {
+        sparks.forEach(function(s){s.x+=s.vx;s.y+=s.vy;s.vy+=.2;s.life-=s.decay;});
+        sparks=sparks.filter(function(s){return s.life>0;});
+        sparks.forEach(function(s){
+          c.save();c.globalAlpha=s.life;
+          c.beginPath();c.arc(s.x,s.y,s.r*s.life,0,Math.PI*2);
+          c.fillStyle='hsl('+s.hue+',100%,'+(55+35*s.life)+'%)';
+          c.shadowColor='hsl('+s.hue+',100%,70%)';c.shadowBlur=6;c.fill();c.restore();
+        });
+      }
+
+      function frame(ts) {
+        if (!t0) t0=ts;
+        var p=Math.min((ts-t0)/TOTAL,1);
+        c.clearRect(0,0,W,H);
+
+        if (p < 0.55) {
+          var t=p/.55, ease=t<.5?2*t*t:-1+(4-2*t)*t;
+          c.fillStyle='rgba(12,8,28,'+(0.22+t*.68)+')';c.fillRect(0,0,W,H);
+          if (t>.12) {
+            var vg=c.createRadialGradient(cx,cy,0,cx,cy,Math.max(W,H)*.62);
+            vg.addColorStop(0,'rgba(100,60,180,'+(t-.12)*.28+')');vg.addColorStop(1,'rgba(0,0,0,0)');
+            c.fillStyle=vg;c.fillRect(0,0,W,H);
+          }
+          var ltx=-sLen+ease*(cx+sLen), lty=cy-20;
+          var rtx=W+sLen-ease*(W+sLen-cx), rty=cy+20;
+
+          // Motion blur trails
+          leftTrail.push({x:ltx,y:lty}); rightTrail.push({x:rtx,y:rty});
+          if (leftTrail.length>5) leftTrail.shift();
+          if (rightTrail.length>5) rightTrail.shift();
+          leftTrail.forEach(function(pos,i){
+            if (i < leftTrail.length-1) drawSword(pos.x,pos.y,true,(i/leftTrail.length)*0.18*t);
+          });
+          rightTrail.forEach(function(pos,i){
+            if (i < rightTrail.length-1) drawSword(pos.x,pos.y,false,(i/rightTrail.length)*0.18*t);
+          });
+
+          // Main swords
+          drawSword(ltx,lty,true,Math.min(1,t*2));
+          drawSword(rtx,rty,false,Math.min(1,t*2));
+
+          if (t>.5) {
+            var shA=(t-.5)/.5;
+            drawShield(55*shA, shA);
+            drawRunes(55*shA, shA * 0.5, shA);
+          }
+          if (t>.88 && !impacted) { impacted=true; spawnSparks(60); }
+          tickSparks();
+
+        } else if (p < 0.70) {
+          var fl=Math.sin((p-.55)/.15*Math.PI);
+          c.fillStyle='rgba(12,8,28,.9)';c.fillRect(0,0,W,H);
+          c.fillStyle='rgba(255,215,80,'+fl*.88+')';c.fillRect(0,0,W,H);
+          c.save();c.translate(cx,cy);
+          for(var ri=0;ri<14;ri++){
+            var ra=(ri/14)*Math.PI*2;
+            var rg=c.createLinearGradient(0,0,Math.cos(ra)*Math.max(W,H),Math.sin(ra)*Math.max(W,H));
+            rg.addColorStop(0,'rgba(255,220,100,'+fl*.78+')');rg.addColorStop(1,'rgba(255,220,100,0)');
+            c.beginPath();c.moveTo(0,0);c.arc(0,0,Math.max(W,H),ra-.065,ra+.065);c.fillStyle=rg;c.fill();
+          }
+          c.restore();
+          drawShield(62,1);
+          drawRunes(62, 1, 1);
+          drawSword(cx,cy-20,true,1); drawSword(cx,cy+20,false,1);
+          if(Math.random()<.5) spawnSparks(6);
+          tickSparks();
+
+        } else {
+          var t3=(p-.70)/.30,fd=1-t3;
+          c.fillStyle='rgba(12,8,28,'+fd*.68+')';c.fillRect(0,0,W,H);
+          drawShield(62*(.8+t3*.3),fd*.68);
+          drawRunes(62*(.8+t3*.3), fd, fd*.5);
+          for(var ri2=0;ri2<3;ri2++){
+            var rr=ri2*80+t3*360,ra4=fd*(.5-ri2*.14);
+            if(ra4<=0) continue;
+            c.beginPath();c.arc(cx,cy,rr,0,Math.PI*2);c.strokeStyle='rgba(255,209,102,'+ra4+')';c.lineWidth=2.5;c.stroke();
+          }
+          tickSparks();
+        }
+
+        if(p>=0.55) fin();
+        if(p<1) requestAnimationFrame(frame);
+        else { c.clearRect(0,0,W,H); overlay.classList.remove('active'); overlay.setAttribute('aria-hidden','true'); fin(); }
+      }
+      requestAnimationFrame(frame);
     };
   })();
 
@@ -3544,7 +3961,113 @@
     }
     animateGears();
   })();
+
+  // ── 開場動畫 ──
+  (function() {
+    var splash = document.getElementById('intro-splash');
+    if (!splash) return;
+    var particles = splash.querySelector('.is-particles');
+    if (particles) {
+      for (var i = 0; i < 32; i++) {
+        var s = document.createElement('div'); s.className = 'is-star';
+        var sz = 1 + Math.random() * 2.5;
+        s.style.cssText = 'left:'+Math.random()*100+'%;top:'+Math.random()*100+'%;width:'+sz+'px;height:'+sz+'px;--sd:'+(2+Math.random()*3)+'s;--ss:'+Math.random()*3+'s;';
+        particles.appendChild(s);
+      }
+    }
+    var dismissed = false;
+    function dismiss() {
+      if (dismissed) return; dismissed = true;
+      startHeroIn();
+      setTimeout(function() { splash.classList.add('done'); }, 150);
+    }
+    // Skip if already seen this session
+    if (sessionStorage.getItem('splashSeen')) {
+      splash.classList.add('done');
+      startHeroIn();
+    } else {
+      sessionStorage.setItem('splashSeen', '1');
+      var timer = setTimeout(dismiss, 2400);
+      splash.addEventListener('click', function() { clearTimeout(timer); dismiss(); });
+    }
+  })();
+
+  // ── Hero 進場動畫 ──
+  function startHeroIn() {
+    var chars = document.querySelectorAll('.home-hero h1 .ch');
+    chars.forEach(function(ch, i) {
+      setTimeout(function() { ch.classList.add('ch-in'); }, i * 110);
+    });
+    var selectors = ['.pill-badge', '.en-title', '.lead', '.home-cta', '.mini-countdown', '.hero-editions-row'];
+    selectors.forEach(function(sel, i) {
+      var el = document.querySelector('.home-hero ' + sel);
+      if (el) setTimeout(function() { el.classList.add('hero-in'); }, i * 130 + 600);
+    });
+  }
+
+  // ── 數字計數器 ──
+  (function() {
+    function easeOut(t) { return 1 - Math.pow(1 - t, 3); }
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (!entry.isIntersecting) return;
+        var el = entry.target;
+        var target = parseInt(el.dataset.count, 10);
+        if (isNaN(target)) return;
+        var pad = parseInt(el.dataset.pad || '0', 10);
+        var start = performance.now();
+        var DURATION = 1600;
+        obs.unobserve(el);
+        (function frame(now) {
+          var t = Math.min((now - start) / DURATION, 1);
+          var val = Math.round(easeOut(t) * target);
+          el.textContent = pad ? String(val).padStart(pad, '0') : val;
+          if (t < 1) requestAnimationFrame(frame);
+        })(start);
+      });
+    }, { threshold: 0.5 });
+    document.querySelectorAll('[data-count]').forEach(function(el) { obs.observe(el); });
+  })();
+
+  // ── 視差捲動 ──
+  (function() {
+    var inner = document.querySelector('.home-hero .home-hero-inner');
+    var shapes = document.querySelector('.home-hero .hero-shapes');
+    var decos = Array.prototype.slice.call(document.querySelectorAll('.home-hero .hero-deco'));
+    if (!inner) return;
+    var decoBase = decos.map(function(d) { return d.style.transform || ''; });
+    window.addEventListener('scroll', function() {
+      if (!document.getElementById('view-home').classList.contains('active')) return;
+      var sy = window.scrollY;
+      inner.style.transform = 'translateY(' + (sy * 0.2) + 'px)';
+      if (shapes) shapes.style.transform = 'translateY(' + (sy * -0.1) + 'px)';
+      decos.forEach(function(d, i) {
+        var rates = [-0.55, -0.7, -0.42, -0.6, -0.48];
+        d.style.transform = (decoBase[i] ? decoBase[i] + ' ' : '') + 'translateY(' + (sy * (rates[i] || -0.5)) + 'px)';
+      });
+    }, { passive: true });
+  })();
 </script>
+
+<!-- SITE FOOTER -->
+<footer class="site-footer">
+  <div class="ft-logo">弘文暑期育樂營</div>
+  <div class="ft-en-sub">Hong-Wen Summer Camp · Since 2024</div>
+  <div class="ft-links">
+    <a data-nav="home">頁首</a>
+    <a data-nav="2024">2024 希望之島</a>
+    <a data-nav="2025">2025 光耀的試煉</a>
+    <a data-nav="2026">2026 時空管理局</a>
+    <a href="https://forms.gle/z6TDDyKxcZAFxeSs5" target="_blank">立即報名 ↗</a>
+  </div>
+  <div class="ft-sep"></div>
+  <div class="ft-editions">
+    <span>2024 · 未來之島</span>
+    <span>2025 · 光耀的試煉</span>
+    <span>2026 · 時光管理局</span>
+  </div>
+  <div class="ft-copy">© 2026 弘文中學暑期育樂營 · Hong-Wen Summer Camp · All rights reserved.</div>
+</footer>
 
 </body>
 </html>
