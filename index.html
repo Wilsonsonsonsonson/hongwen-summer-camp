@@ -1592,6 +1592,30 @@
   #timewarp-overlay.active .tw-scanlines { opacity: 1; }
   @keyframes twScan { from{transform:translateY(0)} to{transform:translateY(3px)} }
 
+  /* ── VISITOR COUNTER ── */
+  .visitor-counter {
+    position: fixed; bottom: 28px; right: 28px; z-index: 150;
+    display: flex; align-items: center; gap: 8px;
+    background: rgba(28,27,58,0.88);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,209,102,0.28);
+    border-radius: 50px; padding: 10px 16px;
+    color: rgba(255,255,255,0.75); font-size: 13px; font-weight: 700;
+    font-family: var(--body);
+    box-shadow: 0 4px 20px rgba(28,27,58,0.3);
+    pointer-events: none;
+  }
+  .visitor-counter .vc-icon { font-size: 15px; }
+  .visitor-counter .vc-label { color: rgba(255,255,255,.42); font-weight: 600; }
+  .visitor-counter .vc-num {
+    color: var(--yellow); font-family: var(--display); font-size: 15px; font-weight: 800;
+    min-width: 28px; text-align: right;
+    transition: opacity .4s;
+  }
+  @media (max-width: 560px) {
+    .visitor-counter { bottom: 14px; right: 14px; padding: 8px 12px; font-size: 12px; }
+  }
+
   /* ── MUSIC TOGGLE ── */
   .music-toggle {
     position: fixed; bottom: 28px; left: 28px; z-index: 150;
@@ -2858,6 +2882,13 @@
   </div>
 </footer>
 
+<!-- VISITOR COUNTER -->
+<div class="visitor-counter" id="visitor-counter">
+  <span class="vc-icon">👁</span>
+  <span class="vc-label">訪客</span>
+  <span class="vc-num" id="vc-num">…</span>
+</div>
+
 <!-- BGM -->
 <audio id="bg-music" loop preload="auto">
   <source src="bgm.mp3" type="audio/mpeg">
@@ -4046,6 +4077,22 @@
         d.style.transform = (decoBase[i] ? decoBase[i] + ' ' : '') + 'translateY(' + (sy * (rates[i] || -0.5)) + 'px)';
       });
     }, { passive: true });
+  })();
+
+  // ── 訪客計數器 ──
+  (function() {
+    var numEl = document.getElementById('vc-num');
+    if (!numEl) return;
+    fetch('https://api.counterapi.dev/v1/hongwen-summer-camp/visitors/up')
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        if (data && typeof data.count === 'number') {
+          numEl.textContent = data.count.toLocaleString();
+        }
+      })
+      .catch(function() {
+        numEl.textContent = '–';
+      });
   })();
 </script>
 
